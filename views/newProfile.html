@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html class="no-js css-menubar" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="Best Coding Bootcamp in India">
+    <meta name="author" content="CodeAsylums">
+
+    <title>CodeAsylums</title>
+
+    <link rel="apple-touch-icon" href="../../assets/images/logo-ca.png">
+    <link rel="shortcut icon" href="../../assets/images/logo-ca.png">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../../../global/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../global/css/bootstrap-extend.min.css">
+    <link rel="stylesheet" href="../../assets/css/site.min.css">
+
+    <!-- Plugins -->
+    <link rel="stylesheet" href="../../../global/vendor/animsition/animsition.css">
+    <link rel="stylesheet" href="../../../global/vendor/asscrollable/asScrollable.css">
+    <link rel="stylesheet" href="../../../global/vendor/switchery/switchery.css">
+    <link rel="stylesheet" href="../../../global/vendor/intro-js/introjs.css">
+    <link rel="stylesheet" href="../../../global/vendor/slidepanel/slidePanel.css">
+    <link rel="stylesheet" href="../../../global/vendor/flag-icon-css/flag-icon.css">
+    <link rel="stylesheet" href="../../../global/vendor/waves/waves.css">
+    <link rel="stylesheet" href="../../../global/vendor/jquery-wizard/jquery-wizard.css">
+    <link rel="stylesheet" href="../../../global/vendor/formvalidation/formValidation.css">
+
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="../../../global/fonts/web-icons/web-icons.min.css">
+
+    <link rel="stylesheet" href="../../../global/fonts/material-design/material-design.min.css">
+    <link rel="stylesheet" href="../../../global/fonts/brand-icons/brand-icons.min.css">
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
+
+    <!--[if lt IE 9]>
+    <script src="../../../global/vendor/html5shiv/html5shiv.min.js"></script>
+    <![endif]-->
+
+    <!--[if lt IE 10]>
+    <script src="../../../global/vendor/media-match/media.match.min.js"></script>
+    <script src="../../../global/vendor/respond/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Scripts -->
+    <script src="../../../global/vendor/breakpoints/breakpoints.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.5.0/js/md5.min.js"></script>
+
+    <script>
+         var url= 'https://api.codeasylums.com';
+        Breakpoints();
+
+        if (sessionStorage.getItem("loggedCA") === md5("true")) {
+
+            } else {
+                window.location.href = "./login";
+            }
+        
+        function globalCall(){
+
+            if(sessionStorage.getItem("photo"))
+                        {
+                            document.getElementById("photoimg").src = sessionStorage.getItem("photo");
+
+                        }
+                        else {
+                            document.getElementById("photoimg").src = "../../assets/images/upload.png";
+
+                        }
+
+            if (sessionStorage.getItem("loggedCA") != md5("true") && sessionStorage.getItem("redirect") == "dashboard") {
+                    // console.log("GLOBAL");
+                    window.location.href = "./login";
+            } else {
+                    getprofiledata();
+            }
+
+        }
+        
+        var UserData = [];
+
+        function getprofiledata() {
+            if(!sessionStorage.getItem("stringDetail"))
+            {
+                let course_id = sessionStorage.getItem("course_id");
+                axios.get( url+`/getScheduleByCourseId/${course_id}`)
+                .then(function(response) {
+                // console.log(response);
+                var stringDetail = "";
+                var stringStart = "";
+                var stringEnd = "";
+                for(let i=0;i<response.data.a.length;i++) {
+                    stringDetail+=response.data.a[i].schedule_details + ";";
+                    stringStart+=response.data.a[i].schedule_start + ";";
+                    stringEnd+=response.data.a[i].schedule_end + ";";
+                }
+                sessionStorage.setItem("stringDetail", stringDetail);
+                sessionStorage.setItem("stringStart", stringStart);
+                sessionStorage.setItem("stringEnd", stringEnd);
+                // console.log(stringDetail);
+                // console.log(stringStart);
+                // console.log(stringEnd);
+                }).catch(function(error){
+                // console.log(error);
+                });
+            }
+
+            getUserData();
+            getJobProfileData();
+            getProgrammingProfileData();
+        }
+
+        function getUserData() {
+            if (sessionStorage.getItem("loggedCA") != md5("true")) {
+                    // console.log("GLOBAL");
+                    window.location.href = "./login";
+            }
+            let user_id = sessionStorage.getItem("user_id");
+            axios.get( url+`/getUserData/` + `${user_id}
+                    `)
+                .then(res => {
+                    // console.log(res)
+                    // console.log("Inside getUserData()");
+                    sessionStorage.setItem("request", "post");
+                    UserData1 = UserData.concat(res.data.a);
+                    if (res.data.a.length !== 0) {
+                        document.getElementById("name").value = res.data.a[0].name;
+                        document.getElementById("gender").value = res.data.a[0].gender;
+                        document.getElementById("university").value = res.data.a[0].university;
+                        document.getElementById("graduationYear").value = res.data.a[0].graduation_year;
+                        document.getElementById("linkedinProfile").value = res.data.a[0].linkedIn_profile;
+                        document.getElementById("teeShirt").value = res.data.a[0].t_shirt_size;
+                        document.getElementById("address").value = res.data.a[0].address;
+                        document.getElementById("github").value = res.data.a[0].github_handle;
+                        sessionStorage.setItem("request", "put");
+                    }
+                })
+                .catch(err => { alert("Something went wrong, please try again")})
+        }
+
+        function getJobProfileData() {
+            if (sessionStorage.getItem("loggedCA") != md5("true")) {
+                    // console.log("GLOBAL");
+                    window.location.href = "./login";
+            }
+            let user_id = sessionStorage.getItem("user_id");
+            axios.get( url+`/getJobProfile/` + `${user_id}
+                    `)
+                .then(res => {
+                    // console.log(res)
+                    // console.log("Inside getJobProfileData()");
+                    sessionStorage.setItem("request", "post");
+                    UserData2 = UserData.concat(res.data.a);
+                    if (res.data.a.length !== 0) {
+                        document.getElementById("currentCompany").value = res.data.a[0].current_company;
+                        document.getElementById("lastDegree").value = res.data.a[0].last_degree;
+                        document.getElementById("yearOfExp").value = res.data.a[0].years_of_experience;
+                        document.getElementById("majorInCollege").value = res.data.a[0].major_in_college;
+                        document.getElementById("currentJobTitle").value = res.data.a[0].current_job_title;
+                        document.getElementById("location").value = res.data.a[0].location;
+                        document.getElementById("skype").value = res.data.a[0].skype;
+                        sessionStorage.setItem("request", "put");
+                    }
+                })
+                .catch(err => { alert("Something went wrong, please try again")})
+        }
+
+        function getProgrammingProfileData() {
+            if (sessionStorage.getItem("loggedCA") != md5("true")) {
+                    // console.log("GLOBAL");
+                    window.location.href = "./login";
+            }
+            let user_id = sessionStorage.getItem("user_id");
+            axios.get( url+`/getProgrammingProfile/` + `${user_id}
+                    `)
+                .then(res => {
+                    // console.log(res)
+                    sessionStorage.setItem("request", "post");
+                    // console.log("Inside getProgrammingProfileData()");
+                    UserData3 = UserData.concat(res.data.a);
+                    if (res.data.a.length !== 0) {
+                        document.getElementById("codeforces").value = res.data.a[0].codeforces;
+                        document.getElementById("spoj").value = res.data.a[0].spoj;
+                        document.getElementById("topcoder").value = res.data.a[0].topcoder;
+                        document.getElementById("codechef").value = res.data.a[0].codechef;
+                        document.getElementById("hackerrank").value = res.data.a[0].hackerrank;
+                        sessionStorage.setItem("request", "put");
+                    }
+                })
+                .catch(err => { alert("Something went wrong, please try again")})
+        }
+    </script>
+</head>
+
+<body class="animsition" onload=globalCall();>
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+
+   <nav class=" navbar navbar-default navbar-fixed-top navbar-mega" role="navigation">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggler hamburger hamburger-close navbar-toggler-left hided" data-toggle="menubar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="hamburger-bar"></span>
+        </button>
+            <button type="button" class="navbar-toggler collapsed" data-target="#site-navbar-collapse" data-toggle="collapse">
+          <i class="icon wb-more-horizontal" aria-hidden="true"></i>
+        </button>
+            <div class="navbar-brand navbar-brand-center site-gridmenu-toggle active" aria-expanded="true">
+                <a href="./newProfile" style="color:black"><img class="navbar-brand-logo" src="../../assets/images/logo-ca.png" alt="...">
+                <span class="navbar-brand-text hidden-xs-down"> CodeAsylums</span></a>
+            </div>
+            
+        </div>
+
+        <div class="navbar-container container-fluid">
+            <!-- Navbar Collapse -->
+            <div class="collapse navbar-collapse navbar-collapse-toolbar" id="site-navbar-collapse">
+                <!-- Navbar Toolbar -->
+                <ul class="nav navbar-toolbar">
+                    <li class="nav-item hidden-float" id="toggleMenubar">
+                        <a class="nav-link" data-toggle="menubar" href="#" role="button">
+                            <i class="icon hamburger hamburger-arrow-left">
+                  <span class="sr-only">Toggle menubar</span>
+                  <span class="hamburger-bar"></span>
+                </i>
+                        </a>
+                    </li>
+
+                </ul>
+                <!-- End Navbar Toolbar -->
+
+                <!-- Navbar Toolbar Right -->
+                <ul class="nav navbar-toolbar navbar-right navbar-toolbar-right">
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link navbar-avatar" data-toggle="dropdown" href="#" aria-expanded="false" data-animation="scale-up" role="button">
+                            <span class="avatar avatar-online">
+                  <img id="photoimg" src="../../assets/images/upload.png" alt="...">
+                  <i></i>
+                </span>
+                        </a>
+                        <div class="dropdown-menu" role="menu">
+                          
+                            <a class="dropdown-item" href="./login" onclick="logout();" role="menuitem"><i class="icon wb-power" aria-hidden="true"></i> Logout</a>
+                        </div>
+                    </li>
+
+                </ul>
+                <!-- End Navbar Toolbar Right -->
+            </div>
+            <!-- End Navbar Collapse -->
+
+            <!-- Site Navbar Seach -->
+            <div class="collapse navbar-search-overlap" id="site-navbar-search">
+                <form role="search">
+                    <div class="form-group">
+                        <div class="input-search">
+                            <i class="input-search-icon wb-search" aria-hidden="true"></i>
+                            <input type="text" class="form-control" name="site-search" placeholder="Search...">
+                            <button type="button" class="input-search-close icon wb-close" data-target="#site-navbar-search" data-toggle="collapse" aria-label="Close"></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- End Site Navbar Seach -->
+        </div>
+    </nav>
+  <div class="site-menubar">
+        <div class="site-menubar-body scrollable scrollable-inverse is-enabled scrollable-vertical hoverscorll-disabled" style="position: relative;">
+            <div class="scrollable-container" style="height: 401.984px; width: 260px;">
+                <div class="scrollable-content" style="width: 260px;">
+                    <ul class="site-menu" data-plugin="menu" style="transform: translate3d(0px, 0px, 0px);">
+                        <li class="site-menu-category"></li>
+                        <li class="site-menu-item active">
+                            <a href="/newProfile">
+                                <i class="site-menu-icon wb-layout" style="color:#27c24c" aria-hidden="true"></i>
+                                <span class="site-menu-title">Profile</span>
+                                <span class="site-menu-arrow"></span>
+                            </a>
+
+                        </li>
+                        
+                        <!-- <li class="site-menu-item has-sub">
+                            <a href="/schedule">
+                                <i class="site-menu-icon wb-calendar" aria-hidden="true"></i>
+                                <span class="site-menu-title">Schedule</span>
+                                <span class="site-menu-arrow"></span>
+                            </a>
+                        </li> -->
+    
+
+<!-- 
+                        <li class="site-menu-item ">
+                            <a href="/videos">
+                                <i class="site-menu-icon wb-camera" style="color:#f19a5e" aria-hidden="true"></i>
+                                <span class="site-menu-title">Videos</span>
+                                <span class="site-menu-arrow"></span>
+                            </a>
+
+                        </li> -->
+
+                        <!-- <li class="site-menu-item ">
+                            <a href="/challenges">
+                                <i class="site-menu-icon wb-star-outline" style="color:#23b7e5" aria-hidden="true"></i>
+                                <span class="site-menu-title">Challenges</span>
+                                <span class="site-menu-arrow"></span>
+                            </a>
+
+                        </li>
+                        <li class="site-menu-item ">
+                          <a href="/leaderboard">
+                            <i class="site-menu-icon wb-graph-up" style="color:#f05050" aria-hidden="true"></i>
+                            <span class="site-menu-title">Leaderboard</span>
+                            <span class="site-menu-arrow"></span>
+                          </a>
+                        </li>
+
+                        <li class="site-menu-item ">
+                            <a href="/studymaterials_dashboard ">
+                                <i class="site-menu-icon wb-library" style="color:#f19a5e" aria-hidden="true"></i>
+                                <span class="site-menu-title">Study Materials</span>
+                                <span class="site-menu-arrow"></span>
+                            </a>
+                        </li> -->
+                    </ul>
+                    
+                    
+                </div>
+            </div>
+        <div class="scrollable-bar scrollable-bar-vertical is-disabled scrollable-bar-hide" draggable="false"><div class="scrollable-bar-handle"></div></div></div>
+
+
+        <div class="site-menubar-footer">
+            <button type="button" class="btn btn-info" data-target="#exampleFormModal" data-toggle="modal" style="width: inherit;"><i class="icon wb-chat" aria-hidden="true"></i> Submit Feedback</button>
+        </div>
+
+    </div>
+    <div class="site-gridmenu">
+        <div>
+            <div>
+                <ul>
+                    <li>
+                        <a href="apps/mailbox/mailbox.html">
+                            <i class="icon wb-envelope"></i>
+                            <span>Mailbox</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="apps/calendar/calendar.html">
+                            <i class="icon wb-calendar"></i>
+                            <span>Calendar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="apps/contacts/contacts.html">
+                            <i class="icon wb-user"></i>
+                            <span>Contacts</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="apps/media/overview.html">
+                            <i class="icon wb-camera"></i>
+                            <span>Media</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="apps/documents/categories.html">
+                            <i class="icon wb-order"></i>
+                            <span>Documents</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="apps/projects/projects.html">
+                            <i class="icon wb-image"></i>
+                            <span>Project</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="apps/forum/forum.html">
+                            <i class="icon wb-chat-group"></i>
+                            <span>Forum</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.html">
+                            <i class="icon wb-dashboard"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page -->
+    <div class="page">
+        <div class="page-content container-fluid">
+            <div class="row">
+                <div class="col-lg-0" hidden>
+                    <!-- Panel Wizard Form -->
+                    <div class="panel" id="exampleWizardForm">
+                        <!-- <div class="panel-heading">
+                <h3 class="panel-title">Wizard Form</h3>
+              </div> -->
+              
+                        <div class="panel-body">
+                            <!-- Steps -->
+                            <div class="steps steps-sm row" data-plugin="matchHeight" data-by-row="true" role="tablist">
+                                <div class="step col-lg-4 current" data-target="#exampleAccount" role="tab">
+                                </div>
+                                <div class="step col-lg-4" data-target="#exampleBilling" role="tab">
+                                </div>
+                            </div>
+                            <!-- End Steps -->
+
+                            <!-- Wizard Content -->
+                            <div class="wizard-content">
+                                <div class="wizard-pane active" id="exampleAccount" role="tabpanel">
+                                </div>
+                                <div class="wizard-pane" id="exampleBilling" role="tabpanel">
+                                </div>
+                            </div>
+                            <!-- End Wizard Content -->
+                        </div>
+                    </div>
+                    <!-- End Panel Wizard One Form -->
+                </div>
+
+                <div class="col-lg-12">
+                    <!-- Panel Wizard Form Container -->
+                    <div class="panel" id="exampleWizardFormContainer">
+                        <!-- alert message -->
+         <div class="alert dark alert-info alert-dismissible animation-slide-top " id="processing-div" style="display:none" role="alert">
+            <button type="button" class="close" onClick="hidemepro()" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+            <div id="message-processing"></div>
+          </div>
+  <!-- End alert message -->
+
+
+ <!-- alert message -->
+ <div class="alert dark alert-danger alert-dismissible animation-slide-top " id="alert-message-div" style="display:none" role="alert">
+            <button type="button" class="close" onClick="hideme()" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+            <div id="message-div"></div>
+          </div>
+  <!-- End alert message -->
+  
+
+<!-- alert message -->
+ <div class="alert dark alert-success alert-dismissible animation-slide-top " id="info-message-div" style="display:none" role="alert">
+            <button type="button" class="close" onClick="hidemeinfo()" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+            <div id="message-div-info"></div>
+          </div>
+  <!-- End alert message -->
+
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Complete Details</h3>
+                        </div>
+                        <div class="panel-body">
+                            <!-- Steps -->
+                            <div class="pearls row">
+                                <div class="pearl current col-4">
+                                    <div class="pearl-icon"><i class="icon md-account" aria-hidden="true"></i></div>
+                                    <span class="pearl-title">Profile Settings</span>
+                                </div>
+                                <div class="pearl col-4">
+                                    <div class="pearl-icon"><i class="icon md-card" aria-hidden="true"></i></div>
+                                    <span class="pearl-title">Working Background</span>
+                                </div>
+                                <div class="pearl col-4">
+                                    <div class="pearl-icon"><i class="icon md-check" aria-hidden="true"></i></div>
+                                    <span class="pearl-title">Programming Profiles</span>
+                                </div>
+                            </div>
+                            <!-- End Steps -->
+
+                            <!-- Wizard Content -->
+                            <form id="exampleFormContainer">
+                                <div class="wizard-content">
+                                    <div class="wizard-pane active" role="tabpanel">
+                                        <div class="form-group form-material">
+                                            <label class="form-control-label" for="inputUserNameOne">Name<span style="color:red">*</span></label>
+
+                                            <input type="text" class="form-control" id="name"  name="default" required="required" placeholder="Full name">
+
+                                        </div>
+                                        <div class="form-group form-material">
+                                            <label class="form-control-label" for="inputUserNameOne" >Gender<span style="color:red">*</span></label>
+                                            <select class="form-control" id="gender" required="required" name="default" >
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                                <option value="Others">Others</option>
+                                              </select>
+                                            
+                                        </div>
+                                        
+                                        <div class="form-group form-material">
+                                            <label class="form-control-label" for="inputPasswordOne">University<span style="color:red">*</span></label>
+
+                                            <input type="text" class="form-control" id="university"  name="default" required="required" placeholder="University">
+                                        </div>
+                                        <div class="form-group form-material">
+                                            <label class="form-control-label" for="inputPasswordOne">Year of Graduation<span style="color:red">*</span></label>
+                                            <input type="text" class="form-control" id="graduationYear" name="default" required="required" placeholder="2020">
+                                        </div>
+                                        <div class="form-group form-material">
+                                            <label class="form-control-label" for="inputPasswordOne">LinkedIn Profile</label>
+                                            <input type="text" class="form-control" id="linkedinProfile" name="default" value="N/A" placeholder="https://www.linkedin.com/">
+
+                                        </div>
+                                        <div class="form-group form-material">
+                                            <label class="form-control-label" for="inputUserNameOne" >T-shirt<span style="color:red">*</span></label>
+                                            <select class="form-control" id="teeShirt" required="required" name="default" >
+                                                <option value="S">Small</option>
+                                                <option value="M">Medium</option>
+                                                <option value="L">Large</option>
+                                                <option value="XL">XLarge</option>
+                                              </select>
+                                            
+                                        </div>
+                                        <div class="form-group form-material">
+                                            <label class="form-control-label" for="inputPasswordOne">Address<span style="color:red">*</span></label>
+
+                                            <input type="text" class="form-control" id="address" name="default" required="required" placeholder="Address">
+                                        </div>
+                                        <div class="form-group form-material">
+                                            <label class="form-control-label" for="inputPasswordOne">Github Id</label>
+                                            <input type="text" class="form-control" id="github" name="default" value="N/A" placeholder="Github Id">
+
+                                        </div>
+                                        <!-- <div class="form-group form-material">
+                                            <label class="form-control-label" for="inputUserNameOne">Course Enroll</label>
+                                            <select class="form-control" id="course_id" required="required" name="default" >
+                                                <option value="1">Virgin Algorithm - 4th April 2020</option>
+                                                <option value="2">Virgir Algorithm - 12th April 2020</option>
+                                                <option value="3">Full Stack - 12th April 2020</option>
+                                                <option value="4">Machine Learning - 12th April 2020</option>
+                                                <option value="5">Virgin Algorithm - 19th April 2020</option>
+                                                <option value="6">Machine Learning - 19th April 2020</option>
+                                                <option value="7">Full Stack - 19th April 2020</option>
+                                                <option value="7">Data Analytics - 19th April 2020</option>
+                                                <option value="5">Virgin Algorithm - 26th April 2020</option>
+                                                <option value="6">Machine Learning - 26th April 2020</option>
+                                                <option value="7">Full Stack - 26th April 2020</option>
+                                                <option value="7">Data Analytics - 26th April 2020</option>
+                                              </select>
+                                        </div> -->
+
+                                        <!-- <div class="form-group form-material">
+                                          <label for="file" style="cursor: pointer;border:2px solid rgb(62, 142, 247);border-radius: 16px;padding:12px 12px;color:black;background-color: rgb(62, 142, 247);">Upload Image</label>
+                                          <input id="file" type="file" style="display: none;" accept="image/*" />
+                                          <span  style="width:60px;height:60px;padding-left: 170px;">
+                                            <img id="myImg" src="../../assets/images/upload.png" alt="photo"  width="150" height="150" />
+                                          </span>
+                                          <p>*Max limit 2MB for photo upload</p>
+                                        </div> -->
+                                        <!-- <div class="form-group form-material">
+                                            <label class="form-control-label" for="avatar">Select Avatar</label>
+                                            <br>
+                                            <input type="radio" name="avatar" value="../../../global/photos/boy_image.png">
+                                            <img style="border-radius: 50%; height:10em; width:10em;" src="../../../global/photos/boy_image.png" alt="">
+                                            <input type="radio" name="avatar" value="../../../global/photos/girl_image.png">
+                                            <img style="border-radius: 50%; height:10em; width:10em;" src="../../../global/photos/girl_image.png" alt="">
+                                        </div> -->
+                                        <br/>
+                                        <center>
+                                            <a  class="btn btn-primary btn-block btn-lg mx-auto" onclick="doUserData();" style="color:white;" hidden>Submit Information</a>
+                                        </center>
+                                    </div>
+
+                                    <div class="wizard-pane" id="exampleBillingOne" role="tabpanel">
+                                        <div class="form-group form-material">
+                                            <label class="form-control-label" for="inputCardNumberOne">Where do you currently work?<span style="color:red">*</span></label>
+
+                                            <input type="text" class="form-control" id="currentCompany" name="default"  placeholder="Put N/A if you are a student." required="required" >
+                                        </div>
+                                        <div class="form-group form-material">
+                                            <label class="form-control-label" for="inputCardNumberOne">Highest Degree</label>
+                                            <input type="text" class="form-control" id="lastDegree"  name="default" required="required" value="N/A" placeholder="Bachelor of Engineering">
+
+                                        </div>
+                                        <div class="form-group form-material" for="inputCardNumberOne">
+                                            <label class="form-control-label">Years of experience:<span style="color:red">*</span></label>
+                                            <input type="text" class="form-control" id="yearOfExp" name="default" required="required" value="0 Years" placeholder="0 Years" >
+                                        </div>
+                                        <div class="form-group form-material" for="inputCardNumberOne">
+                                            <label class="form-control-label">Major in College</label>
+
+                                            <input type="text" class="form-control" id="majorInCollege" value="N/A" name="default" required="required" placeholder="Branch">
+                                        </div>
+                                        <div class="form-group form-material" for="inputCardNumberOne">
+                                            <label class="form-control-label">Current Job Title<span style="color:red">*</span></label>
+                                            <input type="text" class="form-control" id="currentJobTitle"  placeholder="Put N/A if you are a student."name="default" required="required" >
+
+                                        </div>
+                                        <div class="form-group form-material" for="inputCardNumberOne">
+                                            <label class="form-control-label">Location<span style="color:red">*</span></label>
+                                            <input type="text" class="form-control" id="location"  name="default" required="required"  placeholder="Put N/A if you are a student.">
+                                        </div>
+                                        <div class="form-group form-material" for="inputCardNumberOne">
+                                            <label class="form-control-label">Skype</label>
+                                            <input type="text" class="form-control" id="skype" value="N/A" placeholder="Skype Id">
+                                        </div>
+                                        <center>
+                                            <a class="btn btn-primary btn-block btn-lg mx-auto" onclick="doJobProfile();" style="color:white;" hidden>Submit Information</a>
+                                        </center>
+                                    </div>
+
+                                    <div class="wizard-pane" id="exampleGettingOne" role="tabpanel">
+                                        <div class="form-group form-material">
+                                            <label class="form-control-label">Codeforces</label>
+                                            <input type="text" class="form-control" id="codeforces" placeholder="Codeforces Id" required="required" value="N/A" >
+                                        </div>
+                                        <div class="form-group form-material">
+                                            <label class="form-control-label">Spoj</label>
+                                            <input type="text" class="form-control" id="spoj" placeholder="Spoj Id" required="required" value="N/A">
+                                        </div>
+                                        <div class="form-group form-material">
+                                            <label class="form-control-label">TopCoder</label>
+                                            <input type="text" class="form-control" id="topcoder" placeholder="TopCoder Id" required="required" value="N/A">
+                                        </div>
+                                        <div class="form-group form-material">
+                                            <label class="form-control-label">Codechef</label>
+                                            <input type="text" class="form-control" id="codechef" placeholder="Codechef Id" required="required" value="N/A">
+                                        </div>
+                                        <div class="form-group form-material">
+                                            <label class="form-control-label">Hackerrank</label>
+                                            <input type="text" class="form-control" id="hackerrank" placeholder="Hackerrank Id" required="required" value="N/A">
+                                        </div>
+                                        <a class="btn btn-primary btn-block btn-lg mx-auto" onclick="doProgrammingProfile();" style="color:white;" hidden>Submit Information</a>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- Wizard Content -->
+                        </div>
+                    </div>
+                    <!-- End Panel Wizard Form Container -->
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <!-- End Page -->
+
+<div class="modal fade" id="exampleFormModal" aria-labelledby="exampleFormModalLabel" role="dialog" tabindex="-1" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-simple modal-center" style="z-index:20000;">
+            <form class="modal-content" style="z-index:20000;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">×</span>
+                            </button>
+                    <h4 class="modal-title" id="exampleFormModalLabel">Send us some feedback!</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+
+                        <div class="col-xl-12 form-group">
+                            <textarea class="form-control" rows="5" placeholder="Describe your issue or idea.." id="userFeedback_text"></textarea>
+                            <div class="radio-custom radio-primary">
+                                <input type="radio" id="radio_feedback_type1" name="inputRadios">
+                                <label for="inputRadiosUnchecked" id="feedback_type1">Bug</label>
+                            </div>
+                            <div class="radio-custom radio-primary">
+                                <input type="radio" id="radio_feedback_type2" name="inputRadios">
+                                <label for="inputRadiosUnchecked" id="feedback_type2">Improvement</label>
+                            </div>
+                            <div class="radio-custom radio-primary">
+                                <input type="radio" id="radio_feedback_type3" name="inputRadios">
+                                <label for="inputRadiosUnchecked" id="feedback_type3">Comment</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 float-right">
+                            <button class="btn btn-primary btn-outline" data-dismiss="modal" type="button" onclick="userFeedback()">Send Feedback</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    <!-- Footer -->
+    <!-- <footer class="site-footer">
+        <div class="site-footer-legal">© 2018 <a href="http://themeforest.net/item/remark-responsive-bootstrap-admin-template/11989202">Remark</a></div>
+        <div class="site-footer-right">
+            Crafted with <i class="red-600 icon md-favorite"></i> by <a href="https://themeforest.net/user/creation-studio">Creation Studio</a>
+        </div>
+    </footer> -->
+    <!-- Core  -->
+    <script src="../../../global/vendor/babel-external-helpers/babel-external-helpers.js"></script>
+    <script src="../../../global/vendor/jquery/jquery.js"></script>
+    <script src="../../../global/vendor/popper-js/umd/popper.min.js"></script>
+    <script src="../../../global/vendor/bootstrap/bootstrap.js"></script>
+    <script src="../../../global/vendor/animsition/animsition.js"></script>
+    <script src="../../../global/vendor/mousewheel/jquery.mousewheel.js"></script>
+    <script src="../../../global/vendor/asscrollbar/jquery-asScrollbar.js"></script>
+    <script src="../../../global/vendor/asscrollable/jquery-asScrollable.js"></script>
+    <script src="../../../global/vendor/ashoverscroll/jquery-asHoverScroll.js"></script>
+
+
+    <!-- Plugins -->
+    <script src="../../../global/vendor/switchery/switchery.js"></script>
+    <script src="../../../global/vendor/intro-js/intro.js"></script>
+    <script src="../../../global/vendor/screenfull/screenfull.js"></script>
+    <script src="../../../global/vendor/slidepanel/jquery-slidePanel.js"></script>
+    <script src="../../../global/vendor/formvalidation/formValidation.js"></script>
+    <script src="../../../global/vendor/formvalidation/framework/bootstrap.js"></script>
+    <script src="../../../global/vendor/matchheight/jquery.matchHeight-min.js"></script>
+    <script src="../../../global/vendor/jquery-wizard/jquery-wizard.js"></script>
+
+    <!-- Scripts -->
+    <script src="../../../global/js/Component.js"></script>
+    <script src="../../../global/js/Plugin.js"></script>
+    <script src="../../../global/js/Base.js"></script>
+    <script src="../../../global/js/Config.js"></script>
+
+    <script src="../../assets/js/Section/Menubar.js"></script>
+    <script src="../../assets/js/Section/Sidebar.js"></script>
+    <script src="../../assets/js/Section/PageAside.js"></script>
+    <script src="../../assets/js/Plugin/menu.js"></script>
+    <script src="../../assets/js/Section/GridMenu.js"></script>
+
+    <!-- Config -->
+    <script src="../../../global/js/config/colors.js"></script>
+    <script src="../../assets/js/config/tour.js"></script>
+    <script>
+        Config.set('assets', '../../assets');
+    </script>
+
+    <!-- Page -->
+    <script src="../../assets/js/Site.js"></script>
+    <script src="../../../global/js/Plugin/asscrollable.js"></script>
+    <script src="../../../global/js/Plugin/slidepanel.js"></script>
+    <script src="../../../global/js/Plugin/switchery.js"></script>
+    <script src="../../../global/js/Plugin/jquery-wizard.js"></script>
+    <script src="../../../global/js/Plugin/matchheight.js"></script>
+
+    <script src="../../assets/examples/js/forms/wizard.js"></script>
+
+    <script>
+         var url= '<%= process.env.URL %>';
+
+        //     if (sessionStorage.getItem("loggedCA") != md5("true")) {
+        //         // console.log("GLOBAL");
+        //         window.location.href = "./login";
+        //     } else {
+        //         getprofiledata();
+        //     }
+        // var UserData = [];
+
+        // function getprofiledata() {
+        //     sessionStorage.setItem("stringDetail", "");
+	    //     sessionStorage.setItem("stringStart", "");
+	    //     sessionStorage.setItem("stringEnd", "");
+        //     getUserData();
+        //     getJobProfileData();
+        //     getProgrammingProfileData();
+        // }
+
+        // function getUserData() {
+        //     let user_id = sessionStorage.getItem("user_id");
+        //     axios.get( url+`:80/getUserData/` + `${user_id}
+        //             `)
+        //         .then(res => {
+        //             // console.log(res)
+        //             UserData1 = UserData.concat(res.data.a);
+        //             if (res.data.a.length !== 0) {
+        //                 document.getElementById("name").value = res.data.a[0].name;
+        //                 document.getElementById("gender").value = res.data.a[0].gender;
+        //                 document.getElementById("university").value = res.data.a[0].university;
+        //                 document.getElementById("graduationYear").value = res.data.a[0].graduation_year;
+        //                 document.getElementById("linkedinProfile").value = res.data.a[0].linkedIn_profile;
+        //                 document.getElementById("teeShirt").value = res.data.a[0].t_shirt_size;
+        //                 document.getElementById("address").value = res.data.a[0].address;
+        //                 document.getElementById("github").value = res.data.a[0].github_handle;
+        //                 sessionStorage.setItem("request", "put");
+        //             }
+        //         })
+        //         .catch(err => {// console.log(err),alert("Something went wrong, please try again")})
+        // }
+
+        // function getJobProfileData() {
+        //     let user_id = sessionStorage.getItem("user_id");
+        //     axios.get( url+`:80/getJobProfile/` + `${user_id}
+        //             `)
+        //         .then(res => {
+        //             // console.log(res)
+        //             UserData2 = UserData.concat(res.data.a);
+        //             if (res.data.a.length !== 0) {
+        //                 document.getElementById("currentCompany").value = res.data.a[0].current_company;
+        //                 document.getElementById("lastDegree").value = res.data.a[0].last_degree;
+        //                 document.getElementById("yearOfExp").value = res.data.a[0].years_of_experience;
+        //                 document.getElementById("majorInCollege").value = res.data.a[0].major_in_college;
+        //                 document.getElementById("currentJobTitle").value = res.data.a[0].current_job_title;
+        //                 document.getElementById("location").value = res.data.a[0].location;
+        //                 document.getElementById("skype").value = res.data.a[0].skype;
+        //                 sessionStorage.setItem("request", "put");
+        //             }
+        //         })
+        //         .catch(err => {// console.log(err),alert("Something went wrong, please try again")})
+        // }
+
+        // function getProgrammingProfileData() {
+        //     let user_id = sessionStorage.getItem("user_id");
+        //     axios.get( url+`:80/getProgrammingProfile/` + `${user_id}
+        //             `)
+        //         .then(res => {
+        //             // console.log(res)
+        //             UserData3 = UserData.concat(res.data.a);
+        //             if (res.data.a.length !== 0) {
+        //                 document.getElementById("codeforces").value = res.data.a[0].codeforces;
+        //                 document.getElementById("spoj").value = res.data.a[0].spoj;
+        //                 document.getElementById("topcoder").value = res.data.a[0].topcoder;
+        //                 document.getElementById("codechef").value = res.data.a[0].codechef;
+        //                 document.getElementById("hackerrank").value = res.data.a[0].hackerrank;
+        //                 sessionStorage.setItem("request", "put");
+        //             }
+        //         })
+        //         .catch(err => {// console.log(err),alert("Something went wrong, please try again")})
+        // }
+
+        // function doUserData() {
+        //     let nameValue = document.getElementById("name").value;
+        //     let genderValue = document.getElementById("gender").value;
+        //     let organizationValue = "none"
+        //     let universityValue = document.getElementById("university").value;
+        //     let graduationYearValue = document.getElementById("graduationYear").value;
+        //     let linkedInProfileValue = document.getElementById("linkedinProfile").value;
+        //     let t_shirt_sizeValue = document.getElementById("teeShirt").value;
+        //     let addressValue = document.getElementById("address").value;
+        //     let github_handleValue = document.getElementById("github").value;
+        //     let photoValue;
+        //     if (genderValue == "Male"){
+        //         photoValue = "../../../global/photos/boy_image.png";
+        //     } else {
+        //         photoValue = "../../../global/photos/girl_image.png";
+        //     }
+
+        //  if(nameValue==""){
+        //   document.getElementById('alert-message-div').style.display="block";
+        //   document.getElementById('message-div').innerHTML="Name is required";
+        //  return false;
+        // }
+
+        //  if(genderValue==""){
+        //    document.getElementById('alert-message-div').style.display="block";
+        //   document.getElementById('message-div').innerHTML="Gender is required";
+        //   return false;
+        // }
+        
+        //  if(universityValue==""){
+        //    document.getElementById('alert-message-div').style.display="block";
+        //   document.getElementById('message-div').innerHTML="University name is required";
+        //   return false;
+        // }
+
+        //  if(graduationYearValue==""){
+        //   document.getElementById('alert-message-div').style.display="block";
+        //   document.getElementById('message-div').innerHTML="Graduation year is required";
+        //   return false;
+        // }
+
+        //  if(linkedInProfileValue==""){
+        //    document.getElementById('alert-message-div').style.display="block";
+        //   document.getElementById('message-div').innerHTML="LinkedIn profile is required";
+        //   return false;
+        // }
+        
+        //  if(t_shirt_sizeValue==""){
+        //   document.getElementById('alert-message-div').style.display="block";
+        //   document.getElementById('message-div').innerHTML="T-shirt is required";
+        //   return false;
+        // }
+
+        //  if(addressValue==""){
+        //    document.getElementById('alert-message-div').style.display="block";
+        //   document.getElementById('message-div').innerHTML="Address is required";
+        //   return false;
+        // }
+        //  if(github_handleValue==""){
+        //   document.getElementById('alert-message-div').style.display="block";
+        //   document.getElementById('message-div').innerHTML="Github handle is required";
+        //   return false;
+        // }
+        
+        
+        //     // console.log(UserData1.length);
+        //     if (UserData1.length !== 0) {
+        //         let User_id = sessionStorage.getItem("user_id");
+        //         axios.put( url+':80/updateUserData/' + `${User_id}`, {
+        //                 bootcamp_id: 1234,
+        //                 user_id: User_id,
+        //                 name: nameValue,
+        //                 gender: genderValue,
+        //                 is_otp_verified: true,
+        //                 is_email_verified: true,
+        //                 photo: photoValue,
+        //                 organization: organizationValue,
+        //                 university: universityValue,
+        //                 graduation_year: graduationYearValue,
+        //                 linkedIn_profile: linkedInProfileValue,
+        //                 t_shirt_size: t_shirt_sizeValue,
+        //                 address: addressValue,
+        //                 public_sharing: "1",
+        //                 github_handle: github_handleValue
+        //             })
+        //             .then(function(response) {
+        //                 alert("Profile details updated successfully")
+        //                 // console.log(response);
+        //             })
+        //             .catch(function(error) {
+        //                 // console.log(error);
+        //                 alert("Something went wrong, please try again")
+        //             });
+        //     } else {
+        //         axios.post( url+':80/doUserData', {
+        //                 bootcamp_id: 1234,
+        //                 user_id: sessionStorage.getItem("user_id"),
+        //                 name: nameValue,
+        //                 gender: genderValue,
+        //                 is_otp_verified: true,
+        //                 is_email_verified: true,
+        //                 photo: photoValue,
+        //                 organization: organizationValue,
+        //                 university: universityValue,
+        //                 graduation_year: graduationYearValue,
+        //                 linkedIn_profile: linkedInProfileValue,
+        //                 t_shirt_size: t_shirt_sizeValue,
+        //                 address: addressValue,
+        //                 public_sharing: "1",
+        //                 github_handle: github_handleValue
+        //             })
+        //             .then(function(response) {
+        //                 alert("Profile details submitted successfully")
+        //                 // console.log(response);
+        //             })
+        //             .catch(function(error) {
+        //                 // console.log(error);
+        //                 alert("Something went wrong, please try again")
+        //             });
+
+        //     }
+
+        // }
+
+        // function doJobProfile() {
+        //     let current_companyValue = document.getElementById("currentCompany").value;
+        //     let last_degreeValue = document.getElementById("lastDegree").value;
+        //     let years_of_experienceValue = document.getElementById("yearOfExp").value;
+        //     let major_in_collegeValue = document.getElementById("majorInCollege").value;
+        //     let current_job_titleValue = document.getElementById("currentJobTitle").value;
+        //     let locationValue = document.getElementById("location").value;
+        //     let skypeValue = document.getElementById("skype").value;
+
+            
+        // if(last_degreeValue==""){
+        //   document.getElementById('alert-message-div').style.display="block";
+        //   document.getElementById('message-div').innerHTML="Degree is required";
+        //   return false;
+        // }
+        
+        // if(major_in_collegeValue==""){
+        //   document.getElementById('alert-message-div').style.display="block";
+        //   document.getElementById('message-div').innerHTML="Major name is required";
+        //   return false;
+        // }
+        
+        // if(locationValue==""){
+        //   document.getElementById('alert-message-div').style.display="block";
+        //   document.getElementById('message-div').innerHTML="Location is required";
+        //   return false;
+        // }
+        
+
+        //     if (UserData2.length !== 0) {
+        //         let User_id = sessionStorage.getItem("user_id");
+        //         axios.put( url+':80/updateJobProfile/' + `${User_id}`, {
+        //                 user_id: sessionStorage.getItem("user_id"),
+        //                 current_company: current_companyValue,
+        //                 last_degree: last_degreeValue,
+        //                 years_of_experience: years_of_experienceValue,
+        //                 major_in_college: major_in_collegeValue,
+        //                 current_job_title: current_job_titleValue,
+        //                 location: locationValue,
+        //                 skype: skypeValue
+        //             })
+        //             .then(function(response) {
+        //                 alert("Working background details updated successfully")
+        //                 // console.log(response);
+        //             })
+        //             .catch(function(error) {
+        //                 // console.log(error);
+        //                 alert("Something went wrong, please try again")
+        //             });
+        //     } else {
+        //         axios.post( url+':80/doJobProfile', {
+        //                 user_id: sessionStorage.getItem("user_id"),
+        //                 current_company: current_companyValue,
+        //                 last_degree: last_degreeValue,
+        //                 years_of_experience: years_of_experienceValue,
+        //                 major_in_college: major_in_collegeValue,
+        //                 current_job_title: current_job_titleValue,
+        //                 location: locationValue,
+        //                 skype: skypeValue
+        //             })
+        //             .then(function(response) {
+        //                 alert("Working background details submitted successfully")
+        //                 // console.log(response);
+        //             })
+        //             .catch(function(error) {
+        //                 // console.log(error);
+        //                 alert("Something went wrong, please try again")
+        //             });
+        //     }
+        // }
+
+        // function doProgrammingProfile() {
+        //     let codeforcesValue = document.getElementById("codeforces").value;
+        //     let spojValue = document.getElementById("spoj").value;
+        //     let topcoderValue = document.getElementById("topcoder").value;
+        //     let codechefValue = document.getElementById("codechef").value;
+        //     let hackerrankValue = document.getElementById("hackerrank").value;
+
+            
+
+
+        //     if (UserData3.length !== 0) {
+        //         let User_id = sessionStorage.getItem("user_id");
+        //         axios.put( url+':80/updateProgrammingProfile/' + `${User_id}`, {
+        //                 user_id: User_id,
+        //                 codeforces: codeforcesValue,
+        //                 spoj: spojValue,
+        //                 topcoder: topcoderValue,
+        //                 codechef: codechefValue,
+        //                 hackerrank: hackerrankValue
+        //             })
+        //             .then(function(response) {
+        //                 alert("Programming profile details updated successfully")
+        //                 window.location.href = './dashboard';
+        //                 // console.log(response);
+        //             })
+        //             .catch(function(error) {
+        //                 // console.log(error);
+        //                 alert("Something went wrong, please try again")
+        //             });
+        //     } else {
+        //         axios.post( url+':80/doProgrammingProfile', {
+        //                 user_id: sessionStorage.getItem("user_id"),
+        //                 codeforces: codeforcesValue,
+        //                 spoj: spojValue,
+        //                 topcoder: topcoderValue,
+        //                 codechef: codechefValue,
+        //                 hackerrank: hackerrankValue
+        //             })
+        //             .then(function(response) {
+        //                 window.location.href = './dashboard';
+        //                 // console.log(response);
+        //             })
+        //             .catch(function(error) {
+        //                 // console.log(error);
+        //                 alert("Something went wrong, please try again")
+        //             });
+        //     }
+        // }
+
+
+//   window.addEventListener('load', function() {
+//         document.querySelector('input[type="file"]').addEventListener('change', function() {
+//         if (this.files && this.files[0]) {
+//           var x = this.files[0].size / 1024 / 1024 ;
+//         if(x > 2)
+//         {
+//           alert(x);
+//         }
+//         else {
+//           var img = document.getElementById('myImg'); // $('img')[0]
+//         img.src = URL.createObjectURL(this.files[0]);
+//         var reader = new FileReader();
+//         reader.readAsDataURL(this.files[0]); 
+//         reader.onloadend = function() {
+//             var base64data = reader.result; 
+//             photoUrl = base64data;               
+//             // console.log(base64data);
+//             // console.log(photoUrl);
+//         } // set src to blob url
+//         img.onload = imageIsLoaded;
+//         }
+       
+//         }
+//         });
+//         });
+
+//         function imageIsLoaded() {
+//         alert("image uploaded successfully"); // blob url
+
+//   }
+
+        function logout(){
+            sessionStorage.clear();
+            window.location.href();
+        }
+
+
+        function hideme(){
+      document.getElementById('alert-message-div').style.display="none";
+    }
+
+    function hidemeinfo(){
+      document.getElementById('info-message-div').style.display="none";
+    }
+
+     function hidemepro(){
+      document.getElementById('processing-div').style.display="none";
+    }
+
+
+        function userFeedback() {
+                window.scrollTo(0,0);
+                let user_idValue = sessionStorage.getItem("user_id");
+                let userFeedback_textValue = document.getElementById("userFeedback_text").value;
+                let userFeedback_type;
+                let date= new Date();
+
+                if (document.getElementById("radio_feedback_type1").checked)
+                    userFeedback_type = document.getElementById("feedback_type1").innerHTML;
+                else if (document.getElementById("radio_feedback_type2").checked)
+                    userFeedback_type = document.getElementById("feedback_type2").innerHTML;
+                else if (document.getElementById("radio_feedback_type3").checked)
+                    userFeedback_type = document.getElementById("feedback_type3").innerHTML;
+
+                    document.getElementById('processing-div').style.display="block";
+                document.getElementById('message-processing').innerHTML="Processing...";
+
+                axios.post( url+'/doFeedback', {
+                        user_id: user_idValue,
+                        feedback_details: userFeedback_textValue+"~"+date,
+                        feedback_type: userFeedback_type
+                    })
+                    .then(function(response) {
+                        document.getElementById('processing-div').style.display="none";
+                       document.getElementById('info-message-div').style.display="block";
+                        document.getElementById('message-div-info').innerHTML="Feedback submitted successfully!";
+                        
+                        // console.log(response);
+                    })
+                    .catch(function(error) {
+                        document.getElementById('processing-div').style.display="none";
+                        document.getElementById('alert-message-div').style.display="block";
+                        document.getElementById('message-div').innerHTML="Something went wrong, Please try again!";
+                        // console.log(error);
+                    });
+            }
+
+$('#exampleFormContainer').keypress(function (e) {                                       
+       if (e.which == 13) {
+            e.preventDefault();
+            // // console.log("prevent default on Enter")
+       }
+});
+
+
+            
+    </script>
+</body>
+
+</html>

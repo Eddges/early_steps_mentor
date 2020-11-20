@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html class="no-js css-menubar" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="Best Coding Bootcamp in India">
+    <meta name="author" content="CodeAsylums">
+
+    <title>CodeAsylums</title>
+    <!-- 
+    <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
+    <link rel="shortcut icon" href="../assets/images/favicon.ico"> -->
+
+    <link rel="apple-touch-icon" href="../../assets/images/logo-ca.png">
+    <link rel="shortcut icon" href="../../assets/images/logo-ca.png">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../../global/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../global/css/bootstrap-extend.min.css">
+    <link rel="stylesheet" href="../assets/css/site.min.css">
+
+    <!-- Plugins -->
+    <link rel="stylesheet" href="../../global/vendor/animsition/animsition.css">
+    <link rel="stylesheet" href="../../global/vendor/asscrollable/asScrollable.css">
+    <link rel="stylesheet" href="../../global/vendor/switchery/switchery.css">
+    <link rel="stylesheet" href="../../global/vendor/intro-js/introjs.css">
+    <link rel="stylesheet" href="../../global/vendor/slidepanel/slidePanel.css">
+    <link rel="stylesheet" href="../../global/vendor/flag-icon-css/flag-icon.css">
+    <link rel="stylesheet" href="../../global/vendor/chartist/chartist.css">
+    <link rel="stylesheet" href="../../global/vendor/jvectormap/jquery-jvectormap.css">
+    <link rel="stylesheet" href="../../global/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.css">
+    <link rel="stylesheet" href="../assets/examples/css/dashboard/v1.css">
+    <link rel="stylesheet" href="../../assets/examples/css/dashboard/team.css">
+    <link rel="stylesheet" href="../../assets/examples/css/uikit/modals.css">
+    <link rel="stylesheet" href="../../assets/examples/css/advanced/rating.css">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="../../global/fonts/weather-icons/weather-icons.css">
+    <link rel="stylesheet" href="../../global/fonts/web-icons/web-icons.min.css">
+    <link rel="stylesheet" href="../../global/fonts/brand-icons/brand-icons.min.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
+
+    <!--[if lt IE 9]>
+    <script src="../../global/vendor/html5shiv/html5shiv.min.js"></script>
+    <![endif]-->
+
+    <!--[if lt IE 10]>
+    <script src="../../global/vendor/media-match/media.match.min.js"></script>
+    <script src="../../global/vendor/respond/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Scripts -->
+    <script src="../../global/vendor/breakpoints/breakpoints.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.5.0/js/md5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+    <script>
+        Breakpoints();
+    </script>
+</head>
+
+<body class="animsition dashboard">
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <nav class=" navbar navbar-default navbar-fixed-top navbar-mega" role="navigation">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggler hamburger hamburger-close navbar-toggler-left hided" data-toggle="menubar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="hamburger-bar"></span>
+        </button>
+            <button type="button" class="navbar-toggler collapsed" data-target="#site-navbar-collapse" data-toggle="collapse">
+          <i class="icon wb-more-horizontal" aria-hidden="true"></i>
+        </button>
+            <div class="navbar-brand navbar-brand-center site-gridmenu-toggle">
+                <a href="./dashboard" style="color:black"><img class="navbar-brand-logo" href="./dashboard" src="../../assets/images/logo-ca.png" alt="...">
+                    <span class="navbar-brand-text hidden-xs-down"> CodeAsylums</span></a>
+            </div>
+
+        </div>
+
+        <div class="navbar-container container-fluid">
+            <!-- Navbar Collapse -->
+            <div class="collapse navbar-collapse navbar-collapse-toolbar" id="site-navbar-collapse">
+                <!-- Navbar Toolbar -->
+                <ul class="nav navbar-toolbar">
+                    <li class="nav-item hidden-float" id="toggleMenubar">
+                        <a class="nav-link" data-toggle="menubar" href="#" role="button">
+                            <i class="icon hamburger hamburger-arrow-left">
+                  <span class="sr-only">Toggle menubar</span>
+                  <span class="hamburger-bar"></span>
+                </i>
+                        </a>
+                    </li>
+
+                </ul>
+                <!-- End Navbar Toolbar -->
+
+                <!-- Navbar Toolbar Right -->
+                <ul class="nav navbar-toolbar navbar-right navbar-toolbar-right">
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link navbar-avatar" data-toggle="dropdown" href="#" aria-expanded="false" data-animation="scale-up" role="button">
+                            <span class="avatar avatar-online">
+                  <img id="photo" src="../../assets/images/upload.png" alt="...">
+                <i></i>
+                </span>
+                        </a>
+                        <div class="dropdown-menu" role="menu">
+
+                            <a class="dropdown-item" href="./login" onclick="logout();" role="menuitem"><i class="icon wb-power" aria-hidden="true"></i> Logout</a>
+                        </div>
+                    </li>
+
+                </ul>
+                <!-- End Navbar Toolbar Right -->
+            </div>
+            <!-- End Navbar Collapse -->
+
+            <!-- Site Navbar Seach -->
+            <div class="collapse navbar-search-overlap" id="site-navbar-search">
+                <form role="search">
+                    <div class="form-group">
+                        <div class="input-search">
+                            <i class="input-search-icon wb-search" aria-hidden="true"></i>
+                            <input type="text" class="form-control" name="site-search" placeholder="Search...">
+                            <button type="button" class="input-search-close icon wb-close" data-target="#site-navbar-search" data-toggle="collapse" aria-label="Close"></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- End Site Navbar Seach -->
+        </div>
+    </nav>
+    <div class="site-menubar">
+        <div class="site-menubar-body">
+            <div>
+                <div>
+                    <ul class="site-menu" data-plugin="menu">
+                        <li class="site-menu-category"></li>
+                        <li class="site-menu-item has-sub active">
+                            <a href="/dashboard">
+                                <i class="site-menu-icon wb-home" style="color:#23b7e5" aria-hidden="true"></i>
+                                <span class="site-menu-title">Dashboard</span>
+                                <span class="site-menu-arrow"></span>
+                            </a>
+
+                        </li>
+                        <li class="site-menu-item ">
+                            <a href="/profile">
+                                <i class="site-menu-icon wb-layout" style="color:#27c24c" aria-hidden="true"></i>
+                                <span class="site-menu-title">Profile</span>
+                                <span class="site-menu-arrow"></span>
+                            </a>
+
+                        </li>
+                        <li class="site-menu-item">
+                            <a href="/feedback">
+                                <i class="site-menu-icon wb-graph-up" style="color:#f05050" aria-hidden="true"></i>
+                                <span class="site-menu-title">Feedback</span>
+                                <span class="site-menu-arrow"></span>
+                            </a>
+                        </li>
+
+                        <!-- <li class="site-menu-item ">
+                            <a href="/assignment ">
+                                <i class="site-menu-icon wb-library" style="color:#f19a5e" aria-hidden="true"></i>
+                                <span class="site-menu-title">Assignment</span>
+                                <span class="site-menu-arrow"></span>
+                            </a>
+                        </li> -->
+                        <li class="site-menu-item ">
+                            <a href="/view_userfeedback">
+                                <i class="site-menu-icon wb-star-outline" style="color:#23b7e5" aria-hidden="true"></i>
+                                <span class="site-menu-title">View Feedbacks</span>
+                                <span class="site-menu-arrow"></span>
+                            </a>
+
+                        </li>
+
+                        <!-- <li class="site-menu-item">
+                            <a href="/progress">
+                                <i class="site-menu-icon wb-calendar" style="color:#528ff0" aria-hidden="true"></i>
+                                <span class="site-menu-title">Progress</span>
+                                <span class="site-menu-arrow"></span>
+                            </a>
+
+                        </li> -->
+                        <li class="site-menu-item has-sub">
+                            <a href="/schedule">
+                                <i class="site-menu-icon wb-calendar" aria-hidden="true"></i>
+                                <span class="site-menu-title">Schedule</span>
+                                <span class="site-menu-arrow"></span>
+                            </a>
+                        </li>
+                        <!-- 
+                        <li class="site-menu-item ">
+                            <a href="/videos">
+                                <i class="site-menu-icon wb-camera" style="color:#f19a5e" aria-hidden="true"></i>
+                                <span class="site-menu-title">Videos</span>
+                                <span class="site-menu-arrow"></span>
+                            </a>
+
+                        </li> -->
+                        <!-- 
+                        <li class="site-menu-item ">
+                            <a href="/challenges">
+                                <i class="site-menu-icon wb-star-outline" style="color:#23b7e5" aria-hidden="true"></i>
+                                <span class="site-menu-title">Challenges</span>
+                                <span class="site-menu-arrow"></span>
+                            </a>
+
+                        </li>
+                        <li class="site-menu-item ">
+                          <a href="/leaderboard">
+                            <i class="site-menu-icon wb-graph-up" style="color:#f05050" aria-hidden="true"></i>
+                            <span class="site-menu-title">Leaderboard</span>
+                            <span class="site-menu-arrow"></span>
+                          </a>
+                        </li>
+
+                        <li class="site-menu-item ">
+                            <a href="/studymaterials_dashboard ">
+                                <i class="site-menu-icon wb-library" style="color:#f19a5e" aria-hidden="true"></i>
+                                <span class="site-menu-title">Study Materials</span>
+                                <span class="site-menu-arrow"></span>
+                            </a>
+                        </li> -->
+                    </ul>
+                    </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="site-menubar-footer">
+            <button type="button" class="btn btn-info" data-target="#exampleFormModal" data-toggle="modal" style="width: inherit;"><i class="icon wb-chat" aria-hidden="true"></i> Submit Feedback</button>
+        </div>
+
+    </div>
+    </div>
+
+
+    <div class="site-gridmenu">
+        <div>
+            <div>
+                <ul>
+                    <li>
+                        <a href="apps/mailbox/mailbox.html">
+                            <i class="icon wb-envelope"></i>
+                            <span>Mailbox</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="apps/calendar/calendar.html">
+                            <i class="icon wb-calendar"></i>
+                            <span>Calendar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="apps/contacts/contacts.html">
+                            <i class="icon wb-user"></i>
+                            <span>Contacts</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="apps/media/overview.html">
+                            <i class="icon wb-camera"></i>
+                            <span>Media</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="apps/documents/categories.html">
+                            <i class="icon wb-order"></i>
+                            <span>Documents</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="apps/projects/projects.html">
+                            <i class="icon wb-image"></i>
+                            <span>Project</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="apps/forum/forum.html">
+                            <i class="icon wb-chat-group"></i>
+                            <span>Forum</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.html">
+                            <i class="icon wb-dashboard"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page -->
+    <div class="page">
+        <div class="page-content container-fluid">
+
+            <!-- alert message -->
+            <div class="alert dark alert-info alert-dismissible animation-slide-top " id="processing-div" style="display:none" role="alert">
+                <button type="button" class="close" onClick="hidemepro()" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+                <div id="message-processing"></div>
+            </div>
+            <!-- End alert message -->
+
+
+            <!-- alert message -->
+            <div class="alert dark alert-danger alert-dismissible animation-slide-top " id="alert-message-div" style="display:none" role="alert">
+                <button type="button" class="close" onClick="hideme()" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+                <div id="message-div"></div>
+            </div>
+            <!-- End alert message -->
+
+
+            <!-- alert message -->
+            <div class="alert dark alert-success alert-dismissible animation-slide-top " id="info-message-div" style="display:none" role="alert">
+                <button type="button" class="close" onClick="hidemeinfo()" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+                <div id="message-div-info"></div>
+            </div>
+            <!-- End alert message -->
+
+            <div class="row" data-plugin="matchHeight" data-by-row="true">
+
+
+
+                <div class="col-xxl-6 col-xl-12 col-lg-12" style="height: 400px;">
+                    <div id="personalCompletedWidget" class="card card-shadow pb-20">
+                        <div class="card-header card-header-transparent cover overlay">
+                            <img class="cover-image" src="../../../global/photos/placeholder.png">
+                            <div class="overlay-panel overlay-background vertical-align">
+                                <div class="vertical-align-middle">
+                                    <a class="avatar" href="javascript:void(0)">
+                                        <img id="photoimg" alt="" src="../../assets/images/upload.png">
+                                    </a>
+                                    <div id="name" class="font-size-20 mt-10"></div>
+                                    <!-- <div id="courses" class="font-size-14"></div>
+                                    <div id="batch_id" class="font-size-14"></div> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div >
+                            <div class="card-block" id="testimonial" style="background-color: aliceblue;padding:20px 20px;margin:40px 40px 0px 40px;">
+                              
+                            </div>
+                          </div>
+                        <!-- <div class="card-block">
+                            <div class="row text-center mb-20">
+                                <div class="col-6">
+                                    <div class="counter">
+                                        <div class="counter-label total-completed">BADGE</div>
+                                        <div id="progress_details" class="red-600 example-title" style="font-weight:bold;margin-top: 10px;"></div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="counter">
+                                        <div class="counter-label">RATINGS</div>
+                                        <div id="star" class="rating" data-plugin="rating" style="margin-top: 10px;">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table">
+
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                Class Attended
+                                            </td>
+                                            <td>
+                                                <div class="progress progress-xs mb-0">
+                                                    <div id="classes_completed_bar" class="progress-bar progress-bar-info bg-blue-600" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <span id="classes_completed">0</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Problems Solved
+                                            </td>
+                                            <td>
+                                                <div class="progress progress-xs mb-0">
+                                                    <div id="problems_completed_bar" class="progress-bar progress-bar-info bg-green-600" role="progressbar" aria-valuenow="86" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <span id="problems_completed">0</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Contests Attempted
+                                            </td>
+                                            <td>
+                                                <div class="progress progress-xs mb-0">
+                                                    <div id="contest_completed_bar" class="progress-bar progress-bar-info bg-red-600" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <span id="contest_completed">0</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+
+
+                <!-- <div class="col-xxl-6 col-xl-12 col-lg-12" style="height: 700px;">
+                    Panel Tickets
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Classes</h3>
+                            <div class="panel-actions panel-actions-keep">
+                                <div class="dropdown">
+                    <a class="panel-action" id="examplePanelDropdown" data-toggle="dropdown" href="#" aria-expanded="false" role="button"><i class="icon wb-more-vertical" aria-hidden="true"></i></a>
+                    <div class="dropdown-menu dropdown-menu-bullet dropdown-menu-right" aria-labelledby="examplePanelDropdown" role="menu">
+                      <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon wb-flag" aria-hidden="true"></i> Action</a>
+                      <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon wb-print" aria-hidden="true"></i> Another action</a>
+                      <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon wb-heart" aria-hidden="true"></i> Something else here</a>
+                      <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon wb-share" aria-hidden="true"></i> Separated link</a>
+                    </div>
+                  </div>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-group list-group-dividered list-group-full h-700 scrollable is-enabled scrollable-vertical" data-plugin="scrollable" style="position: relative;">
+                                <div data-role="container" class="scrollable-container" style="height: 578px; width: 280px;">
+                                    <div data-role="content" class="scrollable-content" style="width: 280px;" id="classes">
+
+                                    </div>
+                                </div>
+                                <div class="scrollable-bar scrollable-bar-vertical scrollable-bar-hide" draggable="false">
+                                    <div class="scrollable-bar-handle" style="height: 136.661px; transform: translate3d(0px, 0px, 0px);"></div>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                     End Panel Tickets 
+                </div> -->
+                <!-- <div class="col-xxl-4 ">
+                    <div id="recentActivityWidget" class="card card-shadow card-lg pb-20">
+                        <div class="card-header card-header-transparent pb-10">
+                            <div class="card-header-actions">
+                                <span class="badge badge-default badge-round">VIEW ALL</span>
+                            </div>
+                            <h5 class="card-title">
+                                ACTIVITY
+                            </h5>
+                        </div>
+                        <ul id="todo" class="timeline timeline-icon" style="position:unset;">
+
+                        </ul>
+                    </div>
+                </div> -->
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- End Page -->
+    <div class="modal fade" id="exampleFormModal" aria-labelledby="exampleFormModalLabel" role="dialog" tabindex="-1" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-simple modal-center" style="z-index:20000;">
+            <form class="modal-content" style="z-index:20000;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">×</span>
+                            </button>
+                    <h4 class="modal-title" id="exampleFormModalLabel">Send us some feedback!</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+
+                        <div class="col-xl-12 form-group">
+                            <textarea class="form-control" rows="5" placeholder="Describe your issue or idea.." id="userFeedback_text"></textarea>
+                            <div class="radio-custom radio-primary">
+                                <input type="radio" id="radio_feedback_type1" name="inputRadios">
+                                <label for="inputRadiosUnchecked" id="feedback_type1">Bug</label>
+                            </div>
+                            <div class="radio-custom radio-primary">
+                                <input type="radio" id="radio_feedback_type2" name="inputRadios">
+                                <label for="inputRadiosUnchecked" id="feedback_type2">Improvement</label>
+                            </div>
+                            <div class="radio-custom radio-primary">
+                                <input type="radio" id="radio_feedback_type3" name="inputRadios">
+                                <label for="inputRadiosUnchecked" id="feedback_type3">Comment</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 float-right">
+                            <button class="btn btn-primary btn-outline" data-dismiss="modal" type="button" onclick="userFeedback()">Send Feedback</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- mentor feedback modal-->
+    <div class="modal fade" id="MentorFormModal" aria-labelledby="exampleFormModalLabel" role="dialog" tabindex="-1" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-simple modal-center" style="z-index:20000;">
+            <form class="modal-content" style="z-index:20000;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">×</span>
+                        </button>
+                    <h4 class="modal-title" id="MentorFormModalLabel">Send us some feedback!</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+
+                        <div class="col-xl-12 form-group">
+                            <textarea class="form-control" rows="5" placeholder="Describe your issue or idea.." id="mentorFeedback_text"></textarea>
+                            <br/>
+                            <label for="mentorvalue">Mentor name</label>
+                            <input class="form-control" placeholder="mentor's name" id="mentorvalue">
+                            <br/>
+                            <label for="classvalue">Class name</label>
+                            <input class="form-control" placeholder="class name" id="classvalue">
+                        </div>
+
+                        <div class="col-md-12 float-right">
+                            <button class="btn btn-primary btn-outline" data-dismiss="modal" type="button" onclick="mentorFeedback()">Send Feedback</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <!-- <footer class="site-footer">
+            <div class="site-footer-legal">© 2018 <a href="http://themeforest.net/item/remark-responsive-bootstrap-admin-template/11989202">Remark</a></div>
+            <div class="site-footer-right">
+                Crafted with <i class="red-600 wb wb-heart"></i> by <a href="https://themeforest.net/user/creation-studio">Creation Studio</a>
+            </div>
+        </footer> -->
+    <!-- Core  -->
+    <script src="../../global/vendor/babel-external-helpers/babel-external-helpers.js"></script>
+    <script src="../../global/vendor/jquery/jquery.js"></script>
+    <script src="../../global/vendor/popper-js/umd/popper.min.js"></script>
+    <script src="../../global/vendor/bootstrap/bootstrap.js"></script>
+    <script src="../../global/vendor/animsition/animsition.js"></script>
+    <script src="../../global/vendor/mousewheel/jquery.mousewheel.js"></script>
+    <script src="../../global/vendor/asscrollbar/jquery-asScrollbar.js"></script>
+    <script src="../../global/vendor/asscrollable/jquery-asScrollable.js"></script>
+    <script src="../../global/vendor/ashoverscroll/jquery-asHoverScroll.js"></script>
+
+    <!-- Plugins -->
+    <script src="../../global/vendor/switchery/switchery.js"></script>
+    <script src="../../global/vendor/intro-js/intro.js"></script>
+    <script src="../../global/vendor/screenfull/screenfull.js"></script>
+    <script src="../../global/vendor/slidepanel/jquery-slidePanel.js"></script>
+    <script src="../../global/vendor/skycons/skycons.js"></script>
+    <script src="../../global/vendor/chartist/chartist.min.js"></script>
+    <script src="../../global/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.js"></script>
+    <script src="../../global/vendor/aspieprogress/jquery-asPieProgress.min.js"></script>
+    <script src="../../global/vendor/jvectormap/jquery-jvectormap.min.js"></script>
+    <script src="../../global/vendor/jvectormap/maps/jquery-jvectormap-au-mill-en.js"></script>
+    <script src="../../global/vendor/matchheight/jquery.matchHeight-min.js"></script>
+
+    <!-- Scripts -->
+    <script src="../../global/js/Component.js"></script>
+    <script src="../../global/js/Plugin.js"></script>
+    <script src="../../global/js/Base.js"></script>
+    <script src="../../global/js/Config.js"></script>
+
+    <script src="../assets/js/Section/Menubar.js"></script>
+    <script src="../assets/js/Section/GridMenu.js"></script>
+    <script src="../assets/js/Section/Sidebar.js"></script>
+    <script src="../assets/js/Section/PageAside.js"></script>
+    <script src="../assets/js/Plugin/menu.js"></script>
+
+    <script src="../../global/js/config/colors.js"></script>
+    <script src="../assets/js/config/tour.js"></script>
+    <script>
+        Config.set('assets', '../assets');
+    </script>
+
+    <!-- Page -->
+    <script src="../assets/js/Site.js"></script>
+    <script src="../../global/js/Plugin/asscrollable.js"></script>
+    <script src="../../global/js/Plugin/slidepanel.js"></script>
+    <script src="../../global/js/Plugin/switchery.js"></script>
+    <script src="../../global/js/Plugin/matchheight.js"></script>
+    <script src="../../global/js/Plugin/jvectormap.js"></script>
+    <script src="../../../global/js/Plugin/raty.js"></script>
+    <script src="../assets/examples/js/dashboard/v1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+    <script>
+        var url = 'https://api.codeasylums.com';
+
+        if (sessionStorage.getItem("loggedCA") === md5("true") && sessionStorage.getItem("redirect") == "dashboard") {
+            globalCall();
+        } else {
+            //  window.location.href = "./login";
+        }
+
+        function hideme() {
+            document.getElementById('alert-message-div').style.display = "none";
+        }
+
+        function hidemeinfo() {
+            document.getElementById('info-message-div').style.display = "none";
+        }
+
+        function hidemepro() {
+            document.getElementById('processing-div').style.display = "none";
+        }
+
+
+        function joinclass(url, index, schedule_id) {
+           /* console.log(url, index);
+            if (url !== "" && url != "undefined") {
+                window.open(url, "_blank");
+            }
+            // else if(url == "undefined")
+            // {
+            //     document.getElementById(`zoombtn`+`${index}`).href = "javascript:void(0)";
+            //     document.getElementById(`zoomlink`+`${index}`).style.cursor = "not-allowed";
+            //     document.getElementById(`zoomlink`+`${index}`).style.backgroundColor = "lightgrey";
+            // } 
+            else {
+                document.getElementById(`zoombtn` + `${index}`).href = "javascript:void(0)";
+                document.getElementById(`zoomlink` + `${index}`).style.cursor = "not-allowed";
+                document.getElementById(`zoomlink` + `${index}`).style.backgroundColor = "lightgrey";
+            }*/
+            sessionStorage.setItem("meet", schedule_id);
+            window.open("../../global/js/config/index.html","_self");
+        }
+
+        function logout() {
+            sessionStorage.clear();
+            window.reload();
+        }
+
+        let classDate = "";
+
+        function setClassDate(props) {
+            classDate = props;
+            // // console.log(props);
+        }
+
+        function userFeedback() {
+            let user_idValue = sessionStorage.getItem("user_id");
+            let userFeedback_textValue = document.getElementById("userFeedback_text").value;
+            let userFeedback_type;
+            let date = new Date();
+
+            if (document.getElementById("radio_feedback_type1").checked)
+                userFeedback_type = document.getElementById("feedback_type1").innerHTML;
+            else if (document.getElementById("radio_feedback_type2").checked)
+                userFeedback_type = document.getElementById("feedback_type2").innerHTML;
+            else if (document.getElementById("radio_feedback_type3").checked)
+                userFeedback_type = document.getElementById("feedback_type3").innerHTML;
+
+            document.getElementById('processing-div').style.display = "block";
+            document.getElementById('message-processing').innerHTML = "Processing...";
+
+            axios.post(`${url}` + `/doFeedback`, {
+                    user_id: user_idValue,
+                    feedback_details: userFeedback_textValue + "~" + date,
+                    feedback_type: userFeedback_type
+                })
+                .then(function(response) {
+                    document.getElementById('processing-div').style.display = "none";
+                    document.getElementById('info-message-div').style.display = "block";
+                    document.getElementById('message-div-info').innerHTML = "Feedback submitted successfully!";
+
+                    // console.log(response);
+                })
+                .catch(function(error) {
+                    document.getElementById('processing-div').style.display = "none";
+                    document.getElementById('alert-message-div').style.display = "block";
+                    document.getElementById('message-div').innerHTML = "Something went wrong, Please try again!";
+                    // console.log(error);
+                });
+        }
+
+        // function mentorFeedback() {
+        //     let user_idValue = sessionStorage.getItem("user_id");
+        //     let mentorFeedback_textValue = document.getElementById("mentorFeedback_text").value;
+        //     let mentorName = document.getElementById("mentorvalue").value;
+        //     let classesName = document.getElementById("classvalue").value;
+        //     let mentorFeedback_type = "mentor"
+        //     document.getElementById('processing-div').style.display = "block";
+        //     document.getElementById('message-processing').innerHTML = "Processing...";
+
+        //     axios.post(`${url}` + `/doFeedback`, {
+        //             user_id: user_idValue,
+        //             feedback_details: mentorFeedback_textValue + "~" + mentorName + "~" + classesName + "~" + classDate,
+        //             feedback_type: mentorFeedback_type
+        //         })
+        //         .then(function(response) {
+        //             window.scrollTo(0, 0);
+        //             document.getElementById('processing-div').style.display = "none";
+        //             document.getElementById('info-message-div').style.display = "block";
+        //             document.getElementById('message-div-info').innerHTML = "Feedback submitted successfully!";
+
+        //             // console.log(response);
+        //         })
+        //         .catch(function(error) {
+        //             document.getElementById('processing-div').style.display = "none";
+        //             document.getElementById('alert-message-div').style.display = "block";
+        //             document.getElementById('message-div').innerHTML = "Something went wrong, Please try again!";
+        //             // console.log(error);
+        //         });
+        // }
+
+        function globalCall() {
+            let user_id = sessionStorage.getItem("user_id");
+            axios.get(url + `/getUserData/${user_id}`)
+                .then(function(response) {
+                    // console.log(response);
+                    sessionStorage.setItem("course_id", response.data["a"][0].course_id);
+                    sessionStorage.setItem("photo", response.data["a"][0].photo);
+                     document.getElementById("name").innerHTML = response.data["a"][0].name.toUpperCase();
+                     sessionStorage.setItem('name',response.data["a"][0].name)
+                    document.getElementById("photo").src = response.data["a"][0].photo;
+                    if (sessionStorage.getItem("photo")) {
+                        document.getElementById("photoimg").src = sessionStorage.getItem("photo");
+
+                    } else {
+                        document.getElementById("photoimg").src = "../../assets/images/upload.png";
+
+                    }
+
+                    $("#testimonial").append(` <p class="animation-scale-up animation-delay-200" style="font-family:monospace;" > Hey <span style="color:red;">${response.data.a[0].name}</span> , <br/>Welcome to our mentor onboarding platform !! <i class="far fa-smile"></i> <br/>We are super excited to have you onboard.</p>`)
+
+                }).catch(function(error) {
+                    // console.log(error);
+                });
+
+            axios.get(url + `/getRegistration/${user_id}`)
+                .then(function(response) {
+                    // console.log(response);
+                    document.getElementById("name").innerHTML = response.data.user_name.toUpperCase();
+                    axios.get(url + `/getCourse/` + `${sessionStorage.getItem("course_id")}`)
+                        .then(function(response) {
+                            // console.log(response);
+                            let courseId = sessionStorage.getItem("course_id").split(";");
+                           // document.getElementById("courses").innerHTML = response.data.course_name.toUpperCase();
+                            // document.getElementById("batch_id").innerHTML = sessionStorage.getItem("course_id");
+
+                            let batchId = ["ON/CA/VA101", "ON/CA/VA102", "ON/CA/FS201", "ON/CA/ML301", "ON/CA/VA103", "ON/CA/ML302", "ON/CA/FS202", "ON/CA/DA401", "ON/CA/VA104", "ON/CA/ML303", "ON/CA/FS203", "ON/CA/DA402"];
+
+                            if (courseId[courseId.length - 1] >= 1 && courseId[courseId.length - 1] <= 12) {
+                              //  document.getElementById("batch_id").innerHTML = `Batch Id : ` + batchId[courseId[courseId.length - 1] - 1];
+                            }
+
+                        }).catch(function(error) {
+                            // console.log(error);
+                        });
+                }).catch(function(error) {
+                    // console.log(error);
+                });
+
+            axios.get(url + `/getProgress/${user_id}`)
+                .then(function(response) {
+                    // console.log(response);
+                    document.getElementById("classes_completed").innerText = response.data["a"][0].classes_completed;
+                    document.getElementById("classes_completed_bar").style.width = `${response.data["a"][0].classes_completed}` + `%`;
+
+                    document.getElementById("problems_completed").innerText = response.data["a"][0].problems_completed;
+                    document.getElementById("problems_completed_bar").style.width = `${response.data["a"][0].problems_completed}` + `%`;
+
+                    document.getElementById("contest_completed").innerText = response.data["a"][0].quiz_completed;
+                    document.getElementById("contest_completed_bar").style.width = `${response.data["a"][0].quiz_completed}` + `%`;
+
+                    // document.getElementById("total_time").innerText = `${response.data["a"][0].total_time}`+`hrs`;
+                    document.getElementById("progress_details").innerText = response.data["a"][0].progress_details;
+
+                    let val = response.data["a"][0].total_time;
+                    for (let i = 0; i < 5; i++) {
+                        if (val != 0) {
+                            $('#star').append(`<i data-alt="1" class="icon wb-star orange-600"></i>`)
+                            val--;
+                        } else {
+                            $('#star').append(`<i data-alt="1" class="icon wb-star "></i>`)
+                        }
+                    }
+                    // $('#star').append(`<li>Currently Unavailable</li>`);
+
+                }).catch(function(error) {
+                    // console.log(error);
+                });
+
+//             axios.get(url + `/getTaskByCourseId/` + `${sessionStorage.getItem("course_id")}`)
+//                 .then(function(response) {
+//                     // console.log(response);
+
+//                     if (response.data.a.length != 0) {
+//                         for (let i = 0; i < response.data.a.length; i++) {
+//                             let y = new Date(response.data.a[i].task_datetime)
+
+//                             $('#todo').append(`<li class="timeline-reverse timeline-item">
+//                   <div class="timeline-content-wrap">
+//                     <div class="timeline-dot " style="width: 45px;
+//     height: 45px;
+//     margin-right: -20px;
+//     line-height: 47px;
+//     background-color:moccasin;
+// ">
+//                       <i class="icon" aria-hidden="true">
+//                        <img class="navbar-brand-logo" src="../../assets/images/logo-ca.png" alt="..." style="width:42px;">
+//                         </i>
+//                     </div>
+//                     <div class="timeline-content">
+//                       <div class="title">
+//                         <span class="authors">CodeAsylums</span> 
+//                       </div>
+//                        <div class="metas">
+//                         <span id="task_datetime">${y.toDateString()}</span>
+//                       </div> 
+//                       <br/>
+                      
+//                         <label class="item-title"><span id="task_title" style="color:black;">${response.data.a[i].task_title}</span></label>
+                       
+//                       <div class="w-full">
+//                         <div class="item-due-date" style="font-size:13px;">
+//                           ${response.data.a[i].task_details}
+//                         </div>
+//                     </div>
+//                   </div>
+//                 </li>`);
+//                         }
+//                     }
+//                     // response.data.a[0]
+//                 }).catch(function(error) {
+//                     // console.log(error);
+//                 });
+
+
+if (sessionStorage.getItem("course_id")) {
+
+// <span class="border border-primary">${x}</span>
+axios.get(url + `/getClasses`)
+    .then((response) => {
+        console.log(response)
+
+        if (response.data.a.length != 0) {
+            let newArr = response.data.a.sort(function(a, b) {
+                return new Date(b.schedule_start) - new Date(a.schedule_start)
+            });
+            //    console.log(Sorted_Data[1].schedule_start);
+            //    let live = [];
+            //    let upcoming = [];
+            //    let completed = [];
+            //    for(let i=0;i<Sorted_Data.length;i++)
+            //    {
+            //         if(new Date(Sorted_Data[i].schedule_start) > new Date())
+            //         {
+            //             upcoming.push(Sorted_Data[i]);
+            //         }
+            //         else if(new Date(Sorted_Data[i].schedule_end) < new Date())
+            //         {
+            //             completed.push(Sorted_Data[i]);
+            //         }
+            //         else
+            //         {
+            //             live.push(Sorted_Data[i]);
+            //         }
+            //    }
+            // //    console.log(upcoming);
+            //    let newArr= live.concat(upcoming);
+            //    newArr = newArr.concat(completed);
+            console.log("Response" + newArr[0]);
+                courseid = sessionStorage.getItem("course_id").split(";");
+                console.log(courseid);
+            for (let i = 0; i < newArr.length; i++) {
+                if (newArr[i].course_id == courseid[courseid.length - 1]) {
+                    let zoomurl = newArr[i].schedule_details.split("~")[2];
+                    let start = new Date(newArr[i].schedule_start);
+                    let end = new Date(newArr[i].schedule_end);
+                    let x = "";
+
+                    if (start > new Date()) {
+                        x = "Upcoming";
+
+                    } else if (end < new Date()) {
+                        x = "Completed";
+                        zoomurl = "";
+                    } else {
+                        x = "Live";
+
+                    }
+
+                    $('#classes').append(`<li class="list-group-item justify-content-between">
+       <p>
+          <span style="font-weight:bold"><i class="icon wb-video" aria-hidden="true"></i>${newArr[i].schedule_details.split("~")[0]}</span>
+        <br><br>
+        <a id="zoombtn${i}" onclick="joinclass('${zoomurl}','${i}', '${newArr[i].schedule_details.split("~")[0]}')"> 
+        <small id="zoomlink${i}" class="badge badge-primary  "  style="cursor:pointer;margin-right:5px" >
+            JOIN CLASS
+            </small></a>
+       <small id="badge${i}" class="badge badge-success  " style="margin-right:5px">${x}</small>
+        <small class="badge badge-outline badge-default  ">Date :
+            <span>${new Date(newArr[i].schedule_start).toString().slice(0,15)} , ${new Date(newArr[i].schedule_start).toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</span>
+         
+        </small>
+        
+        </p>
+     
+        <div class="content card card-default">
+          <div class="card-block">
+            ${newArr[i].schedule_details.split("~")[1]}
+          </div>
+         
+        </div>
+       
+        <div style="text-align:center">
+           <button type="button" id="feedbackbadge${i}" class="btn btn-block btn-warning"  data-target="#MentorFormModal" data-toggle="modal" style="width:fit-content;display:none;" onclick="setClassDate('${new Date(newArr[i].schedule_start).toString().slice(0,15)} , ${new Date(newArr[i].schedule_start).toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}')">
+            Submit Feedback
+            </button>
+            </div>
+        
+        
+       
+        
+      </li>`);
+
+                    // document.getElementById(`feedbackbadge`+`${i}`).style.color = "white";
+                    //   document.getElementById(`feedbackbadge`+`${i}`).style.backgroundColor = "orange";
+                    //   document.getElementById(`feedbackbadge`+`${i}`).style.border = "1px solid orange";
+
+                    if (x == "Upcoming") {
+
+                        if (zoomurl == "" || zoomurl == "undefined") {
+                            document.getElementById(`zoombtn` + `${i}`).href = "javascript:void(0)";
+                            document.getElementById(`zoomlink` + `${i}`).style.cursor = "not-allowed";
+                            document.getElementById(`zoomlink` + `${i}`).style.backgroundColor = "lightgrey";
+                        }
+                        document.getElementById(`badge` + `${i}`).style.color = "white"; //"#0bb2d4"
+
+                    } else if (x == "Completed") {
+
+                        document.getElementById(`zoombtn` + `${i}`).href = "javascript:void(0)";
+                        document.getElementById(`zoomlink` + `${i}`).style.cursor = "not-allowed";
+                        document.getElementById(`zoomlink` + `${i}`).style.backgroundColor = "lightgrey";
+                        document.getElementById(`feedbackbadge` + `${i}`).style.display = "block";
+                        //document.getElementById(`badge`+`${i}`).style.color = "seagreen";
+                        //document.getElementById(`badge`+`${i}`).style.border = "1px solid seagreen";
+                    } else {
+
+                        document.getElementById(`badge` + `${i}`).style.color = "red";
+                        document.getElementById(`badge` + `${i}`).style.border = "1px solid red";
+                    }
+
+
+
+                }
+            }
+        }
+        // response.data.a[0]
+    }).catch(function(error) {
+        console.log(error);
+    });
+}
+
+let course_id = sessionStorage.getItem("course_id");
+// axios.get(url + `/getScheduleByCourseId/${course_id}`)
+// .then(function(response) {
+//     console.log(response);
+//     var stringDetail = "";
+//     var stringStart = "";
+//     var stringEnd = "";
+//     for (let i = 0; i < response.data.a.length; i++) {
+//         stringDetail += response.data.a[i].schedule_details + ";";
+//         stringStart += response.data.a[i].schedule_start + ";";
+//         stringEnd += response.data.a[i].schedule_end + ";";
+//     }
+//     sessionStorage.setItem("stringDetail", stringDetail);
+//     sessionStorage.setItem("stringStart", stringStart);
+//     sessionStorage.setItem("stringEnd", stringEnd);
+//     console.log(stringDetail);
+//     console.log(stringStart);
+//     console.log(stringEnd);
+// }).catch(function(error) {
+//     console.log(error);
+// });
+
+}
+</script>
+</body>
+
+</html>
