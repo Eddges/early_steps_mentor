@@ -56,6 +56,14 @@ router.get('/view_userfeedback', function(req, res, next) {
   res.render('view_userfeedback', { title: 'Express' });
 });
 
+router.get('/addassignment', function(req, res, next) {
+  res.render('addassignment', { title: 'Express' });
+});
+
+router.get('/gradeassignment', function(req, res, next) {
+  res.render('gradeassignment', { title: 'Express' });
+});
+
 router.post('/sig1',function(req,res,next){
   const schedule_id = req.body.zid;
 

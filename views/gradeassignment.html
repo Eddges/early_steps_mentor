@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html class="no-js css-menubar" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="Best Coding Bootcamp in India">
+    <meta name="author" content="CodeAsylums">
+
+    <title>Early Steps</title>
+<!-- 
+    <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
+    <link rel="shortcut icon" href="../assets/images/favicon.ico"> -->
+
+    <link rel="apple-touch-icon" href="../../assets/images/logo-ca.png">
+    <link rel="shortcut icon" href="../../assets/images/logo-ca.png">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../../global/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../global/css/bootstrap-extend.min.css">
+    <link rel="stylesheet" href="../assets/css/site.min.css">
+
+    <!-- Plugins -->
+    <link rel="stylesheet" href="../../global/vendor/animsition/animsition.css">
+    <link rel="stylesheet" href="../../global/vendor/asscrollable/asScrollable.css">
+    <link rel="stylesheet" href="../../global/vendor/switchery/switchery.css">
+    <link rel="stylesheet" href="../../global/vendor/intro-js/introjs.css">
+    <link rel="stylesheet" href="../../global/vendor/slidepanel/slidePanel.css">
+    <link rel="stylesheet" href="../../global/vendor/flag-icon-css/flag-icon.css">
+    <link rel="stylesheet" href="../../global/vendor/chartist/chartist.css">
+    <link rel="stylesheet" href="../../global/vendor/jvectormap/jquery-jvectormap.css">
+    <link rel="stylesheet" href="../../global/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.css">
+    <link rel="stylesheet" href="../assets/examples/css/dashboard/v1.css">
+    <link rel="stylesheet" href="../../assets/examples/css/dashboard/team.css">
+    <link rel="stylesheet" href="../../assets/examples/css/uikit/modals.css">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="../../global/fonts/weather-icons/weather-icons.css">
+    <link rel="stylesheet" href="../../global/fonts/web-icons/web-icons.min.css">
+    <link rel="stylesheet" href="../../global/fonts/brand-icons/brand-icons.min.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
+
+    <!--[if lt IE 9]>
+    <script src="../../global/vendor/html5shiv/html5shiv.min.js"></script>
+    <![endif]-->
+
+    <!--[if lt IE 10]>
+    <script src="../../global/vendor/media-match/media.match.min.js"></script>
+    <script src="../../global/vendor/respond/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Scripts -->
+    <script src="../../global/vendor/breakpoints/breakpoints.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.5.0/js/md5.min.js"></script>
+    <script>
+        Breakpoints();
+    </script>
+</head>
+
+<body class="animsition dashboard">
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <nav class=" navbar navbar-default navbar-fixed-top navbar-mega" role="navigation">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggler hamburger hamburger-close navbar-toggler-left hided" data-toggle="menubar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="hamburger-bar"></span>
+        </button>
+            <button type="button" class="navbar-toggler collapsed" data-target="#site-navbar-collapse" data-toggle="collapse">
+          <i class="icon wb-more-horizontal" aria-hidden="true"></i>
+        </button>
+            <div class="navbar-brand navbar-brand-center site-gridmenu-toggle">
+                <a href="./home" style="color:black"><img class="navbar-brand-logo" src="../../assets/images/logo-ca.png" alt="...">
+                <span class="navbar-brand-text hidden-xs-down"> CodeAsylums</span></a>
+            </div>
+            
+        </div>
+
+        <div class="navbar-container container-fluid">
+            <!-- Navbar Collapse -->
+            <div class="collapse navbar-collapse navbar-collapse-toolbar" id="site-navbar-collapse">
+                <!-- Navbar Toolbar -->
+                <ul class="nav navbar-toolbar">
+                    <li class="nav-item hidden-float" id="toggleMenubar">
+                        <a class="nav-link" data-toggle="menubar" href="#" role="button">
+                            <i class="icon hamburger hamburger-arrow-left">
+                  <span class="sr-only">Toggle menubar</span>
+                  <span class="hamburger-bar"></span>
+                </i>
+                        </a>
+                    </li>
+
+                </ul>
+                <!-- End Navbar Toolbar -->
+
+                <!-- Navbar Toolbar Right -->
+                <ul class="nav navbar-toolbar navbar-right navbar-toolbar-right">
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link navbar-avatar" data-toggle="dropdown" href="#" aria-expanded="false" data-animation="scale-up" role="button">
+                            <span class="avatar avatar-online">
+                  <img id="photo" src="../../assets/images/upload.png" alt="...">
+                  <i></i>
+                </span>
+                        </a>
+                        <div class="dropdown-menu" role="menu">
+                          
+                            <a class="dropdown-item"  href="./login" onclick="logout();" role="menuitem"><i class="icon wb-power" aria-hidden="true"></i> Logout</a>
+                        </div>
+                    </li>
+
+                </ul>
+                <!-- End Navbar Toolbar Right -->
+            </div>
+            <!-- End Navbar Collapse -->
+
+            <!-- Site Navbar Seach -->
+            <div class="collapse navbar-search-overlap" id="site-navbar-search">
+                <form role="search">
+                    <div class="form-group">
+                        <div class="input-search">
+                            <i class="input-search-icon wb-search" aria-hidden="true"></i>
+                            <input type="text" class="form-control" name="site-search" placeholder="Search...">
+                            <button type="button" class="input-search-close icon wb-close" data-target="#site-navbar-search" data-toggle="collapse" aria-label="Close"></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- End Site Navbar Seach -->
+        </div>
+    </nav>
+
+
+        <!-- ---------------Sidebar--------------------->
+
+
+        <div class="site-menubar">
+            <div class="site-menubar-body">
+                <div>
+                    <div>
+                        <ul class="site-menu" data-plugin="menu">
+                            <li class="site-menu-category"></li>
+                            <li class="site-menu-item has-sub active">
+                                <a href="/dashboard">
+                                    <i class="site-menu-icon wb-home" style="color:#23b7e5" aria-hidden="true"></i>
+                                    <span class="site-menu-title">Dashboard</span>
+                                    <span class="site-menu-arrow"></span>
+                                </a>
+    
+                            </li>
+                            <li class="site-menu-item ">
+                                <a href="/profile">
+                                    <i class="site-menu-icon wb-layout" style="color:#27c24c" aria-hidden="true"></i>
+                                    <span class="site-menu-title">Profile</span>
+                                    <span class="site-menu-arrow"></span>
+                                </a>
+                            </li>
+    
+                            <li class="site-menu-item  ">
+                                <a href="/addassignment ">
+                                    <i class="site-menu-icon wb-library" style="color:#f19a5e" aria-hidden="true"></i>
+                                    <span class="site-menu-title">Add Assignment</span>
+                                    <span class="site-menu-arrow"></span>
+                                </a>
+                            </li>
+    
+                            <li class="site-menu-item active">
+                                <a href="/gradeassignment">
+                                    <i class="site-menu-icon wb-star-outline" style="color:#23b7e5" aria-hidden="true"></i>
+                                    <span class="site-menu-title">Grade Assignments</span>
+                                    <span class="site-menu-arrow"></span>
+                                </a>
+    
+                            </li>
+    
+                            <li class="site-menu-item">
+                                <a href="/feedback">
+                                    <i class="site-menu-icon wb-graph-up" style="color:#f05050" aria-hidden="true"></i>
+                                    <span class="site-menu-title">Feedbacks</span>
+                                    <span class="site-menu-arrow"></span>
+                                </a>
+                            </li>
+    
+                            <li class="site-menu-item has-sub">
+                                <a href="/schedule">
+                                    <i class="site-menu-icon wb-calendar" aria-hidden="true"></i>
+                                    <span class="site-menu-title">Schedule</span>
+                                    <span class="site-menu-arrow"></span>
+                                </a>
+                            </li>
+    
+                        </ul>
+    
+                    </div>
+                </div>
+            </div>
+    
+    
+            <div class="site-menubar-footer">
+                <button type="button" class="btn btn-info" data-target="#exampleFormModal" data-toggle="modal" style="width: inherit;"><i class="icon wb-chat" aria-hidden="true"></i> Submit Feedback</button>
+            </div>
+    
+        </div>
+    
+    
+        <!-- ------------Sidebar end---------------->
+        
+
+
+        <div class="site-menubar-footer">
+            <button type="button" class="btn btn-info" data-target="#exampleFormModal" data-toggle="modal" style="width: inherit;"><i class="icon wb-chat" aria-hidden="true"></i> Submit Feedback</button>
+        </div>
+
+    </div>
+
+
+        <div class="site-menubar-footer">
+            <button type="button" class="btn btn-info" data-target="#exampleFormModal" data-toggle="modal" style="width: inherit;"><i class="icon wb-chat" aria-hidden="true"></i> Submit Feedback</button>
+        </div>
+
+    </div>
+    </div>
+
+
+    <div class="site-gridmenu">
+        <div>
+            <div>
+                <ul>
+                    <li>
+                        <a href="apps/mailbox/mailbox.html">
+                            <i class="icon wb-envelope"></i>
+                            <span>Mailbox</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="apps/calendar/calendar.html">
+                            <i class="icon wb-calendar"></i>
+                            <span>Calendar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="apps/contacts/contacts.html">
+                            <i class="icon wb-user"></i>
+                            <span>Contacts</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="apps/media/overview.html">
+                            <i class="icon wb-camera"></i>
+                            <span>Media</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="apps/documents/categories.html">
+                            <i class="icon wb-order"></i>
+                            <span>Documents</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="apps/projects/projects.html">
+                            <i class="icon wb-image"></i>
+                            <span>Project</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="apps/forum/forum.html">
+                            <i class="icon wb-chat-group"></i>
+                            <span>Forum</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.html">
+                            <i class="icon wb-dashboard"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page -->
+    <div class="page">
+   
+
+        <div class="page-content container-fluid">
+        
+
+         <!-- alert message -->
+         <div class="alert dark alert-info alert-dismissible animation-slide-top " id="processing-div" style="display:none" role="alert">
+                    <button type="button" class="close" onClick="hidemepro()" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                    <div id="message-processing"></div>
+                  </div>
+          <!-- End alert message -->
+
+
+         <!-- alert message -->
+         <div class="alert dark alert-danger alert-dismissible animation-slide-top " id="alert-message-div" style="display:none" role="alert">
+                    <button type="button" class="close" onClick="hideme()" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                    <div id="message-div"></div>
+                  </div>
+          <!-- End alert message -->
+          
+
+ <!-- alert message -->
+         <div class="alert dark alert-success alert-dismissible animation-slide-top " id="info-message-div" style="display:none" role="alert">
+                    <button type="button" class="close" onClick="hidemeinfo()" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                    <div id="message-div-info"></div>
+                  </div>
+          <!-- End alert message -->
+
+
+
+
+
+          
+    <div class="row" data-plugin="matchHeight" data-by-row="true">
+
+        <div class="col-xxl-3 col-xl-6" style="height: 380px;">
+            <span class="w-100 p-3">Wednesday, Nov 11</span>
+            <div class="card card-shadow">
+            <div class="card-block text-center bg-white p-40">
+                <div class="avatar avatar-100 mb-20">
+                <img src="../../assets/images/africa.svg" alt="" style="border-radius:0px;">
+                </div>
+                <p id="coursename1" class="font-size-20 blue-grey-700">Geography - India</p>
+                
+                <p class="mb-35" style="font-weight:bold">India, officially the Republic of India, is a country in South Asia. It is the second-most populous country, the seventh-largest country by land area, and the most populous democracy in the world.</p>
+                
+                <button type="button" class="btn btn-primary px-20" onclick="enterportal();"  href="/videoquiz" >View Assignment</button><br>
+                <!-- <button id="VirginAlgorithm" type="button"  disabled="true" class="btn px-20 btn-success" onclick="enterportal();" style="margin-top:10px;">View Assignment</button> -->
+            </div>
+            </div>
+            <!-- End Panel Web Designer -->
+        </div>
+
+        <div class="col-xxl-3 col-xl-6" style="height: 380px;">
+            <span class="w-100 p-3">Monday, Nov 9</span>
+            <!-- Panel Web Designer -->
+            <div class="card card-shadow m-3">
+            <div class="card-block text-center bg-white p-40">
+                <div class="avatar avatar-100 mb-20">
+                <img src="../../assets/images/machinelearning.png" alt="" style="border-radius:0px;">
+                </div>
+                <p id="coursename2" class="font-size-20 blue-grey-700">Full Stack Web Development + DSA</p>
+            
+                <p class="mb-35" style="font-weight:bold">Wanna develop, debug & deploy a complete web application? Looking forward to crack coding interviews for Microsoft, Amazon, Flipkart?</p>
+            
+                <button type="button" class="btn btn-primary px-20"  onclick="requestcallback(2);" >REQUEST CALLBACK</button><br>
+                <button type="button" id="FullStack" disabled="true" class="btn px-20 btn-success" onclick="enterportal();" style="margin-top:10px;">ENTER CLASSROOM</button>
+            </div>
+            </div>
+            <!-- End Panel Web Designer -->
+        </div>
+
+
+        <div class="col-xxl-3 col-xl-6" style="height: 380px;">
+            <span class="w-100 p-3">Friday, Nov 8</span>
+            <div class="card card-shadow">
+            <div class="card-block text-center bg-white p-40">
+                <div class="avatar avatar-100 mb-20">
+                <img src="../../assets/images/dataanalyticsicon.png" alt="" style="border-radius:0px;">
+                </div>
+                <p id="coursename3" class="font-size-20 blue-grey-700">Machine Learning + DSA</p>
+            
+                <p class="mb-35" style="font-weight:bold">Career around Data, Numbers, Math and Programming sounds interesting? Take a step towards the world of Artificial Intellegence</p>
+            
+                <button type="button" class="btn btn-primary px-20"  onclick="requestcallback(3);" >REQUEST CALLBACK</button><br>
+                <button type="button"  id="MachineLearning"  disabled="true" class="btn px-20 btn-success" onclick="enterportal();" style="margin-top:10px;">ENTER CLASSROOM</button>
+            </div>
+            </div>
+            <!-- End Panel Web Designer -->
+        </div>
+
+        <div class="col-xxl-3 col-xl-6" style="height: 380px;">
+            <span class="w-100 p-3">Thursday, Nov 7</span>
+            <!-- Panel Web Designer -->
+            <div class="card card-shadow">
+            <div class="card-block text-center bg-white p-40">
+                <div class="avatar avatar-100 mb-20">
+                <img src="../../assets/images/devopsicon.png" alt="" style="border-radius:0px;">
+                </div>
+                <p id="coursename4" class="font-size-20 blue-grey-700">Business & Data Analytics</p>
+                
+                <p class="mb-35" style="font-weight:bold">Are you the Data + Business guy? Targeting the companies like Deloitte, ZS, MuSigma, Optum, Fractal, Accenture, EXL, KPMG, PWC </p>
+            
+            <button type="button" class="btn btn-primary px-20" onclick="requestcallback(4);" >REQUEST CALLBACK</button><br>
+                <button type="button" id="DataAnalytics" disabled="true" class="btn px-20 btn-success" onclick="enterportal();"  style="margin-top:10px;">ENTER CLASSROOM</button>
+            </div>
+            </div>
+            <!-- End Panel Web Designer -->
+        </div>
+             
+    </div>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- End Page -->
+    <div class="modal fade" id="exampleFormModal" aria-labelledby="exampleFormModalLabel" role="dialog" tabindex="-1" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-simple modal-center" style="z-index:20000;">
+            <form class="modal-content" style="z-index:20000;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">×</span>
+                            </button>
+                    <h4 class="modal-title" id="exampleFormModalLabel">Send us some feedback!</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+
+                        <div class="col-xl-12 form-group">
+                            <textarea class="form-control" rows="5" placeholder="Describe your issue or idea.." id="userFeedback_text"></textarea>
+                            <div class="radio-custom radio-primary">
+                                <input type="radio" id="radio_feedback_type1" name="inputRadios">
+                                <label for="inputRadiosUnchecked" id="feedback_type1">Bug</label>
+                            </div>
+                            <div class="radio-custom radio-primary">
+                                <input type="radio" id="radio_feedback_type2" name="inputRadios">
+                                <label for="inputRadiosUnchecked" id="feedback_type2">Improvement</label>
+                            </div>
+                            <div class="radio-custom radio-primary">
+                                <input type="radio" id="radio_feedback_type3" name="inputRadios">
+                                <label for="inputRadiosUnchecked" id="feedback_type3">Comment</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 float-right">
+                            <button class="btn btn-primary btn-outline" data-dismiss="modal" type="button" onclick="userFeedback()">Send Feedback</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Footer -->
+        <!-- <footer class="site-footer">
+            <div class="site-footer-legal">© 2018 <a href="http://themeforest.net/item/remark-responsive-bootstrap-admin-template/11989202">Remark</a></div>
+            <div class="site-footer-right">
+                Crafted with <i class="red-600 wb wb-heart"></i> by <a href="https://themeforest.net/user/creation-studio">Creation Studio</a>
+            </div>
+        </footer> -->
+        <!-- Core  -->
+        <script src="../../global/vendor/babel-external-helpers/babel-external-helpers.js"></script>
+        <script src="../../global/vendor/jquery/jquery.js"></script>
+        <script src="../../global/vendor/popper-js/umd/popper.min.js"></script>
+        <script src="../../global/vendor/bootstrap/bootstrap.js"></script>
+        <script src="../../global/vendor/animsition/animsition.js"></script>
+        <script src="../../global/vendor/mousewheel/jquery.mousewheel.js"></script>
+        <script src="../../global/vendor/asscrollbar/jquery-asScrollbar.js"></script>
+        <script src="../../global/vendor/asscrollable/jquery-asScrollable.js"></script>
+        <script src="../../global/vendor/ashoverscroll/jquery-asHoverScroll.js"></script>
+
+        <!-- Plugins -->
+        <script src="../../global/vendor/switchery/switchery.js"></script>
+        <script src="../../global/vendor/intro-js/intro.js"></script>
+        <script src="../../global/vendor/screenfull/screenfull.js"></script>
+        <script src="../../global/vendor/slidepanel/jquery-slidePanel.js"></script>
+        <script src="../../global/vendor/skycons/skycons.js"></script>
+        <script src="../../global/vendor/chartist/chartist.min.js"></script>
+        <script src="../../global/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.js"></script>
+        <script src="../../global/vendor/aspieprogress/jquery-asPieProgress.min.js"></script>
+        <script src="../../global/vendor/jvectormap/jquery-jvectormap.min.js"></script>
+        <script src="../../global/vendor/jvectormap/maps/jquery-jvectormap-au-mill-en.js"></script>
+        <script src="../../global/vendor/matchheight/jquery.matchHeight-min.js"></script>
+
+        <!-- Scripts -->
+        <script src="../../global/js/Component.js"></script>
+        <script src="../../global/js/Plugin.js"></script>
+        <script src="../../global/js/Base.js"></script>
+        <script src="../../global/js/Config.js"></script>
+
+        <script src="../assets/js/Section/Menubar.js"></script>
+        <script src="../assets/js/Section/GridMenu.js"></script>
+        <script src="../assets/js/Section/Sidebar.js"></script>
+        <script src="../assets/js/Section/PageAside.js"></script>
+        <script src="../assets/js/Plugin/menu.js"></script>
+
+        <script src="../../global/js/config/colors.js"></script>
+        <script src="../assets/js/config/tour.js"></script>
+        <script>
+            Config.set('assets', '../assets');
+        </script>
+
+        <!-- Page -->
+        <script src="../assets/js/Site.js"></script>
+        <script src="../../global/js/Plugin/asscrollable.js"></script>
+        <script src="../../global/js/Plugin/slidepanel.js"></script>
+        <script src="../../global/js/Plugin/switchery.js"></script>
+        <script src="../../global/js/Plugin/matchheight.js"></script>
+        <script src="../../global/js/Plugin/jvectormap.js"></script>
+
+        <script src="../assets/examples/js/dashboard/v1.js"></script>
+
+        <script>
+        var url= 'https://api.codeasylums.com';
+        function hideme(){
+      document.getElementById('alert-message-div').style.display="none";
+    }
+
+    function hidemeinfo(){
+      document.getElementById('info-message-div').style.display="none";
+    }
+
+     function hidemepro(){
+      document.getElementById('processing-div').style.display="none";
+    }
+            function enterportal(key){
+                
+                window.location.href = "/videoquiz";
+
+            }
+
+            function requestcallback(key){
+                window.scrollTo(0,0);
+                let user_idValue = sessionStorage.getItem("user_id");
+                let userFeedback_textValue = document.getElementById(`coursename`+`${key}`).innerHTML;
+                let userFeedback_type = "callback";
+                let date = new Date();
+                document.getElementById('processing-div').style.display="block";
+                document.getElementById('message-processing').innerHTML="Processing...";
+                        
+                axios.post(url+'/doFeedback', {
+                        user_id: user_idValue,
+                        feedback_details: userFeedback_textValue+"~"+date,
+                        feedback_type: userFeedback_type
+                    })
+                    .then(function(response) {
+                        document.getElementById('processing-div').style.display="none";
+                       document.getElementById('info-message-div').style.display="block";
+                        document.getElementById('message-div-info').innerHTML="your request has been submitted successfully. We will get back to you soon";
+                        
+                        //console.log(response);
+                    })
+                    .catch(function(error) {
+                        document.getElementById('processing-div').style.display="none";
+                        document.getElementById('alert-message-div').style.display="block";
+                        document.getElementById('message-div').innerHTML="Something went wrong, Please try again!";
+                        //alert("Something went wrong, Please try again!")
+                       // console.log(error);
+                    });
+            }
+
+            function userFeedback() {
+                window.scrollTo(0,0);
+                let user_idValue = sessionStorage.getItem("user_id");
+                let userFeedback_textValue = document.getElementById("userFeedback_text").value;
+                let userFeedback_type;
+                let date= new Date();
+
+                if (document.getElementById("radio_feedback_type1").checked)
+                    userFeedback_type = document.getElementById("feedback_type1").innerHTML;
+                else if (document.getElementById("radio_feedback_type2").checked)
+                    userFeedback_type = document.getElementById("feedback_type2").innerHTML;
+                else if (document.getElementById("radio_feedback_type3").checked)
+                    userFeedback_type = document.getElementById("feedback_type3").innerHTML;
+
+                document.getElementById('processing-div').style.display="block";
+                document.getElementById('message-processing').innerHTML="Processing...";
+                axios.post(url + '/doFeedback', {
+                        user_id: user_idValue,
+                        feedback_details: userFeedback_textValue+"~"+date,
+                        feedback_type: userFeedback_type
+                    })
+                    .then(function(response) {
+                        document.getElementById('processing-div').style.display="none";
+                       document.getElementById('info-message-div').style.display="block";
+                        document.getElementById('message-div-info').innerHTML="your feedback has been submitted successfully.";
+                        
+                        //console.log(response);
+                    })
+                    .catch(function(error) {
+                        document.getElementById('processing-div').style.display="none";
+                        document.getElementById('alert-message-div').style.display="block";
+                        document.getElementById('message-div').innerHTML="Something went wrong, Please try again!";
+                        
+                       // console.log(error);
+                    });
+            }
+
+            function globalCall() {
+                let user_id = sessionStorage.getItem("user_id");
+                axios.get(url+`/getUserData/${user_id}`)
+                    .then(function(response) {
+                        // console.log(response);
+                        sessionStorage.setItem("course_id",response.data["a"][0].course_id);
+                        sessionStorage.setItem("photo", response.data["a"][0].photo);
+                        document.getElementById("photo").src = response.data["a"][0].photo;
+                        sessionStorage.setItem("track_name", response.data.a[0].track_name);
+                        try{
+                            document.getElementById(`${response.data.a[0].track_name}`).disabled = false;
+                            sessionStorage.setItem("redirect", "dashboard");
+                        }
+                        catch(err){
+                            // sessionStorage.setItem("redirect", "home");
+                           console.log(err);
+                        }
+
+
+
+                        // var x =  response.data["a"][0].course_id;
+
+                        // sessionStorage.setItem("photo", response.data["a"][0].photo);
+                        // document.getElementById("photo").src = response.data["a"][0].photo;
+                        // axios.get(url+`/getCourse/`+`${response.data["a"][0].course_id}`)
+                        //     .then(function(response) {
+                        //         try{
+                        //             document.getElementById(`${response.data.course_name}`).disabled = false;
+                        //         }
+                        //         catch(err){
+                        //             sessionStorage.setItem("redirect", "home");
+                        //     console.log(err);
+                        //         }
+                                
+                        //     }).catch(function(error) {
+                        //         console.log(error);
+                        //     });
+
+                        // try{
+                        // sessionStorage.setItem("course_id",response.data["a"][0].course_id);
+                        // sessionStorage.setItem("redirect", "dashboard");
+                        // } catch(err) {
+                        //     sessionStorage.setItem("redirect", "home");
+                        //     console.log(err);
+                        // }                        
+                    }).catch(function(error) {
+                        //console.log(error);
+                    });
+
+            }
+            if (sessionStorage.getItem("loggedCA") === md5("true")) {
+                globalCall();
+            } else {
+                window.location.href = "./login";
+            }
+            function logout(){
+              sessionStorage.clear();
+              window.reload();
+            }
+
+
+            axios.get('https://early-steps.herokuapp.com/getAllAssignment')
+            .then(res => {
+                console.log('Response data : ', res.data)
+            })
+            
+
+        </script>
+</body>
+
+</html>
