@@ -64,6 +64,14 @@ router.get('/gradeassignment', function(req, res, next) {
   res.render('gradeassignment', { title: 'Express' });
 });
 
+router.get('/create/:classId', function(req, res, next) {
+  res.render('create', { title: 'Express' });
+});
+
+router.get('/assignments/:classId', function(req, res, next) {
+  res.render('assignments', { title: 'Express' });
+});
+
 router.post('/sig1',function(req,res,next){
   const schedule_id = req.body.zid;
 
