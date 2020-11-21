@@ -324,10 +324,60 @@
 
 
 
-    <!-- Add written assignment START -->
-          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <h1 class="display-4">Create assignment</h1>
     <hr class="my-4" />
+
+    <!-- Add Objective assignment START grr -->
+        
+
+    <h2 class="lead mb-3">Objective assignments</h2>
+    <br />
+
+    <div id='objectiveQuestionsDisplay'></div>
+
+    <div class="input-group mt-3" id="objectiveQuestionAdd">
+        <input type="text" id="objectiveQuestionInput" class="form-control col-md-7" placeholder="Type Question" aria-label="Add Question" aria-describedby="button-addon2">
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="button" id="button-addon2" onclick="addObjectiveQuestion()">Add</button>
+        </div>
+    </div>
+
+    <div id="objectiveCreateOptions" class="jumbotron col-md-8">
+        <div id="newQuestion"></div>
+        <div id="newOptions"></div>
+        <div id="optionInputDiv"></div>
+        <div id="buttonDiv"></div>
+    </div>
+
+
+    <!-- Add Objective assignment END -->
+
+
+    <!-- Add written assignment START -->
+          
+    
     <h2 class="lead mb-3">Written assignments</h2>
     <br />
 
@@ -365,6 +415,33 @@
 
 
     <!-- End Page -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -682,6 +759,51 @@
             // Video END
 
 
+
+            // Objective START grr
+            
+            const objectiveArray = []
+            let objectiveText = ''
+            let currentQuestion = {}
+            let currentOption = {}
+            const objectiveQuestionInput = document.querySelector('#objectiveQuestionInput')
+            const objectiveCreateOptions = document.querySelector('#objectiveCreateOptions')
+            const objectiveQuestionAdd = document.querySelector('#objectiveQuestionAdd')
+            const newQuestion = document.querySelector('#newQuestion')
+            const newOptions = document.querySelector('#newOptions')
+            const optionInputDiv = document.querySelector('#optionInputDiv')
+            const objectiveButtonDiv = document.querySelector('#buttonDiv')
+
+            objectiveQuestionInput.addEventListener('change', e => {
+                objectiveText = e.target.value
+            })
+
+            const addObjectiveQuestion = () => {
+                currentQuestion.questionId = (Math.random() * 10000000000)
+                currentQuestion.question = objectiveText
+                objectiveCreateOptions.style.padding = '10px'
+                // newQuestion.innerHTML = `<div id='videoQuestion' class='d-flex justify-content-between my-2'><h5>${currentQuestion.question}</h5> <h6 style="cursor: pointer; border : solid 1px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; background-color: white; width: 20px; height: 20px; border-radius: 50%;" onclick='videoRemove()'>x</h6></div>`
+                newQuestion.innerHTML = `<div class="container my-4"><h4 class="ml-3 mb-2">${currentQuestion.question}</h4></div>`
+                objectiveQuestionAdd.style.display = 'none'
+                currentQuestion.question = objectiveText
+                objectiveButtonDiv.innerHTML = `<div class="container my-4"><button class='btn btn-primary'>Done</button><button class='btn btn-danger ml-5'>Cancel</button></div>`
+                optionInputDiv.innerHTML = `
+                <div class="input-group mt-3" id="optionAdd">
+                    <input type="text" id="objectiveQuestionInput" class="form-control col-md-7" placeholder="Enter Option" aria-label="Add Question" aria-describedby="button-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-success" type="button" id="button-addon2" onclick="addObjectiveQuestion()">Correct</button>
+                    </div>
+                    <div class="input-group-append">
+                        <button class="btn btn-warning" type="button" id="button-addon2" onclick="addObjectiveQuestion()">Wrong</button>
+                    </div>
+                </div>
+                `
+            }
+
+
+
+
+            // Objective END
 
     </script>
 </body>
