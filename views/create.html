@@ -389,7 +389,7 @@
 
     <!-- Add written assignment START -->
           
-    
+    <hr class="my-4" />
     <h2 class="lead mb-3">Written assignments</h2>
     <br />
 
@@ -902,13 +902,27 @@
                 currentQuestion.options = []
                 objectiveQuestionInput.value = ''
                 objectiveText = ''
-                // optionText = ''
 
                 displayObjectiveQuestions()
-
-                
             }
 
+            const cancelQuestion = () => {
+                objectiveQuestionAdd.style.display = 'flex'
+                newQuestion.innerHTML = ''
+                objectiveButtonDiv.innerHTML = ''
+                optionInputDiv.style.display = 'none'
+                newOptions.innerHTML = ''
+                objectiveCreateOptions.style.padding = '0px'
+                console.log('Main array : ', objectiveArray)
+                currentQuestion.question = ''
+                currentQuestion.questionId = -1
+                currentQuestion.correct = -1
+                currentQuestion.options = []
+                objectiveQuestionInput.value = ''
+                objectiveText = ''
+
+                displayObjectiveQuestions()
+            }
 
 
             // Objective END grr
