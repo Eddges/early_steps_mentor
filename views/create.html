@@ -782,8 +782,11 @@
                 correct: -1,
                 options: []
             }
+            let innerObjective = ''
             let currentOption = {}
             let optionText = ''
+            let questionCount = 0
+            let optionCount = 0
             const objectiveQuestionInput = document.querySelector('#objectiveQuestionInput')
             const objectiveCreateOptions = document.querySelector('#objectiveCreateOptions')
             const objectiveQuestionAdd = document.querySelector('#objectiveQuestionAdd')
@@ -813,6 +816,21 @@
                 optionInputDiv.style.display = 'flex'
             }
 
+            const objectiveOptionDisplay = () => {
+                newOptions.innerHTML = ''
+                currentQuestion.options.map((iterator, index) => {
+                    newOptions.innerHTML += `<div id='${iterator.optionId}' class='col-md-9 d-flex justify-content-between mt-2 ${iterator.optionId===currentQuestion.correct ? 'list-group-item-success': null}' style="padding: 0px 10px; display : flex; align-items: center;"><span style="display: flex; align-items: center; flex-direction : row; height : 100%; padding: 0px; margin: 0px;" >${index + 1}. &nbsp  ${iterator.text}</span> <h6 style="cursor: pointer; border : solid 1px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; background-color: white; width: 16px; height: 16px; border-radius: 50%;" onclick='removeOption(${iterator.optionId})' >x</h6></div>`
+                })
+            }
+
+            const removeOption = (optionId) => {
+                let tempArray = currentQuestion.options.filter(iterator => {
+                    return iterator.optionId!==optionId
+                })
+                currentQuestion.options = tempArray
+                objectiveOptionDisplay()
+            }
+
             const markCorrect = () => {
                 objectiveOptionInput.value = ''
                 let correctId = (Math.random() * 10000000000)
@@ -825,8 +843,8 @@
                 currentQuestion.options.push(temp)
 
                 console.log('CurrentQuestion : ', currentQuestion)
-
-                console.log('Marked correct')
+                optionCount += 1
+                objectiveOptionDisplay()
             }
 
             const markWrong = () => {
@@ -843,9 +861,11 @@
                 currentOption.optionId = -1
 
                 console.log('CurrentQuestion : ', currentQuestion)
-
-                console.log('Marked correct')
+                optionCount += 1
+                objectiveOptionDisplay()
             }
+
+
 
 
 
