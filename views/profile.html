@@ -175,7 +175,6 @@
 
         function getProgrammingProfileData() {
             if (sessionStorage.getItem("loggedCA") != md5("true")) {
-                    // console.log("GLOBAL");
                     window.location.href = "./login";
             }
             let user_id = sessionStorage.getItem("user_id");

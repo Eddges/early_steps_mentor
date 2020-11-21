@@ -326,93 +326,30 @@
 
 
           
-    <div class="row" data-plugin="matchHeight" data-by-row="true">
+    <h1 class="display-4">Create assignment</h1>
+    <hr class="my-4" />
+    <h2 class="lead mb-3">Written assignments</h2>
+    <br />
 
-        <div class="col-xxl-3 col-xl-6" style="height: 380px;">
-            <span class="w-100 p-3">Wednesday, Nov 11</span>
-            <div class="card card-shadow">
-            <div class="card-block text-center bg-white p-40">
-                <div class="avatar avatar-100 mb-20">
-                <img src="../../assets/images/africa.svg" alt="" style="border-radius:0px;">
-                </div>
-                <p id="coursename1" class="font-size-20 blue-grey-700">Geography - India</p>
-                
-                <p class="mb-35" style="font-weight:bold">India, officially the Republic of India, is a country in South Asia. It is the second-most populous country, the seventh-largest country by land area, and the most populous democracy in the world.</p>
-                
-                <button type="button" class="btn btn-primary px-20" onclick="enterportal();"  href="/videoquiz" >View Assignment</button><br>
-                <!-- <button id="VirginAlgorithm" type="button"  disabled="true" class="btn px-20 btn-success" onclick="enterportal();" style="margin-top:10px;">View Assignment</button> -->
-            </div>
-            </div>
-            <!-- End Panel Web Designer -->
-        </div>
+    <div id="writtenDisplayDiv"></div>
 
-        <div class="col-xxl-3 col-xl-6" style="height: 380px;">
-            <span class="w-100 p-3">Monday, Nov 9</span>
-            <!-- Panel Web Designer -->
-            <div class="card card-shadow m-3">
-            <div class="card-block text-center bg-white p-40">
-                <div class="avatar avatar-100 mb-20">
-                <img src="../../assets/images/machinelearning.png" alt="" style="border-radius:0px;">
-                </div>
-                <p id="coursename2" class="font-size-20 blue-grey-700">Full Stack Web Development + DSA</p>
-            
-                <p class="mb-35" style="font-weight:bold">Wanna develop, debug & deploy a complete web application? Looking forward to crack coding interviews for Microsoft, Amazon, Flipkart?</p>
-            
-                <button type="button" class="btn btn-primary px-20"  onclick="requestcallback(2);" >REQUEST CALLBACK</button><br>
-                <button type="button" id="FullStack" disabled="true" class="btn px-20 btn-success" onclick="enterportal();" style="margin-top:10px;">ENTER CLASSROOM</button>
-            </div>
-            </div>
-            <!-- End Panel Web Designer -->
-        </div>
-
-
-        <div class="col-xxl-3 col-xl-6" style="height: 380px;">
-            <span class="w-100 p-3">Friday, Nov 8</span>
-            <div class="card card-shadow">
-            <div class="card-block text-center bg-white p-40">
-                <div class="avatar avatar-100 mb-20">
-                <img src="../../assets/images/dataanalyticsicon.png" alt="" style="border-radius:0px;">
-                </div>
-                <p id="coursename3" class="font-size-20 blue-grey-700">Machine Learning + DSA</p>
-            
-                <p class="mb-35" style="font-weight:bold">Career around Data, Numbers, Math and Programming sounds interesting? Take a step towards the world of Artificial Intellegence</p>
-            
-                <button type="button" class="btn btn-primary px-20"  onclick="requestcallback(3);" >REQUEST CALLBACK</button><br>
-                <button type="button"  id="MachineLearning"  disabled="true" class="btn px-20 btn-success" onclick="enterportal();" style="margin-top:10px;">ENTER CLASSROOM</button>
-            </div>
-            </div>
-            <!-- End Panel Web Designer -->
-        </div>
-
-        <div class="col-xxl-3 col-xl-6" style="height: 380px;">
-            <span class="w-100 p-3">Thursday, Nov 7</span>
-            <!-- Panel Web Designer -->
-            <div class="card card-shadow">
-            <div class="card-block text-center bg-white p-40">
-                <div class="avatar avatar-100 mb-20">
-                <img src="../../assets/images/devopsicon.png" alt="" style="border-radius:0px;">
-                </div>
-                <p id="coursename4" class="font-size-20 blue-grey-700">Business & Data Analytics</p>
-                
-                <p class="mb-35" style="font-weight:bold">Are you the Data + Business guy? Targeting the companies like Deloitte, ZS, MuSigma, Optum, Fractal, Accenture, EXL, KPMG, PWC </p>
-            
-            <button type="button" class="btn btn-primary px-20" onclick="requestcallback(4);" >REQUEST CALLBACK</button><br>
-                <button type="button" id="DataAnalytics" disabled="true" class="btn px-20 btn-success" onclick="enterportal();"  style="margin-top:10px;">ENTER CLASSROOM</button>
-            </div>
-            </div>
-            <!-- End Panel Web Designer -->
-        </div>
-             
-    </div>
-
-
-
-
-
-            </div>
+    <div class="input-group mt-3">
+        <input type="text" id="writtenInput" class="form-control col-md-7" placeholder="Question" aria-label="Add Question" aria-describedby="button-addon2">
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="button" id="button-addon2" onclick="addWritten()">Add</button>
         </div>
     </div>
+    
+
+
+
+
     <!-- End Page -->
+
+
+
+
+
     <div class="modal fade" id="exampleFormModal" aria-labelledby="exampleFormModalLabel" role="dialog" tabindex="-1" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-simple modal-center" style="z-index:20000;">
             <form class="modal-content" style="z-index:20000;">
@@ -449,13 +386,7 @@
             </form>
         </div>
 
-        <!-- Footer -->
-        <!-- <footer class="site-footer">
-            <div class="site-footer-legal">© 2018 <a href="http://themeforest.net/item/remark-responsive-bootstrap-admin-template/11989202">Remark</a></div>
-            <div class="site-footer-right">
-                Crafted with <i class="red-600 wb wb-heart"></i> by <a href="https://themeforest.net/user/creation-studio">Creation Studio</a>
-            </div>
-        </footer> -->
+
         <!-- Core  -->
         <script src="../../global/vendor/babel-external-helpers/babel-external-helpers.js"></script>
         <script src="../../global/vendor/jquery/jquery.js"></script>
@@ -508,24 +439,26 @@
 
         <script src="../assets/examples/js/dashboard/v1.js"></script>
 
-        <script>
+    <script>
+
+
         var url= 'https://api.codeasylums.com';
         function hideme(){
-      document.getElementById('alert-message-div').style.display="none";
-    }
+            document.getElementById('alert-message-div').style.display="none";
+        }
 
-    function hidemeinfo(){
-      document.getElementById('info-message-div').style.display="none";
-    }
+        function hidemeinfo(){
+            document.getElementById('info-message-div').style.display="none";
+        }
 
-     function hidemepro(){
-      document.getElementById('processing-div').style.display="none";
-    }
-            function enterportal(key){
-                
-                window.location.href = "/videoquiz";
+        function hidemepro(){
+            document.getElementById('processing-div').style.display="none";
+        }
+        function enterportal(key){
+            
+            window.location.href = "/videoquiz";
 
-            }
+        }
 
             function requestcallback(key){
                 window.scrollTo(0,0);
@@ -612,33 +545,7 @@
                            console.log(err);
                         }
 
-
-
-                        // var x =  response.data["a"][0].course_id;
-
-                        // sessionStorage.setItem("photo", response.data["a"][0].photo);
-                        // document.getElementById("photo").src = response.data["a"][0].photo;
-                        // axios.get(url+`/getCourse/`+`${response.data["a"][0].course_id}`)
-                        //     .then(function(response) {
-                        //         try{
-                        //             document.getElementById(`${response.data.course_name}`).disabled = false;
-                        //         }
-                        //         catch(err){
-                        //             sessionStorage.setItem("redirect", "home");
-                        //     console.log(err);
-                        //         }
-                                
-                        //     }).catch(function(error) {
-                        //         console.log(error);
-                        //     });
-
-                        // try{
-                        // sessionStorage.setItem("course_id",response.data["a"][0].course_id);
-                        // sessionStorage.setItem("redirect", "dashboard");
-                        // } catch(err) {
-                        //     sessionStorage.setItem("redirect", "home");
-                        //     console.log(err);
-                        // }                        
+                     
                     }).catch(function(error) {
                         //console.log(error);
                     });
@@ -660,8 +567,62 @@
                 console.log('Response data : ', res.data)
             })
             
+        
+            let written = []
+            const writtenListDisplay = []
+            const writtenInput = document.querySelector('#writtenInput')
+            const writtenDisplayDiv = document.querySelector('#writtenDisplayDiv')
 
-        </script>
+            let writtenText = ''
+            writtenInput.addEventListener('change', e => {
+                writtenText = e.target.value
+            })
+
+            const writtenRemove = (id) =>{
+                const newWrittenArray = written.filter((iterator, index) => {
+                    console.log('iterator questionId : ', iterator.questionId===id)
+                    return id!==iterator.questionId
+                })
+                written = newWrittenArray
+                if (written.length === 0) {
+                    writtenDisplayDiv.innerHTML = ''
+                }
+                else{
+                    let innerWritten = ''
+                    written.map((iterator,index) => {
+                        innerWritten = innerWritten + `<div id='${iterator.id}' class='col-md-7 d-flex justify-content-between my-2'><h5>${index + 1}. &nbsp  ${iterator.question}</h5> <h6 style="cursor: pointer; border : solid 1px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; background-color: white; width: 20px; height: 20px; border-radius: 50%;" onclick='writtenRemove(${iterator.questionId})'>x</h6></div> <hr/>`
+                        writtenDisplayDiv.innerHTML = innerWritten
+                    // writtenDisplayDiv.appendChild(document.createTextNode(iterator.question))
+                })
+                }
+
+                
+            }
+
+            const addWrittenQuestion = (writtenArray) => {
+                let innerWritten = ''
+                writtenArray.map((iterator,index) => {
+                    innerWritten = innerWritten + `<div id='${iterator.id}' class='col-md-7 d-flex justify-content-between my-2'><h5>${index + 1}. &nbsp  ${iterator.question}</h5> <h6 style="cursor: pointer; border : solid 1px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; background-color: white; width: 20px; height: 20px; border-radius: 50%;" onclick='writtenRemove(${iterator.questionId})'>x</h6></div> <hr/>`
+                    writtenDisplayDiv.innerHTML = innerWritten
+                // writtenDisplayDiv.appendChild(document.createTextNode(iterator.question))
+                })
+
+            }
+
+            const addWritten = () => {
+                const writtenEntry = {}
+                writtenEntry.question = writtenText
+                writtenEntry.questionId = Math.floor(Math.random() * 1000000000)
+                written.push(writtenEntry)
+                writtenText = ''
+                writtenInput.value = ''
+                addWrittenQuestion(written)
+            }
+
+
+
+
+    </script>
 </body>
 
 </html>
