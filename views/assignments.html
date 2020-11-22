@@ -277,8 +277,22 @@
             <button class="btn btn-primary btn-lg ml-2 mb-2" onclick="enterportal()" role="button">Create new assignment</button>
         </div>
 
+        <!-- Grr -->
+
         <hr class='my-4'/>
         <h2 class="display-5">Created assignments</h2>
+
+        <div class="container" id="assignment-list">
+
+        </div>
+
+        
+
+
+
+
+
+
 
     <!-- End Page -->
 
@@ -531,10 +545,30 @@
               window.reload();
             }
 
+            // Displaying Assignments grr
 
-            axios.get('https://early-steps.herokuapp.com/getAllAssignment')
+            const divAssignmentList = document.querySelector('#assignment-list')
+
+            axios.get('https://early-steps.herokuapp.com/getModuleAllAssignment/2')
             .then(res => {
-                console.log('Response data : ', res.data)
+                res.data.a.map((iterator, index) => {
+                    divAssignmentList.innerHTML += `
+                        <div class="card">
+                            <div class="card-body">
+                            <h5 class="card-title">${iterator.assignment_name}</h5>
+                            <p class="card-text">${iterator.assignment_desc}</p>
+                            <small>Submission Score: <strong>${iterator.assignment_submission_score}</strong></small>
+                            <hr />
+                            <a href="${document.URL.split('/')[document.URL.split('/').length -1]}/${iterator.assignment_id}" class="btn btn-primary">View</a>
+                            </div>
+                        </div>
+                    `
+                })
+            })
+
+            axios.get('https://early-steps.herokuapp.com/getAllSubmission')
+            .then(res => {
+                console.log(res.data)
             })
             
 
