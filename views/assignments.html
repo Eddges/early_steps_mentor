@@ -548,11 +548,14 @@
             // Displaying Assignments grr
 
             const divAssignmentList = document.querySelector('#assignment-list')
-
+            const moduleId = +document.URL.split('/')[document.URL.split('/').length -1]
+            
             axios.get('https://early-steps.herokuapp.com/getModuleAllAssignment/2')
             .then(res => {
+                console.log(res.data)
                 res.data.a.map((iterator, index) => {
-                    divAssignmentList.innerHTML += `
+                    if(iterator.module_id===moduleId) {
+                        divAssignmentList.innerHTML += `
                         <div class="card">
                             <div class="card-body">
                             <h5 class="card-title">${iterator.assignment_name}</h5>
@@ -563,13 +566,15 @@
                             </div>
                         </div>
                     `
+                    }
+
                 })
             })
 
-            axios.get('https://early-steps.herokuapp.com/getAllSubmission')
-            .then(res => {
-                console.log(res.data)
-            })
+            // axios.get('https://early-steps.herokuapp.com/getAllAssignment')
+            // .then(res => {
+            //     console.log(res.data)
+            // })
             
 
         </script>
