@@ -225,65 +225,7 @@
         </div>
 
     </div>
-    </div>
 
-
-    <div class="site-gridmenu">
-        <div>
-            <div>
-                <ul>
-                    <li>
-                        <a href="apps/mailbox/mailbox.html">
-                            <i class="icon wb-envelope"></i>
-                            <span>Mailbox</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="apps/calendar/calendar.html">
-                            <i class="icon wb-calendar"></i>
-                            <span>Calendar</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="apps/contacts/contacts.html">
-                            <i class="icon wb-user"></i>
-                            <span>Contacts</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="apps/media/overview.html">
-                            <i class="icon wb-camera"></i>
-                            <span>Media</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="apps/documents/categories.html">
-                            <i class="icon wb-order"></i>
-                            <span>Documents</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="apps/projects/projects.html">
-                            <i class="icon wb-image"></i>
-                            <span>Project</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="apps/forum/forum.html">
-                            <i class="icon wb-chat-group"></i>
-                            <span>Forum</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="index.html">
-                            <i class="icon wb-dashboard"></i>
-                            <span>Dashboard</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
 
     <!-- Page -->
     <div class="page">
@@ -312,50 +254,49 @@
           <!-- End alert message -->
           
 
- <!-- alert message -->
-         <div class="alert dark alert-success alert-dismissible animation-slide-top " id="info-message-div" style="display:none" role="alert">
-                    <button type="button" class="close" onClick="hidemeinfo()" aria-label="Close">
-                      <span aria-hidden="true">×</span>
-                    </button>
-                    <div id="message-div-info"></div>
-                  </div>
-          <!-- End alert message -->
+        <!-- alert message -->
+            <div class="alert dark alert-success alert-dismissible animation-slide-top " id="info-message-div" style="display:none" role="alert">
+                <button type="button" class="close" onClick="hidemeinfo()" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <div id="message-div-info"></div>
+            </div>
+        <!-- End alert message -->
 
 
 
 
-
+        
+        <!-- -------------Main Section---------------- -->
           
-    <div class="row" data-plugin="matchHeight" data-by-row="true">
-
-        <div class="col-xxl-3 col-xl-6" style="height: 380px;">
-            <span class="w-100 p-3">Wednesday, Nov 11</span>
-            <div class="card card-shadow">
-            <div class="card-block text-center bg-white p-40">
-                <div class="avatar avatar-100 mb-20">
-                <img src="../../assets/images/africa.svg" alt="" style="border-radius:0px;">
-                </div>
-                <p id="coursename1" class="font-size-20 blue-grey-700">Geography - India</p>
-                
-                <p class="mb-35" style="font-weight:bold">India, officially the Republic of India, is a country in South Asia. It is the second-most populous country, the seventh-largest country by land area, and the most populous democracy in the world.</p>
-                
-                <button type="button" class="btn btn-primary px-20" onclick="enterportal('2');" >Assignments</button><br>
-                <!-- <button id="VirginAlgorithm" type="button"  disabled="true" class="btn px-20 btn-success" onclick="enterportal();" style="margin-top:10px;">View Assignment</button> -->
-            </div>
-            </div>
-            <!-- End Panel Web Designer -->
+    
+        <div class="jumbotron p-5 pl-2">
+            <h2 class="display-5 ml-2">Grade assignments</h1>
         </div>
-             
-    </div>
 
+        <hr class='my-4'/>
 
+        <!-- Grr -->
+        
+        <div class="container" id="assignment-list">
 
-
-
-            </div>
         </div>
-    </div>
+
+        
+
+
+
+
+
+
+
     <!-- End Page -->
+
+
+
+
+
+
     <div class="modal fade" id="exampleFormModal" aria-labelledby="exampleFormModalLabel" role="dialog" tabindex="-1" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-simple modal-center" style="z-index:20000;">
             <form class="modal-content" style="z-index:20000;">
@@ -465,8 +406,11 @@
       document.getElementById('processing-div').style.display="none";
     }
             function enterportal(key){
-                
-                window.location.href = `/gradeassignment/${key}`;
+                console.log(window.location.pathname)
+                let pathname = window.location.pathname
+                const classId = pathname.split('/')[2]
+                console.log('ClassId : ', classId)
+                window.location.href = `/create/${classId}`;
 
             }
 
@@ -597,11 +541,36 @@
               window.reload();
             }
 
+            // Displaying Assignments grr
 
-            axios.get('https://early-steps.herokuapp.com/getAllAssignment')
+            const divAssignmentList = document.querySelector('#assignment-list')
+            const moduleId = +document.URL.split('/')[document.URL.split('/').length -1]
+            
+            axios.get('https://early-steps.herokuapp.com/getModuleAllAssignment/2')
             .then(res => {
-                console.log('Response data : ', res.data)
+                console.log(res.data)
+                res.data.a.map((iterator, index) => {
+                    if(iterator.module_id===moduleId) {
+                        divAssignmentList.innerHTML += `
+                        <div class="card">
+                            <div class="card-body">
+                            <h5 class="card-title">${iterator.assignment_name}</h5>
+                            <p class="card-text">${iterator.assignment_desc}</p>
+                            <small>Submission Score: <strong>${iterator.assignment_submission_score}</strong></small>
+                            <hr />
+                            <a href="${document.URL.split('/')[document.URL.split('/').length -1]}/${iterator.assignment_id}" class="btn btn-primary">View Submissions</a>
+                            </div>
+                        </div>
+                    `
+                    }
+
+                })
             })
+
+            // axios.get('https://early-steps.herokuapp.com/getAllAssignment')
+            // .then(res => {
+            //     console.log(res.data)
+            // })
             
 
         </script>

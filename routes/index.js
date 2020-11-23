@@ -64,6 +64,10 @@ router.get('/gradeassignment', function(req, res, next) {
   res.render('gradeassignment', { title: 'Express' });
 });
 
+router.get('/gradeassignment/:moduleId', function(req, res, next) {
+  res.render('modulesubmissions.html', { title: 'Express' });
+});
+
 router.get('/create/:classId', function(req, res, next) {
   res.render('create', { title: 'Express' });
 });
