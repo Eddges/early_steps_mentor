@@ -273,11 +273,24 @@
         <!-- Grr -->
 
         
-        <h2 class="display-5">Submissions</h2>
+        <h2 class="display-5" id="assignmentName"></h2>
+        <br />
+        <p id="assignmentDescription"></p>
 
         <div class="container" id="assignment-list"></div>
 
         <hr class='my-4'/>
+
+        <div id="objectiveDisplay"></div>
+
+        <hr class="my-2" />
+
+        <div id="writtenDisplay"></div>
+        
+        <hr class="my-2" />
+        
+        <div id='videoDisplay'></div>
+        
 
         
 
@@ -541,34 +554,55 @@
             // Displaying Assignments grr
 
             const divAssignmentList = document.querySelector('#assignment-list')
-            const moduleId = +document.URL.split('/')[document.URL.split('/').length -1]
+            const moduleId = +document.URL.split('/')[document.URL.split('/').length -2]
+            const assignmentId = +document.URL.split('/')[document.URL.split('/').length -1]
+
+            const objectiveDisplay = document.querySelector('#objectiveDisplay')
+            const writtenDisplay = document.querySelector('#writtenDisplay')
+            const videoDisplay = document.querySelector('#videoDisplay')
             
-            axios.get('https://early-steps.herokuapp.com/getModuleAllAssignment/2')
+            let aText = []
+
+            const assignmentName = document.querySelector('#assignmentName')
+            const assignmentDescription = document.querySelector('#assignmentDescription')
+            
+            axios.get('https://early-steps.herokuapp.com/getAssignment/' + assignmentId)
             .then(res => {
                 console.log(res.data)
-                res.data.a.map((iterator, index) => {
-                    if(iterator.module_id===moduleId) {
-                        divAssignmentList.innerHTML += `
-                        <div class="card">
-                            <div class="card-body">
-                            <h5 class="card-title">${iterator.assignment_name}</h5>
-                            <p class="card-text">${iterator.assignment_desc}</p>
-                            <small>Submission Score: <strong>${iterator.assignment_submission_score}</strong></small>
-                            <hr />
-                            <a href="${document.URL.split('/')[document.URL.split('/').length -1]}/${iterator.assignment_id}" class="btn btn-primary">View</a>
-                            </div>
-                        </div>
-                    `
-                    }
+                assignmentName.innerHTML = res.data.assignment_name
+                assignmentDescription.innerHTML = res.data.assignment_desc
+                // aText = JSON.parse(res.data.assignment_content_text)
 
+                JSON.parse(res.data.assignment_content_text).map((iterator, index) => {
+                    writtenDisplay.innerHTML += `
+                        <br/>
+                        <h4 id='${iterator.questionId}'>Q ${index + 1}. ${iterator.question}</h4> 
+                    `
+                })
+                videoDisplay.innerHTML = `
+                    <br/>
+                    <h4 id='${JSON.parse(res.data.assignment_content_video).videoId}'>Q. ${JSON.parse(res.data.assignment_content_video).question}</h4> 
+                `
+                JSON.parse(res.data.assignment_content_mcq).map((iterator, index) => {
+                    objectiveDisplay.innerHTML += `
+                        
+                        <h4 id='${iterator.questionId}'>Q ${index + 1}. ${iterator.question}</h4> 
+                        <br/>
+                    `
+                    iterator.options.map((itr, ind) => {
+                        objectiveDisplay.innerHTML += `
+                        <p id='${itr.questionId}'>${ind + 1}) ${itr.text}</p> 
+                    `
+                    })
                 })
             })
 
-            // axios.get('https://early-steps.herokuapp.com/getAllAssignment')
-            // .then(res => {
-            //     console.log(res.data)
-            // })
-            
+
+            axios.get('https://early-steps.herokuapp.com/getAssignmentAllSubmission/' + '3')
+            .then(res => {
+                console.log('All submissions on 7 : ', res.data)
+            })
+
 
         </script>
 </body>

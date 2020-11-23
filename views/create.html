@@ -350,12 +350,12 @@
     <hr class="my-4" />
 
     <p>Assignment Name</p>
-    <input type="text" class="form-control col-md-8" >
+    <input type="text" class="form-control col-md-8" id='inputName' >
       
     <br />
       
     <p>Assignment Description</p>
-    <textarea class="form-control col-md-8" aria-label="Assignment Description"></textarea>
+    <textarea class="form-control col-md-8" aria-label="Assignment Description" id="inputDescription"></textarea>
 
     <hr class="my-4" />
 
@@ -437,7 +437,7 @@
     <br />
     <hr />
     <br />
-    <button class="btn btn-warning">Create Assignment</button>
+    <button class="btn btn-warning" id='createButton'>Create Assignment</button>
 
 
 
@@ -941,6 +941,38 @@
 
 
             // Objective END grr
+
+            const inputName = document.querySelector('#inputName')
+            const inputDescription = document.querySelector('#inputDescription')
+            const createButton = document.querySelector('#createButton')
+
+            const assignment = {}
+
+            let inputNameText = ''
+            let inputDescriptionText = ''
+
+            inputName.addEventListener('change', e => {
+                inputNameText = e.target.value
+            })
+
+            createButton.addEventListener('click', () => {
+                assignment.assignment_type = 'XD',
+                assignment.module_id = `${document.URL.split('/')[document.URL.split('/').length - 1]}`
+                assignment.assignment_name = inputNameText
+                assignment.assignment_desc = inputDescription.value
+                assignment.assignment_submission_score = '2'
+                assignment.assignment_content_mcq = JSON.stringify(objectiveArray)
+                assignment.assignment_content_text = JSON.stringify(written)
+                assignment.assignment_content_video = JSON.stringify(video)
+
+                console.log('Assignment array : ', assignment)
+
+                axios.post('http://early-steps.herokuapp.com/createAssignment', assignment)
+                .then(res => {
+                    console.log(res.data)
+                    window.location.href = 'http://localhost:3000/addassignment'
+                })
+            })
 
     </script>
 </body>
