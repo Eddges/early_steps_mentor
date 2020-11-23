@@ -68,6 +68,14 @@ router.get('/gradeassignment/:moduleId', function(req, res, next) {
   res.render('modulesubmissions.html', { title: 'Express' });
 });
 
+router.get('/idsubmissions/:assignmentId', function(req, res, next) {
+  res.render('idsubmissions.html', { title: 'Express' });
+});
+
+router.get('/grade/:submissionId', function(req, res, next) {
+  res.render('grade.html', { title: 'Express' });
+});
+
 router.get('/create/:classId', function(req, res, next) {
   res.render('create', { title: 'Express' });
 });

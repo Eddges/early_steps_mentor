@@ -271,7 +271,7 @@
           
     
         <div class="jumbotron p-5 pl-2">
-            <h2 class="display-5 ml-2">Grade assignments</h1>
+            <h2 class="display-5 ml-2">Submissions</h1>
         </div>
 
         <hr class='my-4'/>
@@ -410,7 +410,7 @@
                 let pathname = window.location.pathname
                 const classId = pathname.split('/')[2]
                 console.log('ClassId : ', classId)
-                window.location.href = `/idsubmissions/${key}`;
+                window.location.href = `/grade/${key}`;
 
             }
 
@@ -544,30 +544,28 @@
             // Displaying Assignments grr
 
             const divAssignmentList = document.querySelector('#assignment-list')
-            const moduleId = +document.URL.split('/')[document.URL.split('/').length -1]
+            const assignmentId = +document.URL.split('/')[document.URL.split('/').length -1]
             
-            axios.get('https://early-steps.herokuapp.com/getModuleAllAssignment/2')
+            axios.get(`https://early-steps.herokuapp.com/getAssignmentAllSubmission/${assignmentId}`)
             .then(res => {
-                console.log(res.data)
+                console.log(res.data.a)
                 res.data.a.map((iterator, index) => {
-                    if(iterator.module_id===moduleId) {
-                        divAssignmentList.innerHTML += `
+                    divAssignmentList.innerHTML += `
                         <div class="card">
                             <div class="card-body">
-                            <h5 class="card-title">${iterator.assignment_name}</h5>
-                            <p class="card-text">${iterator.assignment_desc}</p>
-                            <small>Submission Score: <strong>${iterator.assignment_submission_score}</strong></small>
+                            <h5 class="card-title">User Id : ${iterator.user_assignment_id}</h5>
+                            <p class="card-text">Submission Id : ${iterator.submission_id}</p>
+                            <small>Graded : <strong>No</strong></small>
                             <hr />
-                            <button onclick="enterportal(${iterator.assignment_id})" class="btn btn-primary">View Submissions</button>
+                            <button onclick="enterportal(${iterator.submission_id})" class="btn btn-primary">Grade Submission</button>
                             </div>
                         </div>
                     `
-                    }
 
                 })
             })
 
-            // axios.get('https://early-steps.herokuapp.com/getAllAssignment')
+            // axios.get('https://early-steps.herokuapp.com/getAllSubmission')
             // .then(res => {
             //     console.log(res.data)
             // })
