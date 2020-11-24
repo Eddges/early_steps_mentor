@@ -408,9 +408,8 @@
             function enterportal(key){
                 console.log(window.location.pathname)
                 let pathname = window.location.pathname
-                const classId = pathname.split('/')[2]
-                console.log('ClassId : ', classId)
-                window.location.href = `/grade/${key}`;
+                const assignId = pathname.split('/')[pathname.split('/').length - 1]
+                window.location.href = `/idsubmissions/${assignId}/${key}`;
 
             }
 

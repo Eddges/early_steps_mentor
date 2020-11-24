@@ -72,7 +72,7 @@ router.get('/idsubmissions/:assignmentId', function(req, res, next) {
   res.render('idsubmissions.html', { title: 'Express' });
 });
 
-router.get('/grade/:submissionId', function(req, res, next) {
+router.get('/idsubmissions/:assignmentId/:submissionId', function(req, res, next) {
   res.render('grade.html', { title: 'Express' });
 });
 
