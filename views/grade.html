@@ -37,6 +37,7 @@
 
     <!-- Fonts -->
     <link rel="stylesheet" href="../../global/fonts/weather-icons/weather-icons.css">
+    <link rel="stylesheet" href="../../global/fonts/font-awesome/font-awesome.css">
     <link rel="stylesheet" href="../../global/fonts/web-icons/web-icons.min.css">
     <link rel="stylesheet" href="../../global/fonts/brand-icons/brand-icons.min.css">
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
@@ -563,47 +564,107 @@
             
             let aText = []
 
+            let submissionObj = {}
+            let submissionContent = {}
+            let submissionContentObjective = {}
+            let submissionContentWritten = {}
+            let submissionContentVideo = {}
+
+            let totalMarks = 0
+            let submissionScore = 0
+            let feedbackScore = 0
+
             const assignmentName = document.querySelector('#assignmentName')
             const assignmentDescription = document.querySelector('#assignmentDescription')
             
             axios.get('https://early-steps.herokuapp.com/getAssignment/' + assignmentId)
             .then(res => {
-                console.log(res.data)
-                assignmentName.innerHTML = res.data.assignment_name
-                assignmentDescription.innerHTML = res.data.assignment_desc
-                // aText = JSON.parse(res.data.assignment_content_text)
+                axios.get('https://early-steps.herokuapp.com/getSubmission/' + submissionId)
+                .then(response => {
+                    submissionObj = response.data
+                    submissionContent = JSON.parse(submissionObj.submission_content)
 
-                JSON.parse(res.data.assignment_content_text).map((iterator, index) => {
-                    writtenDisplay.innerHTML += `
-                        <br/>
-                        <h4 id='${iterator.questionId}'>Q ${index + 1}. ${iterator.question}</h4> 
-                    `
+                    console.log('Submission Content : ', submissionContent)
                 })
-                videoDisplay.innerHTML = `
-                    <br/>
-                    <h4 id='${JSON.parse(res.data.assignment_content_video).videoId}'>Q. ${JSON.parse(res.data.assignment_content_video).question}</h4> 
-                `
-                JSON.parse(res.data.assignment_content_mcq).map((iterator, index) => {
-                    objectiveDisplay.innerHTML += `
-                        <h4 id='${iterator.questionId}'>Q ${index + 1}. ${iterator.question}</h4> 
-                        <div class="list-group">
-                    `
-                    iterator.options.map((itr, ind) => {
+                .then(() => {
+                    console.log(res.data)
+                    assignmentName.innerHTML = res.data.assignment_name
+                    assignmentDescription.innerHTML = res.data.assignment_desc
+                    // aText = JSON.parse(res.data.assignment_content_text)
+
+                    if(res.data.assignment_content_text) {
+                        JSON.parse(res.data.assignment_content_text).map((iterator, index) => {
+                            writtenDisplay.innerHTML += `
+                                <br/>
+                                <h4 id='${iterator.questionId}'>Q ${index + 1}. ${iterator.question}</h4>
+                                <div class='container'><strong>Answer: <p></strong>${submissionContent.text[iterator.questionId]}</p></div>
+                                <div class="input-group mb-3 col-md-5">
+                                    <input type="text" class="form-control" placeholder="Enter Score" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-info" type="button" id="button-addon2">Done</button>
+                                    </div>
+                                </div>
+                            `
+                        })
+                    }
+
+                    
+
+                    if(res.data.assignment_content_video) {
+                        videoDisplay.innerHTML = `
+                            <br/>
+                            <h4 id='${JSON.parse(res.data.assignment_content_video).videoId}'>Q. ${JSON.parse(res.data.assignment_content_video).question}</h4> 
+                            <div class="container">
+                                <strong>URL: <p></strong>${submissionContent.video.vidURL}</p>
+                                <div class="input-group mb-3 col-md-5">
+                                    <input type="text" class="form-control" placeholder="Enter Score" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-info" type="button" id="button-addon2">Done</button>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    }
+                    
+                    
+                    if(res.data.assignment_content_mcq) {
+                        JSON.parse(res.data.assignment_content_mcq).map((iterator, index) => {
                         objectiveDisplay.innerHTML += `
-                        <p class="list-group-item col-md-8" id='${itr.questionId}'>${ind + 1}) ${itr.text}</p> 
-                    `
-                    })
-                    objectiveDisplay.innerHTML += `
-                        </div>
-                    `
+                            <h4 id='${iterator.questionId}'>Q ${index + 1}. ${iterator.question}</h4> 
+                            <div class="list-group">
+                        `
+                        iterator.options.map((itr, ind) => {
+                            if(itr.optionId===iterator.correct===(+submissionContent.mcq[iterator.questionId])){
+                                feedbackScore += 1
+                                objectiveDisplay.innerHTML += `
+                                    <p class="list-group-item col-md-8 list-group-item-success" id='${itr.questionId}'>${ind + 1}) ${itr.text}  ${itr.optionId===iterator.correct ? '<i class="fa fa-check" style="color: green;" aria-hidden="true"></i>' : ''}</p> 
+                                `
+                            }
+                            else if(itr.optionId===(+submissionContent.mcq[iterator.questionId]) && itr.optionId!==iterator.correct){
+                                objectiveDisplay.innerHTML += `
+                                    <p class="list-group-item col-md-8 list-group-item-danger" id='${itr.questionId}'>${ind + 1}) ${itr.text}  ${itr.optionId===iterator.correct ? '<i class="fa fa-check" style="color: green;" aria-hidden="true"></i>' : ''}</p> 
+                                `
+                            }
+                            else{
+                                objectiveDisplay.innerHTML += `
+                                    <p class="list-group-item col-md-8" id='${itr.questionId}'>${ind + 1}) ${itr.text}  ${itr.optionId===iterator.correct ? '<i class="fa fa-check" style="color: green;" aria-hidden="true"></i>' : ''}</p> 
+                                `
+                            }
+
+                        })
+                        objectiveDisplay.innerHTML += `
+                            </div>
+                        `
+                        })
+                    }
+
+
                 })
+                
             })
 
 
-            axios.get('https://early-steps.herokuapp.com/getSubmission/' + submissionId)
-            .then(res => {
-                console.log('Submission : ', res.data)
-            })
+
 
             axios.get('https://early-steps.herokuapp.com/getAssignment/' + assignmentId)
             .then(res => {
