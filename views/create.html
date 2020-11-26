@@ -980,10 +980,6 @@
 
             
 
-            // const addSubmissionScore = () => {
-
-            // }
-
             createButton.addEventListener('click', () => {
                 assignment.assignment_type = 'XD',
                 assignment.module_id = `${document.URL.split('/')[document.URL.split('/').length - 1]}`
@@ -1000,7 +996,7 @@
                 axios.post('http://early-steps.herokuapp.com/createAssignment', assignment)
                 .then(res => {
                     console.log(res.data)
-                    // window.location.href = 'http://earlystepsmentor.herokuapp.com/addassignment'
+                    window.location.href = 'http://earlystepsmentor.herokuapp.com/addassignment'
                 })
             })
 
