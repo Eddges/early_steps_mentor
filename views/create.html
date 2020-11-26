@@ -434,6 +434,22 @@
 
     <!-- Add video assignment END -->
 
+    <!-- Submission score -->
+
+
+    <hr class="my-4" />
+    <h4 >Add submission score</h4>
+    <br />
+
+    <div id="videoDisplayDiv"></div>
+
+    <div class="input-group mt-3" id="videoAssignment">
+        <input type="text" id="submissionInput" class="form-control col-md-7" placeholder="Score" aria-label="Add Question" aria-describedby="button-addon2">
+        <!-- <div class="input-group-append">
+            <button class="btn btn-info" type="button" id="button-addon2" onclick="addSubmissionScore()">Add</button>
+        </div> -->
+    </div>
+
     <br />
     <hr />
     <br />
@@ -946,6 +962,13 @@
             const inputDescription = document.querySelector('#inputDescription')
             const createButton = document.querySelector('#createButton')
 
+            let submissionScore = 0
+
+            const submissionInput = document.querySelector('#submissionInput')
+            submissionInput.addEventListener('change', e => {
+                submissionScore = +e.target.value
+            })
+
             const assignment = {}
 
             let inputNameText = ''
@@ -955,22 +978,29 @@
                 inputNameText = e.target.value
             })
 
+            
+
+            // const addSubmissionScore = () => {
+
+            // }
+
             createButton.addEventListener('click', () => {
                 assignment.assignment_type = 'XD',
                 assignment.module_id = `${document.URL.split('/')[document.URL.split('/').length - 1]}`
                 assignment.assignment_name = inputNameText
                 assignment.assignment_desc = inputDescription.value
-                assignment.assignment_submission_score = '2'
+                assignment.assignment_submission_score = submissionScore
                 assignment.assignment_content_mcq = JSON.stringify(objectiveArray)
                 assignment.assignment_content_text = JSON.stringify(written)
                 assignment.assignment_content_video = JSON.stringify(video)
+                // assignment.assignment_content_video = JSON.stringify(video)
 
                 console.log('Assignment array : ', assignment)
 
                 axios.post('http://early-steps.herokuapp.com/createAssignment', assignment)
                 .then(res => {
                     console.log(res.data)
-                    window.location.href = 'http://earlystepsmentor.herokuapp.com/addassignment'
+                    // window.location.href = 'http://earlystepsmentor.herokuapp.com/addassignment'
                 })
             })
 
