@@ -617,7 +617,7 @@
                                 <h4>Q ${index + 1}. ${iterator.question}</h4>
                                 <div class='container'><strong>Answer: <p></strong>${submissionContent.text[iterator.questionId]}</p></div>
                                 <div class="input-group mb-3 col-md-5">
-                                    <input id='id${iterator.questionId}' onchange='inputFeedbackWritten(${iterator.questionId})' type="text" class="form-control" placeholder="Enter Score" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                    <input id='id${iterator.questionId}' onchange='inputFeedbackWritten(${iterator.questionId})' type="text" class="form-control" placeholder="Enter Feedback" aria-label="Recipient's username" aria-describedby="button-addon2">
                                 </div>
                             `
                         })
@@ -632,7 +632,7 @@
                             <div class="container">
                                 <strong>URL: <p></strong>${submissionContent.video.vidURL}</p>
                                 <div class="input-group mb-3 col-md-5">
-                                    <input id='id${submissionContent.video.questionId}' type="text" class="form-control" onchange="inputFeedbackVideo(${submissionContent.video.questionId})" placeholder="Enter Score" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                    <input id='id${submissionContent.video.questionId}' type="text" class="form-control" onchange="inputFeedbackVideo(${submissionContent.video.questionId})" placeholder="Enter Feedback" aria-label="Recipient's username" aria-describedby="button-addon2">
                                 </div>
                             </div>
                         `

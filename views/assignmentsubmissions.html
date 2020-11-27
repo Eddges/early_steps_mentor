@@ -565,10 +565,12 @@
 
             const assignmentName = document.querySelector('#assignmentName')
             const assignmentDescription = document.querySelector('#assignmentDescription')
+
+            console.log('https://early-steps.herokuapp.com/getAssignment/' + assignmentId)
             
             axios.get('https://early-steps.herokuapp.com/getAssignment/' + assignmentId)
             .then(res => {
-                console.log(res.data)
+                console.log('Assignment data', res.data)
                 assignmentName.innerHTML = res.data.assignment_name
                 assignmentDescription.innerHTML = res.data.assignment_desc
                 // aText = JSON.parse(res.data.assignment_content_text)
