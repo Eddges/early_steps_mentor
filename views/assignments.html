@@ -274,7 +274,7 @@
             <h2 class="display-5 ml-2">Add and view assignments</h1>
             <p class="lead ml-2">Add assignments to the given module or browse assigned tasks from the list below</p>
             <hr class="my-4">
-            <button class="btn btn-primary btn-lg ml-2 mb-2" onclick="enterportal()" role="button">Create new assignment</button>
+            <button id='createButton' class="btn btn-primary btn-lg ml-2 mb-2" disabled onclick="enterportal()" role="button">Create new assignment</button>
         </div>
 
         <!-- Grr -->
@@ -547,6 +547,10 @@
 
             // Displaying Assignments grr
 
+            const createButton = document.querySelector('#createButton')
+
+            let levelCount = 0
+
             const divAssignmentList = document.querySelector('#assignment-list')
             const moduleId = +document.URL.split('/')[document.URL.split('/').length -1]
             
@@ -555,6 +559,8 @@
                 console.log(res.data)
                 res.data.a.map((iterator, index) => {
                     if(iterator.module_id===moduleId) {
+                        let temp = iterator.assignment_level ? iterator.assignment_level : 0
+                        levelCount = levelCount>temp ? levelCount : temp
                         divAssignmentList.innerHTML += `
                         <div class="card">
                             <div class="card-body">
@@ -569,6 +575,9 @@
                     }
 
                 })
+                levelCount+=1
+                createButton.innerHTML = `Create Level ${levelCount} Assignment`
+                createButton.removeAttribute('disabled')
             })
 
             // axios.get('https://early-steps.herokuapp.com/getAllAssignment')

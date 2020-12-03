@@ -444,7 +444,7 @@
     <div id="videoDisplayDiv"></div>
 
     <div class="input-group mt-3" id="videoAssignment">
-        <input type="text" id="submissionInput" class="form-control col-md-7" placeholder="Score" aria-label="Add Question" aria-describedby="button-addon2">
+        <input type="number" id="submissionInput" class="form-control col-md-7" placeholder="Score" aria-label="Add Question" aria-describedby="button-addon2">
         <!-- <div class="input-group-append">
             <button class="btn btn-info" type="button" id="button-addon2" onclick="addSubmissionScore()">Add</button>
         </div> -->
@@ -958,6 +958,31 @@
 
             // Objective END grr
 
+
+
+            let levelCount = 0
+
+            const divAssignmentList = document.querySelector('#assignment-list')
+            const moduleId = +document.URL.split('/')[document.URL.split('/').length -1]
+            
+            axios.get('https://early-steps.herokuapp.com/getModuleAllAssignment/2')
+            .then(res => {
+                console.log(res.data)
+                res.data.a.map((iterator, index) => {
+                    if(iterator.module_id===moduleId) {
+                        let temp = iterator.assignment_level ? iterator.assignment_level : 0
+                        levelCount = levelCount>temp ? levelCount : temp
+                    }
+
+                })
+                levelCount+=1
+                console.log('Level Count : ', levelCount)
+            })
+
+
+
+
+
             const inputName = document.querySelector('#inputName')
             const inputDescription = document.querySelector('#inputDescription')
             const createButton = document.querySelector('#createButton')
@@ -989,6 +1014,7 @@
                 assignment.assignment_content_mcq = JSON.stringify(objectiveArray)
                 assignment.assignment_content_text = JSON.stringify(written)
                 assignment.assignment_content_video = JSON.stringify(video)
+                assignment.assignment_level = levelCount
                 // assignment.assignment_content_video = JSON.stringify(video)
 
                 console.log('Assignment array : ', assignment)
@@ -996,7 +1022,8 @@
                 axios.post('http://early-steps.herokuapp.com/createAssignment', assignment)
                 .then(res => {
                     console.log(res.data)
-                    window.location.href = 'http://earlystepsmentor.herokuapp.com/addassignment'
+                    // window.location.href = 'http://earlystepsmentor.herokuapp.com/addassignment'
+                    window.location.href = 'http://localhost:3000/addassignment'
                 })
             })
 
