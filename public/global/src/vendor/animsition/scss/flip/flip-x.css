@@ -1,0 +1,66 @@
+@-webkit-keyframes flip-in-x {
+  0% {
+    opacity: 0;
+    -webkit-transform: perspective(550px) rotateX(90deg);
+            transform: perspective(550px) rotateX(90deg);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: perspective(550px) rotateX(0deg);
+            transform: perspective(550px) rotateX(0deg);
+  }
+}
+
+@keyframes flip-in-x {
+  0% {
+    opacity: 0;
+    -webkit-transform: perspective(550px) rotateX(90deg);
+            transform: perspective(550px) rotateX(90deg);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: perspective(550px) rotateX(0deg);
+            transform: perspective(550px) rotateX(0deg);
+  }
+}
+
+.flip-in-x {
+  -webkit-animation-name: flip-in-x;
+          animation-name: flip-in-x;
+  -webkit-backface-visibility: visible !important;
+          backface-visibility: visible !important;
+}
+
+@-webkit-keyframes flip-out-x {
+  0% {
+    opacity: 1;
+    -webkit-transform: perspective(550px) rotateX(0deg);
+            transform: perspective(550px) rotateX(0deg);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: perspective(550px) rotateX(90deg);
+            transform: perspective(550px) rotateX(90deg);
+  }
+}
+
+@keyframes flip-out-x {
+  0% {
+    opacity: 1;
+    -webkit-transform: perspective(550px) rotateX(0deg);
+            transform: perspective(550px) rotateX(0deg);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: perspective(550px) rotateX(90deg);
+            transform: perspective(550px) rotateX(90deg);
+  }
+}
+
+.flip-out-x {
+  -webkit-animation-name: flip-out-x;
+          animation-name: flip-out-x;
+  -webkit-backface-visibility: visible !important;
+          backface-visibility: visible !important;
+}
+/*# sourceMappingURL=flip-x.css.map */

@@ -1,0 +1,64 @@
+@-webkit-keyframes zoom-in-lg {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0.4);
+            transform: scale(0.4);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes zoom-in-lg {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0.4);
+            transform: scale(0.4);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.zoom-in-lg {
+  -webkit-animation-name: zoom-in-lg;
+          animation-name: zoom-in-lg;
+}
+
+@-webkit-keyframes zoom-out-lg {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    opacity: 0;
+    -webkit-transform: scale(0.4);
+            transform: scale(0.4);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes zoom-out-lg {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    opacity: 0;
+    -webkit-transform: scale(0.4);
+            transform: scale(0.4);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.zoom-out-lg {
+  -webkit-animation-name: zoom-out-lg;
+          animation-name: zoom-out-lg;
+}
+/*# sourceMappingURL=zoom-lg.css.map */

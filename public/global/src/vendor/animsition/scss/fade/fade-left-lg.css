@@ -1,0 +1,62 @@
+@-webkit-keyframes fade-in-left-lg {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-1500px);
+            transform: translateX(-1500px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@keyframes fade-in-left-lg {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-1500px);
+            transform: translateX(-1500px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+.fade-in-left-lg {
+  -webkit-animation-name: fade-in-left-lg;
+          animation-name: fade-in-left-lg;
+}
+
+@-webkit-keyframes fade-out-left-lg {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateX(-1500px);
+            transform: translateX(-1500px);
+  }
+}
+
+@keyframes fade-out-left-lg {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateX(-1500px);
+            transform: translateX(-1500px);
+  }
+}
+
+.fade-out-left-lg {
+  -webkit-animation-name: fade-out-left-lg;
+          animation-name: fade-out-left-lg;
+}
+/*# sourceMappingURL=fade-left-lg.css.map */

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,KAAK,AAAA,UAAU,AAAA,qBAAqB,EAAE,KAAK,AAAA,UAAU,AAAA,mBAAmB,CAAC;EACvE,UAAU,EAAE,YAAY;EACxB,aAAa,EAAE,YAAY;EAC3B,gBAAgB,EAAE,KAAK;CACxB;;AAED,AAAA,KAAK,AAAA,UAAU,AAAA,qBAAqB,CAAC;EACnC,QAAQ,EAAE,gBAAgB;CAC3B;;AAED,AAAA,KAAK,AAAA,UAAU,AAAA,mBAAmB,CAAC;EACjC,QAAQ,EAAE,mBAAmB;CAC9B;;AAED,MAAM,CAAC,KAAK;EACV,AAAA,KAAK,AAAA,qBAAqB,CAAC;IACzB,OAAO,EAAE,IAAI;GACd",
+    "sources": [
+        "dataTables.fixedheader.bootstrap4.scss"
+    ],
+    "names": [],
+    "file": "dataTables.fixedheader.bootstrap4.css"
+}

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,UAAU,CAAV,oBAAU;EACR,EAAE;IACA,MAAM,EAAC,IAAI;;EAEb,IAAI;IACF,MAAM,EAAC,CAAC;;;;AAIZ,AAAA,qBAAqB,CAAC;EACpB,cAAc,EAAE,oBAAoB;EACpC,MAAM,EAAC,CAAC;EACR,GAAG,EAAC,CAAC;CACN;;AAED,UAAU,CAAV,qBAAU;EACR,EAAE;IACA,MAAM,EAAC,CAAC;;EAEV,IAAI;IACF,MAAM,EAAC,IAAI;;;;AAIf,AAAA,sBAAsB,CAAC;EACrB,cAAc,EAAE,qBAAqB;EACrC,MAAM,EAAC,IAAI;EACX,GAAG,EAAC,CAAC;CACN",
+    "sources": [
+        "overlay-slide-top.scss"
+    ],
+    "names": [],
+    "file": "overlay-slide-top.css"
+}

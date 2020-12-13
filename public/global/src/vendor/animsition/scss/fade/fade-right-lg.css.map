@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,UAAU,CAAV,gBAAU;EACR,EAAE;IACA,OAAO,EAAE,CAAC;IACV,SAAS,EAAE,kBAAkB;;EAG/B,IAAI;IACF,OAAO,EAAE,CAAC;IACV,SAAS,EAAE,aAAa;;;;AAI5B,AAAA,iBAAiB,CAAC;EAChB,cAAc,EAAE,gBAAgB;CACjC;;AAED,UAAU,CAAV,iBAAU;EACR,EAAE;IACA,OAAO,EAAE,CAAC;IACV,SAAS,EAAE,aAAa;;EAG1B,IAAI;IACF,OAAO,EAAE,CAAC;IACV,SAAS,EAAE,kBAAkB;;;;AAIjC,AAAA,kBAAkB,CAAC;EACjB,cAAc,EAAE,iBAAiB;CAClC",
+    "sources": [
+        "fade-right-lg.scss"
+    ],
+    "names": [],
+    "file": "fade-right-lg.css"
+}

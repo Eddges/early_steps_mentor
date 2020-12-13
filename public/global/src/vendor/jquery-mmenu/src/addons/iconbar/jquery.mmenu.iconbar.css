@@ -1,0 +1,64 @@
+.mm-menu {
+  --mm-iconbar-size: 44px;
+}
+
+.mm-iconbar {
+  color: rgba(0, 0, 0, 0.3);
+  color: var(--mm-color-text-dimmed);
+  border: 0 solid rgba(0, 0, 0, 0.1);
+  border-color: var(--mm-color-border);
+  border-right-width: 1px;
+  text-align: center;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 44px;
+  width: var(--mm-iconbar-size);
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+}
+
+.mm-menu_iconbar .mm-panels,
+.mm-menu_iconbar .mm-navbars_top,
+.mm-menu_iconbar .mm-navbars_bottom {
+  left: 44px;
+  left: var(--mm-iconbar-size);
+}
+
+.mm-iconbar__top,
+.mm-iconbar__bottom {
+  width: inherit;
+  position: absolute;
+}
+
+.mm-iconbar__top > *,
+.mm-iconbar__bottom > * {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: block;
+  padding: 11px 0;
+}
+
+.mm-iconbar__top a,
+.mm-iconbar__top a:hover,
+.mm-iconbar__bottom a,
+.mm-iconbar__bottom a:hover {
+  text-decoration: none;
+}
+
+.mm-iconbar__top {
+  top: 0;
+}
+
+.mm-iconbar__bottom {
+  bottom: 0;
+}
+
+.mm-iconbar__tab_selected {
+  background: rgba(255, 255, 255, 0.4);
+  background: var(--mm-color-background-emphasis);
+}
+/*# sourceMappingURL=jquery.mmenu.iconbar.css.map */

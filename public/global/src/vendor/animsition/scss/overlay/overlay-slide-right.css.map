@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,UAAU,CAAV,sBAAU;EACR,EAAE;IACA,KAAK,EAAC,IAAI;;EAEZ,IAAI;IACF,KAAK,EAAC,CAAC;;;;AAIX,AAAA,uBAAuB,CAAC;EACtB,cAAc,EAAE,sBAAsB;EACtC,KAAK,EAAC,CAAC;EACP,KAAK,EAAC,CAAC;CACR;;AAED,UAAU,CAAV,uBAAU;EACR,EAAE;IACA,KAAK,EAAC,CAAC;;EAET,IAAI;IACF,KAAK,EAAC,IAAI;;;;AAId,AAAA,wBAAwB,CAAC;EACvB,cAAc,EAAE,uBAAuB;EACvC,KAAK,EAAC,IAAI;EACV,KAAK,EAAC,CAAC;CACR",
+    "sources": [
+        "overlay-slide-right.scss"
+    ],
+    "names": [],
+    "file": "overlay-slide-right.css"
+}

@@ -1,0 +1,11 @@
+{
+    "version": 3,
+    "mappings": "AAMC,AAGC,kBAHiB,CAGjB,kBAAkB;AAFnB,mBAAmB,CAElB,kBAAkB,CAClB;EACC,aAAa,EAAE,IAAI;EACnB,WAAW,EAAE,MAAM;CACnB",
+    "sources": [
+        "jquery.mmenu.multiline.scss",
+        "../../_mixins.scss",
+        "../../_variables.scss"
+    ],
+    "names": [],
+    "file": "jquery.mmenu.multiline.css"
+}

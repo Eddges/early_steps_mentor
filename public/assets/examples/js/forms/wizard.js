@@ -381,7 +381,7 @@
                       console.log("CP: 5");
                       sessionStorage.setItem("redirect","dashboard")
                       setTimeout(()=>{
-                        window.location.href = './dashboard';
+                        window.location.href = '/dashboard';
                       },2000);
                      
                       console.log(response);

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,WAAW,CAAC;EACX,cAAc,EAAE,UAAU;EAC1B,kBAAkB,EAAE,IAAI;EACxB,yBAAyB,EAAC,QAAQ;EAClC,yBAAyB,EAAC,WAAW;EACrC,mBAAmB,EAAE,SAAS;CAC9B;;AAED,UAAU,CAAV,UAAU;EACT,EAAE;IAAK,OAAO,EAAE,GAAG;;EACnB,GAAG;IAAI,OAAO,EAAE,GAAG;;EACnB,IAAI;IAAG,OAAO,EAAE,CAAC",
+    "sources": [
+        "blink.scss"
+    ],
+    "names": [],
+    "file": "blink.css"
+}

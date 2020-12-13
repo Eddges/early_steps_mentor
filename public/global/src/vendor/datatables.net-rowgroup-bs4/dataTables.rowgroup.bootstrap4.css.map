@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,KAAK,AAAA,UAAU,CAAC,EAAE,AAAA,MAAM,CAAC,EAAE,CAAC;EAC1B,WAAW,EAAE,IAAI;EACjB,gBAAgB,EAAE,OAAO;CAC1B",
+    "sources": [
+        "dataTables.rowgroup.bootstrap4.scss"
+    ],
+    "names": [],
+    "file": "dataTables.rowgroup.bootstrap4.css"
+}

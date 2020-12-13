@@ -666,14 +666,14 @@
                   // sessionStorage.setItem("course_id", document.getElementById("course_id").value);
                     // if(document.getElementById("course_id").value==="1000")
                     // {
-                    //   window.location.href = "./dashboard-others";                     }
+                    //   window.location.href = "/dashboard-others";                     }
                     // else
                     // {
                         sessionStorage.setItem("course_id", props)
                         sessionStorage.setItem("redirect", "dashboard")
 
                         if(res.data.a.length!=0){
-                        window.location.href = "./dashboard"; 
+                        window.location.href = "/dashboard"; 
                       }
                       else{
                         window.location.href = "./profile"; 

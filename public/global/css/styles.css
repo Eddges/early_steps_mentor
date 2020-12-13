@@ -1,0 +1,223 @@
+.proceedButton {
+  border: none;
+  background-color: #f76c5e;
+  border-radius: 5px;
+  color: white;
+  font-weight: 900;
+  padding: 8px 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.proceedButton:disabled {
+  background-color: #c2493e51;
+  color: white;
+  cursor: not-allowed;
+}
+
+.yellowBG {
+  background-color: #f76b5e2a;
+  border-radius: 5px;
+}
+
+.coral {
+  color: #f76c5e !important;
+}
+
+.white {
+  color: white !important;
+}
+
+.grey {
+  color: #3a3a3a !important;
+}
+
+.coralBG {
+  background-color: #f76c5e !important;
+}
+
+.yellowBG {
+  background-color: #fcd556 !important;
+}
+
+.card {
+  -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.145);
+          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.145);
+}
+
+.esButton {
+  border: none;
+  background-color: #f76c5e;
+  border-radius: 4px;
+  color: white;
+  font-weight: 900;
+  padding: 8px 28px;
+  cursor: pointer;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.esButton:hover {
+  background-color: #c2493ee0;
+  color: white;
+  cursor: pointer;
+}
+
+.fontLight {
+  font-weight: 400;
+}
+
+.maxWidth {
+  width: 90%;
+}
+
+.treasure {
+  margin: 10px 40px;
+  width: 50%;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px;
+  -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.076);
+          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.076);
+}
+
+.treasure .treasureHeading {
+  font-size: 1.5rem;
+}
+
+.treasure img {
+  width: 60%;
+}
+
+.ModalSubmission {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.ModalSubmission .SubmitHeader {
+  font-size: 2.5rem;
+  font-weight: 600;
+  padding: 5px 0px;
+  color: black;
+}
+
+.ModalSubmission .SubmitHeader2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: black;
+}
+
+.ModalSubmission .SubmitCoins {
+  font-size: 2.5rem;
+  font-weight: 600;
+  padding: 0px;
+  color: #ffbe29;
+}
+
+.ModalSubmission img {
+  width: 30%;
+}
+
+.spinner {
+  width: 100%;
+  min-height: 60vh;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  top: 0px;
+  left: 0px;
+}
+
+.loader {
+  font-size: 10px;
+  text-indent: -9999em;
+  width: 8em;
+  height: 8em;
+  border-radius: 50%;
+  background: #f76c5e;
+  background: -webkit-gradient(linear, left top, right top, color-stop(10%, #f76c5e), color-stop(42%, rgba(247, 108, 94, 0)));
+  background: linear-gradient(to right, #f76c5e 10%, rgba(247, 108, 94, 0) 42%);
+  position: relative;
+  -webkit-animation: load3 1.4s infinite linear;
+  animation: load3 1.4s infinite linear;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.loader:before {
+  width: 50%;
+  height: 50%;
+  background: #f76c5e;
+  border-radius: 100% 0 0 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '';
+}
+
+.loader:after {
+  background: #ffffff;
+  width: 75%;
+  height: 75%;
+  border-radius: 50%;
+  content: '';
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+@-webkit-keyframes load3 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes load3 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,WAAW,EAAE,cAAc,EAAE,SAAS,EAAE,aAAa,EAAE,eAAe,EAAE,oBAAoB,EAAE,SAAS,EAAE,cAAc,CAAC;EACtH,MAAM,EAAE,KAAK;CACd;;AAED,AAAA,uBAAuB,CAAC;EACtB,MAAM,EAAE,KAAK;CACd;;AAED,AAAA,OAAO,CAAC,KAAK,CAAC;EACZ,cAAc,EAAE,GAAG;CACpB",
+    "sources": [
+        "flot.scss"
+    ],
+    "names": [],
+    "file": "flot.css"
+}

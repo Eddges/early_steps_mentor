@@ -264,7 +264,7 @@
         <!-- End alert message -->
 
 
-
+            
 
         
         <!-- -------------Main Section---------------- -->
@@ -409,14 +409,14 @@
      function hidemepro(){
       document.getElementById('processing-div').style.display="none";
     }
-            function enterportal(key){
-                console.log(window.location.pathname)
-                let pathname = window.location.pathname
-                const classId = pathname.split('/')[2]
-                console.log('ClassId : ', classId)
-                window.location.href = `/create/${classId}`;
+        function enterportal(key){
+            console.log(window.location.pathname)
+            let pathname = window.location.pathname
+            const classId = pathname.split('/')[2]
+            console.log('ClassId : ', classId)
+            window.location.href = `/create/${classId}`;
 
-            }
+        }
 
             function requestcallback(key){
                 window.scrollTo(0,0);

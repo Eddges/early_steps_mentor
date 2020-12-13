@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,IAAI,AAAA,WAAW,CAAC,YAAY,CAC5B;EACI,OAAO,EAAE,KAAK;CACjB",
+    "sources": [
+        "jquery.mmenu.bootstrap4.scss"
+    ],
+    "names": [],
+    "file": "jquery.mmenu.bootstrap4.css"
+}

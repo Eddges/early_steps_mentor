@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,UAAU,AAAA,WAAW,CAAC;EACpB,YAAY,EAAE,GAAG;EACjB,MAAM,EAAE,KAAK;CACd;;AACD,AAAA,mBAAmB,CAAC;EAClB,IAAI,EAAE,KAAK;EACX,YAAY,EAAE,GAAG;CAClB",
+    "sources": [
+        "point.scss"
+    ],
+    "names": [],
+    "file": "point.css"
+}

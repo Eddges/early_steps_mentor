@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,UAAU,CAAV,uBAAU;EACR,EAAE;IACA,MAAM,EAAC,IAAI;;EAEb,IAAI;IACF,MAAM,EAAC,CAAC;;;;AAGZ,AAAA,wBAAwB,CAAC;EACvB,cAAc,EAAE,uBAAuB;EACvC,MAAM,EAAC,CAAC;EACR,MAAM,EAAC,CAAC;CACT;;AAED,UAAU,CAAV,wBAAU;EACR,EAAE;IACA,MAAM,EAAC,CAAC;;EAEV,IAAI;IACF,MAAM,EAAC,IAAI;;;;AAGf,AAAA,yBAAyB,CAAC;EACxB,cAAc,EAAE,wBAAwB;EACxC,MAAM,EAAC,IAAI;EACX,MAAM,EAAC,CAAC;CACT",
+    "sources": [
+        "overlay-slide-bottom.scss"
+    ],
+    "names": [],
+    "file": "overlay-slide-bottom.css"
+}

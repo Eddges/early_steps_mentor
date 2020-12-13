@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,KAAK,AAAA,iBAAiB,CAAC;EACrB,gBAAgB,EAAE,IAAI;EACtB,UAAU,EAAE,IAAI;EAChB,aAAa,EAAE,IAAI;CACpB",
+    "sources": [
+        "jquery.floatThead.scss"
+    ],
+    "names": [],
+    "file": "jquery.floatThead.css"
+}
