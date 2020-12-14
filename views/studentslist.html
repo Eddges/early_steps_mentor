@@ -155,7 +155,7 @@
                                 </a>
     
                             </li>
-                            <li class="site-menu-item ">
+                            <li class="site-menu-item active">
                                 <a href="/students">
                                     <i class="site-menu-icon wb-layout" style="color:#27c24c" aria-hidden="true"></i>
                                     <span class="site-menu-title">Students</span>
@@ -171,10 +171,10 @@
                                 </a>
                             </li> -->
     
-                            <li class="site-menu-item active">
-                                <a href="/gradeassignment">
+                            <li class="site-menu-item ">
+                                <a href="/assignmentcourses">
                                     <i class="site-menu-icon wb-star-outline" style="color:#23b7e5" aria-hidden="true"></i>
-                                    <span class="site-menu-title">Grade Assignments</span>
+                                    <span class="site-menu-title">Assignments</span>
                                     <span class="site-menu-arrow"></span>
                                 </a>
     
@@ -338,7 +338,7 @@
                 </div>
                 <p id="coursename1" class="font-size-20 blue-grey-700">Geography - India</p>
                 
-                <p class="mb-35" style="font-weight:bold">India, officially the Republic of India, is a country in South Asia. It is the second-most populous country, the seventh-largest country by land area, and the most populous democracy in the world.</p>
+                <p  style="font-weight:bold">India, officially the Republic of India, is a country in South Asia. It is the second-most populous country, the seventh-largest country by land area, and the most populous democracy in the world.</p>
                 
                 <button type="button" class="btn btn-primary px-20" onclick="enterportal('2');" >Assignments</button><br>
             </div>
@@ -347,15 +347,14 @@
              
     </div> -->
 
-    <h1 class='display-4'>Course Modules</h1>
-
-    <br />
+    <h1 class='display-4'>Enrolled Students</h1>
 
     <div class='spinner'>
         <div class="loader"></div>
     </div>
 
-      
+    
+    <br />
     <div class="row" id='coursesRow' data-plugin="match Height" data-by-row="true">
 
 
@@ -462,7 +461,8 @@
         <script src="../assets/examples/js/dashboard/v1.js"></script>
 
         <script>
-        var url= 'https://api.codeasylums.com';
+        // var url= 'https://api.codeasylums.com';
+        var url = 'https://early-steps.herokuapp.com/'
         function hideme(){
       document.getElementById('alert-message-div').style.display="none";
     }
@@ -475,8 +475,10 @@
       document.getElementById('processing-div').style.display="none";
     }
             function enterportal(key){
+
+                sessionStorage.setItem('selected_course', key)
                 
-                window.location.href = `/gradeassignment/${key}`;
+                window.location.href = `/studentslist`;
 
             }
 
@@ -613,41 +615,51 @@
             //     console.log('Response data : ', res.data)
             // })
 
-            let courseId = sessionStorage.getItem('selected_course')
             let course = {}
 
-            axios.get(url + `/getCourseByBootacampId/`+ courseId)
-            .then(res => {
-                console.log(res.data)
-                $('.spinner').css('display', 'none')
-                res.data.map(iterator => {
-                    const moduleDate = new Date(iterator.course_date)
-                    const currDate = new Date()
-                    // const subDate = moduleDate.setHours(moduleDate.getHours() - 48)
-                    // console.log('Subtracted : ', new Date(subDate))
-                    const displayDate = String(moduleDate).split(' ').splice(0, 5).join(' ').split(':').splice(0, 2).join(':')
-                    document.querySelector('#coursesRow').innerHTML += `
-                        <div class="col-xxl-3 col-xl-6" >
-                            <span class="w-100 p-3">${displayDate}</span>
-                            <div class="card card-shadow">
-                                <div class="card-block text-center bg-white p-40">
-                                    <div class="avatar avatar-100 mb-10" style='width : 35%;'>
-                                        <img src="../../assets/images/assignment.jpg" alt="" style="border-radius:0px;">
+
+
+            const courseId = sessionStorage.getItem('selected_course')
+
+            axios.get(url + '/getUserByCourse/' + courseId)
+            .then(res0 => {
+                
+
+                res0.data.a.map(iterator => {
+                    axios.get(url + `/getRegistration/`+ iterator)
+                    .then(res => {
+                        console.log('Enrolled students : ', res.data)
+                        $('.spinner').css('display', 'none')
+                        if(res.data.phone !== sessionStorage.getItem('user_id'))
+                        document.querySelector('#coursesRow').innerHTML += `
+                            <div class="col-xxl-3 col-xl-6" >
+                                <div class="card card-shadow">
+                                    <div class="card-block text-center bg-white p-40">
+                                        <div class="avatar avatar-100 mb-10" style='width : 35%;'>
+                                            <img src="../../assets/images/dino.svg" alt="" style="border-radius:0px;">
+                                        </div>
+                                        <p id="coursename1" class="font-size-20 blue-grey-700">${res.data.first_name} ${res.data.last_name}</p>
+                                        
+                                        <p >Grade : <strong>${res.data.grade}</strong></p>
+                                        <p >Phone : <strong>${res.data.phone}</strong></p>
+                                        <p >Email : <strong>${res.data.email}</strong></p>
                                     </div>
-                                    <p id="coursename1" class="font-size-20 blue-grey-700">${iterator.course_name}</p>
-                                    
-                                    <p class="mb-35">${iterator.course_details}</p>
-                                    
-                                    <button type="button" class="proceedButton textLight" id='module${iterator.course_id}' onclick="enterportal(${iterator.course_id});"  >View Assignments</button><br>
                                 </div>
                             </div>
-                        </div>
-                    `
-                    // if(moduleDate>=currDate) {
-                    //     document.querySelector(`#module${iterator.course_id}`).setAttribute('disabled', 'true')
-                    // }
+                        `
+                    })
+                    .catch(err => {
+                        alert(err)
+                    })
                 })
             })
+
+            // for(iterator of courseId.split(';')) {
+
+            // }
+
+            
+
 
             
 
