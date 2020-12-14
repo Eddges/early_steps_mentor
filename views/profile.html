@@ -58,7 +58,7 @@
         if (sessionStorage.getItem("loggedCA") === md5("true") && sessionStorage.getItem("redirect") == "dashboard") {
 
             } else {
-                window.location.href = "./login";
+                window.location.href = "/login";
             }
         
         function globalCall(){
@@ -75,7 +75,7 @@
 
             if (sessionStorage.getItem("loggedCA") != md5("true") && sessionStorage.getItem("redirect") == "dashboard") {
                     // console.log("GLOBAL");
-                    window.location.href = "./login";
+                    window.location.href = "/login";
             } else {
                     getprofiledata();
             }
@@ -118,7 +118,7 @@
         function getUserData() {
             if (sessionStorage.getItem("loggedCA") != md5("true")) {
                     // console.log("GLOBAL");
-                    window.location.href = "./login";
+                    window.location.href = "/login";
             }
             let user_id = sessionStorage.getItem("user_id");
             axios.get( url+`/getUserData/` + `${user_id}
@@ -147,7 +147,7 @@
         function getJobProfileData() {
             if (sessionStorage.getItem("loggedCA") != md5("true")) {
                     // console.log("GLOBAL");
-                    window.location.href = "./login";
+                    window.location.href = "/login";
             }
             let user_id = sessionStorage.getItem("user_id");
             axios.get( url+`/getJobProfile/` + `${user_id}
@@ -175,7 +175,7 @@
 
         function getProgrammingProfileData() {
             if (sessionStorage.getItem("loggedCA") != md5("true")) {
-                    window.location.href = "./login";
+                    window.location.href = "/login";
             }
             let user_id = sessionStorage.getItem("user_id");
             axios.get( url+`/getProgrammingProfile/` + `${user_id}
@@ -251,7 +251,7 @@
                         </a>
                         <div class="dropdown-menu" role="menu">
                           
-                            <a class="dropdown-item" href="./login" onclick="logout();" role="menuitem"><i class="icon wb-power" aria-hidden="true"></i> Logout</a>
+                            <a class="dropdown-item" href="/login" onclick="logout();" role="menuitem"><i class="icon wb-power" aria-hidden="true"></i> Logout</a>
                         </div>
                     </li>
 
@@ -764,7 +764,7 @@
 
         //     if (sessionStorage.getItem("loggedCA") != md5("true")) {
         //         // console.log("GLOBAL");
-        //         window.location.href = "./login";
+        //         window.location.href = "/login";
         //     } else {
         //         getprofiledata();
         //     }

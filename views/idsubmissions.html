@@ -111,7 +111,7 @@
                         </a>
                         <div class="dropdown-menu" role="menu">
                           
-                            <a class="dropdown-item"  href="./login" onclick="logout();" role="menuitem"><i class="icon wb-power" aria-hidden="true"></i> Logout</a>
+                            <a class="dropdown-item"  href="/login" onclick="logout();" role="menuitem"><i class="icon wb-power" aria-hidden="true"></i> Logout</a>
                         </div>
                     </li>
 
@@ -533,7 +533,7 @@
             if (sessionStorage.getItem("loggedCA") === md5("true")) {
                 globalCall();
             } else {
-                window.location.href = "./login";
+                window.location.href = "/login";
             }
             function logout(){
               sessionStorage.clear();

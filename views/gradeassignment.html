@@ -112,7 +112,7 @@
                         </a>
                         <div class="dropdown-menu" role="menu">
                           
-                            <a class="dropdown-item"  href="./login" onclick="logout();" role="menuitem"><i class="icon wb-power" aria-hidden="true"></i> Logout</a>
+                            <a class="dropdown-item"  href="/login" onclick="logout();" role="menuitem"><i class="icon wb-power" aria-hidden="true"></i> Logout</a>
                         </div>
                     </li>
 
@@ -327,7 +327,7 @@
 
 
           
-    <div class="row" data-plugin="matchHeight" data-by-row="true">
+    <!-- <div class="row" data-plugin="matchHeight" data-by-row="true">
 
         <div class="col-xxl-3 col-xl-6" style="height: 380px;">
             <span class="w-100 p-3">Wednesday, Nov 11</span>
@@ -341,13 +341,18 @@
                 <p class="mb-35" style="font-weight:bold">India, officially the Republic of India, is a country in South Asia. It is the second-most populous country, the seventh-largest country by land area, and the most populous democracy in the world.</p>
                 
                 <button type="button" class="btn btn-primary px-20" onclick="enterportal('2');" >Assignments</button><br>
-                <!-- <button id="VirginAlgorithm" type="button"  disabled="true" class="btn px-20 btn-success" onclick="enterportal();" style="margin-top:10px;">View Assignment</button> -->
             </div>
             </div>
-            <!-- End Panel Web Designer -->
         </div>
              
+    </div> -->
+
+    <div class='spinner'>
+        <div class="loader"></div>
     </div>
+
+      
+    <div class="row" id='coursesRow' data-plugin="match Height" data-by-row="true">
 
 
 
@@ -591,7 +596,7 @@
             if (sessionStorage.getItem("loggedCA") === md5("true")) {
                 globalCall();
             } else {
-                window.location.href = "./login";
+                window.location.href = "/login";
             }
             function logout(){
               sessionStorage.clear();
@@ -599,10 +604,47 @@
             }
 
 
-            axios.get('https://early-steps.herokuapp.com/getAllAssignment')
+            // axios.get('https://early-steps.herokuapp.com/getAllAssignment')
+            // .then(res => {
+            //     console.log('Response data : ', res.data)
+            // })
+
+            let courseId = sessionStorage.getItem('selected_course')
+            let course = {}
+
+            axios.get(url + `/getCourseByBootacampId/`+ courseId)
             .then(res => {
-                console.log('Response data : ', res.data)
+                console.log(res.data)
+                $('.spinner').css('display', 'none')
+                res.data.map(iterator => {
+                    const moduleDate = new Date(iterator.course_date)
+                    const currDate = new Date()
+                    // const subDate = moduleDate.setHours(moduleDate.getHours() - 48)
+                    // console.log('Subtracted : ', new Date(subDate))
+                    const displayDate = String(moduleDate).split(' ').splice(0, 5).join(' ').split(':').splice(0, 2).join(':')
+                    document.querySelector('#coursesRow').innerHTML += `
+                        <div class="col-xxl-3 col-xl-6" >
+                            <span class="w-100 p-3">${displayDate}</span>
+                            <div class="card card-shadow">
+                                <div class="card-block text-center bg-white p-40">
+                                    <div class="avatar avatar-100 mb-10" style='width : 35%;'>
+                                        <img src="../../assets/images/assignment.jpg" alt="" style="border-radius:0px;">
+                                    </div>
+                                    <p id="coursename1" class="font-size-20 blue-grey-700">${iterator.course_name}</p>
+                                    
+                                    <p class="mb-35">${iterator.course_details}</p>
+                                    
+                                    <button type="button" class="proceedButton textLight" id='module${iterator.course_id}' onclick="enterportal(${iterator.course_id});"  >View Assignments</button><br>
+                                </div>
+                            </div>
+                        </div>
+                    `
+                    // if(moduleDate>=currDate) {
+                    //     document.querySelector(`#module${iterator.course_id}`).setAttribute('disabled', 'true')
+                    // }
+                })
             })
+
             
 
         </script>

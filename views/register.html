@@ -290,7 +290,7 @@
 
 
         let userTypeValue = document.getElementById("usertype").value;
-        let redirectURL = "./login";
+        let redirectURL = "/login";
         var flag1 = true;
         var flag2 = true
         // console.log(flag1,flag2)
@@ -298,11 +298,11 @@
         .then((res)=>{
           if(res.data==="True")
             {
-               document.getElementById('alert-message-div').style.display="block";
-          document.getElementById('message-div').innerHTML="Email already registered!";
-          document.getElementById('processing-div').style.display="none";
+              document.getElementById('alert-message-div').style.display="block";
+              document.getElementById('message-div').innerHTML="Email already registered!";
+              document.getElementById('processing-div').style.display="none";
 
-          //return false;
+              //return false;
            
           }
         })
@@ -313,11 +313,9 @@
               .then((res)=>{
                 if(res.data==="True")
                 {
-                    document.getElementById('alert-message-div').style.display="block";
-          document.getElementById('message-div').innerHTML="Phone number already registered!";
-          document.getElementById('processing-div').style.display="none";
-
-          //return false;
+                  document.getElementById('alert-message-div').style.display="block";
+                  document.getElementById('message-div').innerHTML="Phone number already registered!";
+                  document.getElementById('processing-div').style.display="none";
                             
                 }
               })
@@ -331,7 +329,7 @@
              
               axios.post( url+'/doRegistration', {
                 user_id: phoneValue,
-                user_type: userTypeValue,
+                user_type: 'mentor',
                 user_name: usernameValue,
                 phone: phoneValue,
                 email: emailValue,
