@@ -611,7 +611,9 @@
                     assignmentDescription.innerHTML = res.data.assignment_desc
                     // aText = JSON.parse(res.data.assignment_content_text)
 
-                    if(res.data.assignment_content_text) {
+                    console.log('Text exists? ', res.data.assignment_content_text)
+                    if(res.data.assignment_content_text !== '[]') {
+                        console.log('Text exists')
                         JSON.parse(res.data.assignment_content_text).map((iterator, index) => {
                             writtenDisplay.innerHTML += `
                                 <br/>
@@ -625,13 +627,16 @@
                     }
 
                     
-
-                    if(res.data.assignment_content_video) {
+                    console.log('Video exists? , ', res.data.assignment_content_video)
+                    if(res.data.assignment_content_video !== '{}') {
+                        console.log('Video exists')
                         videoDisplay.innerHTML = `
                             <br/>
                             <h4 id='${JSON.parse(res.data.assignment_content_video).videoId}'>Q. ${JSON.parse(res.data.assignment_content_video).question}</h4> 
                             <div class="container">
-                                <strong>URL: <p></strong>${submissionContent.video.vidURL}</p>
+                                <video controls width='300'>
+                                    <source src='${submissionContent.video.vidURL}' type='video/mp4'>
+                                </video>
                                 <div class="input-group mb-3 col-md-5">
                                     <input id='id${submissionContent.video.questionId}' type="text" class="form-control" onchange="inputFeedbackVideo(${submissionContent.video.questionId})" placeholder="Enter Feedback" aria-label="Recipient's username" aria-describedby="button-addon2">
                                 </div>
@@ -639,8 +644,9 @@
                         `
                     }
                     
-                    
-                    if(res.data.assignment_content_mcq) {
+                    console.log('MCQ exists? ', res.data.assignment_content_mcq)
+                    if(res.data.assignment_content_mcq !== '[]') {
+                        console.log('MCQ exists')
                         JSON.parse(res.data.assignment_content_mcq).map((iterator, index) => {
                         objectiveDisplay.innerHTML += `
                             <h4 id='${iterator.questionId}'>Q ${index + 1}. ${iterator.question}</h4> 
