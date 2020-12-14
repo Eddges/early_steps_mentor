@@ -407,8 +407,9 @@
      function hidemepro(){
       document.getElementById('processing-div').style.display="none";
     }
-            function enterportal(key){
+            function enterportal(key, score){
                 console.log(window.location.pathname)
+                sessionStorage.setItem('assignment_base_score', +score)
                 let pathname = window.location.pathname
                 const classId = pathname.split('/')[2]
                 console.log('ClassId : ', classId)
@@ -560,7 +561,7 @@
                             <p class="card-text">${iterator.assignment_desc}</p>
                             <small>Submission Score: <strong>${iterator.assignment_submission_score}</strong></small>
                             <hr />
-                            <button onclick="enterportal(${iterator.assignment_id})" class="btn btn-primary esButton">View Submissions</button>
+                            <button onclick="enterportal(${iterator.assignment_id}, ${iterator.assignment_submission_score})" class="btn btn-primary esButton">View Submissions</button>
                             </div>
                         </div>
                     `
