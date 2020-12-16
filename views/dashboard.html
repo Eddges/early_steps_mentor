@@ -158,7 +158,7 @@
                             </a>
 
                         </li>
-                        <li class="site-menu-item ">
+                        <li class="site-menu-item " id="studentsLink">
                             <a href="/students">
                                 <i class="site-menu-icon wb-layout" style="color:#27c24c" aria-hidden="true"></i>
                                 <span class="site-menu-title">Students</span>
@@ -174,7 +174,7 @@
                             </a>
                         </li> -->
 
-                        <li class="site-menu-item ">
+                        <li class="site-menu-item " id='assignmentsLink'>
                             <a href="/assignmentcourses">
                                 <i class="site-menu-icon wb-star-outline" style="color:#23b7e5" aria-hidden="true"></i>
                                 <span class="site-menu-title">Assignments</span>
@@ -183,7 +183,7 @@
 
                         </li>
 
-                        <li class="site-menu-item">
+                        <li class="site-menu-item" id='feedbacksLink'>
                             <a href="/feedback">
                                 <i class="site-menu-icon wb-graph-up" style="color:#f05050" aria-hidden="true"></i>
                                 <span class="site-menu-title">Feedbacks</span>
@@ -191,7 +191,7 @@
                             </a>
                         </li>
 
-                        <li class="site-menu-item has-sub">
+                        <li class="site-menu-item has-sub" id='scheduleLink'>
                             <a href="/schedule">
                                 <i class="site-menu-icon wb-calendar" aria-hidden="true"></i>
                                 <span class="site-menu-title">Schedule</span>
@@ -262,8 +262,6 @@
                                         <img id="photoimg" alt="" src="../../assets/images/upload.png" style='border-radius: 0px;'>
                                     </a>
                                     <div id="name" class="font-size-20 mt-10 grey"></div>
-                                    <!-- <div id="courses" class="font-size-14"></div>
-                                    <div id="batch_id" class="font-size-14"></div> -->
                                 </div>
                             </div>
                         </div>
@@ -272,128 +270,8 @@
                               
                             </div>
                           </div>
-                        <!-- <div class="card-block">
-                            <div class="row text-center mb-20">
-                                <div class="col-6">
-                                    <div class="counter">
-                                        <div class="counter-label total-completed">BADGE</div>
-                                        <div id="progress_details" class="red-600 example-title" style="font-weight:bold;margin-top: 10px;"></div>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="counter">
-                                        <div class="counter-label">RATINGS</div>
-                                        <div id="star" class="rating" data-plugin="rating" style="margin-top: 10px;">
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="table-responsive">
-                                <table class="table">
-
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                Class Attended
-                                            </td>
-                                            <td>
-                                                <div class="progress progress-xs mb-0">
-                                                    <div id="classes_completed_bar" class="progress-bar progress-bar-info bg-blue-600" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <span id="classes_completed">0</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                Problems Solved
-                                            </td>
-                                            <td>
-                                                <div class="progress progress-xs mb-0">
-                                                    <div id="problems_completed_bar" class="progress-bar progress-bar-info bg-green-600" role="progressbar" aria-valuenow="86" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <span id="problems_completed">0</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                Contests Attempted
-                                            </td>
-                                            <td>
-                                                <div class="progress progress-xs mb-0">
-                                                    <div id="contest_completed_bar" class="progress-bar progress-bar-info bg-red-600" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <span id="contest_completed">0</span>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
-
-
-                <!-- <div class="col-xxl-6 col-xl-12 col-lg-12" style="height: 700px;">
-                    Panel Tickets
-                    <div class="panel">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Classes</h3>
-                            <div class="panel-actions panel-actions-keep">
-                                <div class="dropdown">
-                    <a class="panel-action" id="examplePanelDropdown" data-toggle="dropdown" href="#" aria-expanded="false" role="button"><i class="icon wb-more-vertical" aria-hidden="true"></i></a>
-                    <div class="dropdown-menu dropdown-menu-bullet dropdown-menu-right" aria-labelledby="examplePanelDropdown" role="menu">
-                      <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon wb-flag" aria-hidden="true"></i> Action</a>
-                      <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon wb-print" aria-hidden="true"></i> Another action</a>
-                      <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon wb-heart" aria-hidden="true"></i> Something else here</a>
-                      <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon wb-share" aria-hidden="true"></i> Separated link</a>
-                    </div>
-                  </div>
-                            </div>
-                        </div>
-                        <div class="panel-body">
-                            <ul class="list-group list-group-dividered list-group-full h-700 scrollable is-enabled scrollable-vertical" data-plugin="scrollable" style="position: relative;">
-                                <div data-role="container" class="scrollable-container" style="height: 578px; width: 280px;">
-                                    <div data-role="content" class="scrollable-content" style="width: 280px;" id="classes">
-
-                                    </div>
-                                </div>
-                                <div class="scrollable-bar scrollable-bar-vertical scrollable-bar-hide" draggable="false">
-                                    <div class="scrollable-bar-handle" style="height: 136.661px; transform: translate3d(0px, 0px, 0px);"></div>
-                                </div>
-                            </ul>
-                        </div>
-                    </div>
-                     End Panel Tickets 
-                </div> -->
-                <!-- <div class="col-xxl-4 ">
-                    <div id="recentActivityWidget" class="card card-shadow card-lg pb-20">
-                        <div class="card-header card-header-transparent pb-10">
-                            <div class="card-header-actions">
-                                <span class="badge badge-default badge-round">VIEW ALL</span>
-                            </div>
-                            <h5 class="card-title">
-                                ACTIVITY
-                            </h5>
-                        </div>
-                        <ul id="todo" class="timeline timeline-icon" style="position:unset;">
-
-                        </ul>
-                    </div>
-                </div> -->
-
-
-
-
 
             </div>
         </div>
@@ -550,21 +428,6 @@
 
 
         function joinclass(url, index, schedule_id) {
-           /* console.log(url, index);
-            if (url !== "" && url != "undefined") {
-                window.open(url, "_blank");
-            }
-            // else if(url == "undefined")
-            // {
-            //     document.getElementById(`zoombtn`+`${index}`).href = "javascript:void(0)";
-            //     document.getElementById(`zoomlink`+`${index}`).style.cursor = "not-allowed";
-            //     document.getElementById(`zoomlink`+`${index}`).style.backgroundColor = "lightgrey";
-            // } 
-            else {
-                document.getElementById(`zoombtn` + `${index}`).href = "javascript:void(0)";
-                document.getElementById(`zoomlink` + `${index}`).style.cursor = "not-allowed";
-                document.getElementById(`zoomlink` + `${index}`).style.backgroundColor = "lightgrey";
-            }*/
             sessionStorage.setItem("meet", schedule_id);
             window.open("../../global/js/config/index.html","_self");
         }
@@ -617,35 +480,11 @@
                 });
         }
 
-        // function mentorFeedback() {
-        //     let user_idValue = sessionStorage.getItem("user_id");
-        //     let mentorFeedback_textValue = document.getElementById("mentorFeedback_text").value;
-        //     let mentorName = document.getElementById("mentorvalue").value;
-        //     let classesName = document.getElementById("classvalue").value;
-        //     let mentorFeedback_type = "mentor"
-        //     document.getElementById('processing-div').style.display = "block";
-        //     document.getElementById('message-processing').innerHTML = "Processing...";
+        document.querySelector('#studentsLink').style.display = 'none'
+        document.querySelector('#assignmentsLink').style.display = 'none'
+        document.querySelector('#feedbacksLink').style.display = 'none'
+        document.querySelector('#scheduleLink').style.display = 'none'
 
-        //     axios.post(`${url}` + `/doFeedback`, {
-        //             user_id: user_idValue,
-        //             feedback_details: mentorFeedback_textValue + "~" + mentorName + "~" + classesName + "~" + classDate,
-        //             feedback_type: mentorFeedback_type
-        //         })
-        //         .then(function(response) {
-        //             window.scrollTo(0, 0);
-        //             document.getElementById('processing-div').style.display = "none";
-        //             document.getElementById('info-message-div').style.display = "block";
-        //             document.getElementById('message-div-info').innerHTML = "Feedback submitted successfully!";
-
-        //             // console.log(response);
-        //         })
-        //         .catch(function(error) {
-        //             document.getElementById('processing-div').style.display = "none";
-        //             document.getElementById('alert-message-div').style.display = "block";
-        //             document.getElementById('message-div').innerHTML = "Something went wrong, Please try again!";
-        //             // console.log(error);
-        //         });
-        // }
 
         function globalCall() {
             let user_id = sessionStorage.getItem("user_id");
@@ -661,19 +500,12 @@
                     console.log('Course_id : ', response.data.a[0].course_id)
                     let data = response.data.a[0]
 
-                    if(data.course_id === 'NA') {
-                        console.log('NA')
+                    if(data.course_id !== 'NA') {
+                        document.querySelector('#studentsLink').style.display = ''
+                        document.querySelector('#assignmentsLink').style.display = ''
+                        document.querySelector('#feedbacksLink').style.display = ''
+                        document.querySelector('#scheduleLink').style.display = ''
                     }
-                    // if(response.data.a[0].course_id !== 'NA') {
-                    //     console.log('NA')
-                    // }
-                    // if (sessionStorage.getItem("photo")) {
-                    //     document.getElementById("photoimg").src = sessionStorage.getItem("photo");
-
-                    // } else {
-                    //     document.getElementById("photoimg").src = "../../assets/images/upload.png";
-
-                    // }
 
 
                 }).catch(function(error) {
@@ -688,15 +520,11 @@
                     
                     axios.get(url + `/getCourse/` + `${sessionStorage.getItem("course_id")}`)
                         .then(function(response) {
-                            // console.log(response);
                             let courseId = sessionStorage.getItem("course_id").split(";");
-                           // document.getElementById("courses").innerHTML = response.data.course_name.toUpperCase();
-                            // document.getElementById("batch_id").innerHTML = sessionStorage.getItem("course_id");
 
                             let batchId = ["ON/CA/VA101", "ON/CA/VA102", "ON/CA/FS201", "ON/CA/ML301", "ON/CA/VA103", "ON/CA/ML302", "ON/CA/FS202", "ON/CA/DA401", "ON/CA/VA104", "ON/CA/ML303", "ON/CA/FS203", "ON/CA/DA402"];
 
                             if (courseId[courseId.length - 1] >= 1 && courseId[courseId.length - 1] <= 12) {
-                              //  document.getElementById("batch_id").innerHTML = `Batch Id : ` + batchId[courseId[courseId.length - 1] - 1];
                             }
 
                         }).catch(function(error) {
@@ -736,55 +564,9 @@
                     // console.log(error);
                 });
 
-//             axios.get(url + `/getTaskByCourseId/` + `${sessionStorage.getItem("course_id")}`)
-//                 .then(function(response) {
-//                     // console.log(response);
-
-//                     if (response.data.a.length != 0) {
-//                         for (let i = 0; i < response.data.a.length; i++) {
-//                             let y = new Date(response.data.a[i].task_datetime)
-
-//                             $('#todo').append(`<li class="timeline-reverse timeline-item">
-//                   <div class="timeline-content-wrap">
-//                     <div class="timeline-dot " style="width: 45px;
-//     height: 45px;
-//     margin-right: -20px;
-//     line-height: 47px;
-//     background-color:moccasin;
-// ">
-//                       <i class="icon" aria-hidden="true">
-//                        <img class="navbar-brand-logo" src="../../assets/images/logo-ca.png" alt="..." style="width:42px;">
-//                         </i>
-//                     </div>
-//                     <div class="timeline-content">
-//                       <div class="title">
-//                         <span class="authors">CodeAsylums</span> 
-//                       </div>
-//                        <div class="metas">
-//                         <span id="task_datetime">${y.toDateString()}</span>
-//                       </div> 
-//                       <br/>
-                      
-//                         <label class="item-title"><span id="task_title" style="color:black;">${response.data.a[i].task_title}</span></label>
-                       
-//                       <div class="w-full">
-//                         <div class="item-due-date" style="font-size:13px;">
-//                           ${response.data.a[i].task_details}
-//                         </div>
-//                     </div>
-//                   </div>
-//                 </li>`);
-//                         }
-//                     }
-//                     // response.data.a[0]
-//                 }).catch(function(error) {
-//                     // console.log(error);
-//                 });
-
 
 if (sessionStorage.getItem("course_id")) {
 
-// <span class="border border-primary">${x}</span>
 axios.get(url + `/getClasses`)
     .then((response) => {
         // console.log(response)
@@ -793,29 +575,6 @@ axios.get(url + `/getClasses`)
             let newArr = response.data.a.sort(function(a, b) {
                 return new Date(b.schedule_start) - new Date(a.schedule_start)
             });
-            //    console.log(Sorted_Data[1].schedule_start);
-            //    let live = [];
-            //    let upcoming = [];
-            //    let completed = [];
-            //    for(let i=0;i<Sorted_Data.length;i++)
-            //    {
-            //         if(new Date(Sorted_Data[i].schedule_start) > new Date())
-            //         {
-            //             upcoming.push(Sorted_Data[i]);
-            //         }
-            //         else if(new Date(Sorted_Data[i].schedule_end) < new Date())
-            //         {
-            //             completed.push(Sorted_Data[i]);
-            //         }
-            //         else
-            //         {
-            //             live.push(Sorted_Data[i]);
-            //         }
-            //    }
-            // //    console.log(upcoming);
-            //    let newArr= live.concat(upcoming);
-            //    newArr = newArr.concat(completed);
-            // console.log("Response" + newArr[0]);
                 courseid = sessionStorage.getItem("course_id").split(";");
                 // console.log(courseid);
             for (let i = 0; i < newArr.length; i++) {
