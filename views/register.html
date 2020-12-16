@@ -17,6 +17,7 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="../../../global/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../../global/css/bootstrap-extend.min.css">
+    <link rel="stylesheet" href="../../../global/css/styles.css">
     <link rel="stylesheet" href="../../assets/css/site.min.css">
     
     <!-- Plugins -->
@@ -51,14 +52,14 @@
       Breakpoints();
     </script>
   </head>
-  <body class="animsition page-register-v3 layout-full">
+  <body class="animsition  layout-full yellowBG">
     <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
 
     <!-- Page -->
-    <div class="page vertical-align text-center" data-animsition-in="fade-in" data-animsition-out="fade-out">>
+    <div class="page vertical-align text-center yellowBG" data-animsition-in="fade-in" data-animsition-out="fade-out">>
       <div class="page-content vertical-align-middle animation-slide-top animation-duration-1">
         <div class="panel">
           <!-- alert message -->
@@ -92,47 +93,74 @@
 
           <div class="panel-body">
             <div class="brand">
-              <img class="brand-img" src="../../assets//images/logo-ca.png" alt="..." style="width:40%">
+              <img class="brand-img" src="../../assets//images/EarlyStepsLogo.webp" alt="..." style="width:80%">
               
             </div>
-            <form>
-              <div class="form-group form-material floating" data-plugin="formMaterial">
-                <input onclick="clearAlert()" id="username" type="text" class="form-control" name="username" required="required"/>
-                <label class="floating-label">UserName</label>
-              </div>
-              <div class="form-group form-material floating" data-plugin="formMaterial">
+            <form style='padding-top : 15px;'>
+              <div class="form-group form-material floating" data-plugin="formMaterial" style='margin : 20px 0px !important;'>
                 <input onclick="clearAlert()" id="email" type="email" class="form-control" name="email" required="required"/>
                 <label class="floating-label">Email</label>
               </div>
-              <div class="form-group form-material floating" data-plugin="formMaterial">
+              <div class="form-group form-material floating" data-plugin="formMaterial" style='margin : 20px 0px !important;'>
                 <input onclick="clearAlert()" id="phone" type="phone" class="form-control" name="phone" required="required"/>
-                <label class="floating-label">Phone No</label>
+                <label class="floating-label">Phone</label>
               </div>
-              <div class="form-group form-material floating" data-plugin="formMaterial">
+              <!-- <div class="form-group form-material floating" data-plugin="formMaterial">
+                <input onclick="clearAlert()" id="username" type="text" class="form-control" name="username" required="required" onfocus="(this.type='date')"/>
+                <label class="floating-label">UserName</label>
+              </div> -->
+              <div class="form-group form-material floating" data-plugin="formMaterial" style='margin : 20px 0px !important;'>
+                <input onclick="clearAlert()" id="fname" type="text" class="form-control" name="username" required="required"/>
+                <label class="floating-label">First Name</label>
+              </div>
+              <div class="form-group form-material floating" data-plugin="formMaterial" style='margin : 20px 0px !important;'>
+                <input onclick="clearAlert()" id="lname" type="text" class="form-control" name="username" required="required"/>
+                <label class="floating-label">Last Name</label>
+              </div>
+              <!-- <div class="form-group form-material floating" data-plugin="formMaterial" style='margin : 20px 0px !important;'>
+                <input onclick="clearAlert()" id="dob" type="text" class="form-control" name="username" required="required" onfocus="(this.type='date')"/>
+                <label class="floating-label">Date of Birth</label>
+              </div> -->
+              <!-- <div class="form-group form-material floating" data-plugin="formMaterial" style='margin : 20px 0px !important;'>
+                <input onclick="clearAlert()" id="grade" type="number" class="form-control" name="username" required="required"/>
+                <label class="floating-label">Class / Grade</label>
+              </div> -->
+              <div class="form-group form-material floating" data-plugin="formMaterial" style='margin : 20px 0px !important;'>
                 <input onclick="clearAlert()" id="password" type="password" class="form-control" name="password" required="required"/>
                 <label class="floating-label">Password</label>
               </div>
-              <div class="form-group form-material floating" data-plugin="formMaterial">
+              <div class="form-group form-material floating" data-plugin="formMaterial" style='margin : 20px 0px !important;'>
                 <input onclick="clearAlert()" id="retypePassword" type="password" class="form-control" name="PasswordCheck" required="required"/>
-                <label class="floating-label">Re-enter Password</label>
+                <label class="floating-label">Confirm Password</label>
               </div>
-              <div class="form-group form-material" data-plugin="formMaterial">
-                <label class="form-control-label">Sign up as </label>
-                <select class="form-control" id="usertype" required="required" name="default">
-                  <option value="0">--select--</option>
-                  <option value="mentor">Mentor</option>
-                    <option value="teaching assistant">Teaching Assistant</option>
+              <!-- <div class="form-group form-material" data-plugin="formMaterial">
+                <label class="form-control-label"></label>
+                <select class="form-control" id="course_id" required="required" name="default" >
+                  <option value="0">Select Course</option>
+                    <option value="1000">Not Enrolled</option>
+                    <option value="1">Virgin Algorithm - 4th April 2020</option>
+                    <option value="2">Virgin Algorithm - 12th April 2020</option>
+                    <option value="3">Full Stack - 12th April 2020</option>
+                    <option value="4">Machine Learning - 12th April 2020</option>
+                    <option value="5">Virgin Algorithm - 19th April 2020</option>
+                    <option value="6">Machine Learning - 19th April 2020</option>
+                    <option value="7">Full Stack - 19th April 2020</option>
+                    <option value="7">Data Analytics - 19th April 2020</option>
+                    <option value="5">Virgin Algorithm - 26th April 2020</option>
+                    <option value="6">Machine Learning - 26th April 2020</option>
+                    <option value="7">Full Stack - 26th April 2020</option>
+                    <option value="7">Data Analytics - 26th April 2020</option>
                   </select>
-            </div>
-              <a class="btn btn-primary btn-block btn-lg mx-auto" onclick="doregistration();" style="color:white;">Sign up</a>
+            </div> -->
+              <a class="btn esButton textLight btn-block btn-lg mx-auto" onclick="doregistration();" style="color:white;">Sign up</a>
             </form>
-            <p>Have account already? Please go to <a href="login">Sign In</a></p>
+            <p>Have an account already? Please go to <a class='coral' href="login">Sign In</a></p>
           </div>
         </div>
 
         <footer class="page-copyright page-copyright-inverse">
-           <p>CODEASYLUMS</p>
-          <p>© 2020. All RIGHT RESERVED.</p>
+           <p class='grey'>Early Steps</p>
+          <p class='grey'>© 2020. All RIGHT RESERVED.</p>
          
         </footer>
       </div>
@@ -184,7 +212,9 @@
     
     <script>
     
-    var url= 'https://api.codeasylums.com';
+    var url= 'https://early-steps.herokuapp.com/';
+    // var url= 'https://api.codeasylums.com/';
+
     function hideme(){
       document.getElementById('alert-message-div').style.display="none";
     }
@@ -214,23 +244,42 @@
                 document.getElementById('message-processing').innerHTML="Processing...";
 
                 
-        let usernameValue = document.getElementById("username").value;
+        // let usernameValue = document.getElementById("username").value;
         let emailValue = document.getElementById("email").value;
         let phoneValue = document.getElementById("phone").value;
         let passwordValue = md5(document.getElementById("password").value);
         let retypepasswordValue = md5(document.getElementById("retypePassword").value);
+        let usernameValue = phoneValue;
 
-        if(usernameValue==""){
-          document.getElementById('alert-message-div').style.display="block";
-          document.getElementById('message-div').innerHTML="Username is required";
-          document.getElementById('processing-div').style.display="none";
-          return false;
-        }
+        let fname = document.getElementById('fname').value
+        let lname = document.getElementById('lname').value
+        // let dob = document.getElementById('dob').value
+
+        // let grade = document.getElementById('grade').value
+
+        // document.getElementById('fname').addEventListener('change', e => {
+        //   console.log('e.target.value')
+        //   lname = e.target.value
+        // })
+
+        // document.getElementById('fname').addEventListener('change', e => {
+        //   console.log('e.target.value')
+        //   lname = e.target.value
+        // })
+
+
+
+        // if(usernameValue==""){
+        //     document.getElementById('alert-message-div').style.display="block";
+        //     document.getElementById('message-div').innerHTML="Username is required";
+        //     document.getElementById('processing-div').style.display="none";
+        //     return false;
+        // }
          if(emailValue==""){
-           document.getElementById('alert-message-div').style.display="block";
-          document.getElementById('message-div').innerHTML="Email is required";
-          document.getElementById('processing-div').style.display="none";
-          return false;
+            document.getElementById('alert-message-div').style.display="block";
+            document.getElementById('message-div').innerHTML="Email is required";
+            document.getElementById('processing-div').style.display="none";
+            return false;
         }
 
         // if(document.getElementById('course_id').value==="0")
@@ -245,107 +294,130 @@
         
           if(!regex.test(emailValue))
           {
-          document.getElementById('alert-message-div').style.display="block";
-          document.getElementById('message-div').innerHTML="You have entered an invalid email address!";
-          document.getElementById('processing-div').style.display="none";
-          return false;
+            document.getElementById('alert-message-div').style.display="block";
+            document.getElementById('message-div').innerHTML="You have entered an invalid email address!";
+            document.getElementById('processing-div').style.display="none";
+            return false;
           }
         
           
 
          if(phoneValue==""){
-           document.getElementById('alert-message-div').style.display="block";
-          document.getElementById('message-div').innerHTML="Phone is required";
-          document.getElementById('processing-div').style.display="none";
-          return false;
+            document.getElementById('alert-message-div').style.display="block";
+            document.getElementById('message-div').innerHTML="Phone is required";
+            document.getElementById('processing-div').style.display="none";
+            return false;
         }
 
         var phoneno = /^\d{10}$/;
         if(!(phoneValue.match(phoneno)))
         {
             document.getElementById('alert-message-div').style.display="block";
-          document.getElementById('message-div').innerHTML="Please enter 10 digit phone number";
-          document.getElementById('processing-div').style.display="none";
-          return false;
+            document.getElementById('message-div').innerHTML="Please enter 10 digit phone number";
+            document.getElementById('processing-div').style.display="none";
+            return false;
         }
       
          if(document.getElementById("password").value==""){
-           document.getElementById('alert-message-div').style.display="block";
-          document.getElementById('message-div').innerHTML="Password is required";
-          document.getElementById('processing-div').style.display="none";
-          return false;
+            document.getElementById('alert-message-div').style.display="block";
+            document.getElementById('message-div').innerHTML="Password is required";
+            document.getElementById('processing-div').style.display="none";
+            return false;
         }
          if(document.getElementById("retypePassword").value==""){
-           document.getElementById('alert-message-div').style.display="block";
-          document.getElementById('message-div').innerHTML="Confirm password is required";
-          document.getElementById('processing-div').style.display="none";
-          return false;
+            document.getElementById('alert-message-div').style.display="block";
+            document.getElementById('message-div').innerHTML="Confirm password is required";
+            document.getElementById('processing-div').style.display="none";
+            return false;
         }
          if(document.getElementById("retypePassword").value!=document.getElementById("password").value){
-           document.getElementById('alert-message-div').style.display="block";
-          document.getElementById('message-div').innerHTML="Passwords do not match";
-          document.getElementById('processing-div').style.display="none";
-          return false;
+            document.getElementById('alert-message-div').style.display="block";
+            document.getElementById('message-div').innerHTML="Passwords do not match";
+            document.getElementById('processing-div').style.display="none";
+            return false;
         }
 
 
-        let userTypeValue = document.getElementById("usertype").value;
+        let userTypeValue = "mentor";
         let redirectURL = "/login";
         var flag1 = true;
         var flag2 = true
-        // console.log(flag1,flag2)
+       // console.log(flag1,flag2)
       await axios.get( url+`/isRegisteredUserEmail/`+`${emailValue}`)
         .then((res)=>{
           if(res.data==="True")
             {
-              document.getElementById('alert-message-div').style.display="block";
-              document.getElementById('message-div').innerHTML="Email already registered!";
-              document.getElementById('processing-div').style.display="none";
+               document.getElementById('alert-message-div').style.display="block";
+                document.getElementById('message-div').innerHTML="Email already registered!";
+                document.getElementById('processing-div').style.display="none";
 
-              //return false;
+          //return false;
            
           }
         })
         .catch(async (err)=>{
           flag1 = false;
-          // console.log(flag1,flag2)
+         // console.log(flag1,flag2)
           await axios.get( url+`/isRegisteredUserPhone/`+`${phoneValue}`)
               .then((res)=>{
                 if(res.data==="True")
                 {
-                  document.getElementById('alert-message-div').style.display="block";
-                  document.getElementById('message-div').innerHTML="Phone number already registered!";
-                  document.getElementById('processing-div').style.display="none";
+                    document.getElementById('alert-message-div').style.display="block";
+                    document.getElementById('message-div').innerHTML="Phone number already registered!";
+                    document.getElementById('processing-div').style.display="none";
+
+          //return false;
                             
                 }
               })
-              .catch((err)=>{flag2 = false;})  
+              .catch((err)=>{
+                flag2 = false;
+                //console.log(flag1,flag2)
+              }
+                )  
         })
+
 
         if (flag1 === false && flag2 === false){
            if (passwordValue === retypepasswordValue) {
-              // console.log("reg")
+              console.log("reg", {
+                user_id: phoneValue,
+                user_type: userTypeValue,
+                first_name: fname,
+                last_name: lname,
+                dob: 01-01-2001,
+                grade: 12345,
+                user_name: phoneValue,
+                phone: phoneValue,
+                email: emailValue,
+                password: passwordValue
+                })
 
              
               axios.post( url+'/doRegistration', {
                 user_id: phoneValue,
-                user_type: 'mentor',
-                user_name: usernameValue,
+                user_type: userTypeValue,
+                first_name: fname,
+                last_name: lname,
+                dob: '01-01-2001',
+                grade: 12345,
+                user_name: phoneValue,
                 phone: phoneValue,
                 email: emailValue,
                 password: passwordValue
                 })
                 .then(function (response) {
+                  console.log('Response, ', response.data)
                   document.getElementById('processing-div').style.display="none";
-                       document.getElementById('info-message-div').style.display="block";
-                        document.getElementById('message-div-info').innerHTML="Registered successfully!";
-                        setTimeout(()=>{
-                          window.location.href = redirectURL;
-                        },1500);
+                  document.getElementById('info-message-div').style.display="block";
+                  document.getElementById('message-div-info').innerHTML="Registered successfully!";
+                  setTimeout(()=>{
+                    window.location.href = redirectURL;
+                  },1500);
                  
                 })
                 .catch(function (error) {
-                  // console.log(error);
+                  //console.log(error);
                   document.getElementById('alert-message-div').style.display="block";
                   document.getElementById('message-div').innerHTML="User Name already registered!";
                   document.getElementById('processing-div').style.display="none";

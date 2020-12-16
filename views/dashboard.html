@@ -256,12 +256,12 @@
                     <div id="personalCompletedWidget" class="card card-shadow pb-20">
                         <div class="card-header card-header-transparent cover overlay">
                             <img class="cover-image" src="../../../global/photos/placeholder.png">
-                            <div class="overlay-panel coralBG vertical-align">
+                            <div class="overlay-panel vertical-align">
                                 <div class="vertical-align-middle">
-                                    <a class="avatar" href="javascript:void(0)">
-                                        <img id="photoimg" alt="" src="../../assets/images/upload.png">
+                                    <a class="avatar" href="javascript:void(0)" style='border-radius: 0px;'>
+                                        <img id="photoimg" alt="" src="../../assets/images/upload.png" style='border-radius: 0px;'>
                                     </a>
-                                    <div id="name" class="font-size-20 mt-10"></div>
+                                    <div id="name" class="font-size-20 mt-10 grey"></div>
                                     <!-- <div id="courses" class="font-size-14"></div>
                                     <div id="batch_id" class="font-size-14"></div> -->
                                 </div>
@@ -527,7 +527,8 @@
     <script src="../assets/examples/js/dashboard/v1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
     <script>
-        var url = 'https://api.codeasylums.com';
+        // var url = 'https://api.codeasylums.com';
+        var url= 'https://early-steps.herokuapp.com/';
 
         if (sessionStorage.getItem("loggedCA") === md5("true") && sessionStorage.getItem("redirect") == "dashboard") {
             globalCall();
@@ -650,21 +651,30 @@
             let user_id = sessionStorage.getItem("user_id");
             axios.get(url + `/getUserData/${user_id}`)
                 .then(function(response) {
-                    // console.log(response);
+                    console.log('User data : ', response.data);
                     sessionStorage.setItem("course_id", response.data["a"][0].course_id);
                     sessionStorage.setItem("photo", response.data["a"][0].photo);
-                     document.getElementById("name").innerHTML = response.data["a"][0].name.toUpperCase();
+                    //  document.getElementById("name").innerHTML = response.data["a"][0].name.toUpperCase();
                      sessionStorage.setItem('name',response.data["a"][0].name)
                     document.getElementById("photo").src = response.data["a"][0].photo;
-                    if (sessionStorage.getItem("photo")) {
-                        document.getElementById("photoimg").src = sessionStorage.getItem("photo");
+                    document.getElementById("photoimg").src = "../../assets/images/dino.svg";
+                    console.log('Course_id : ', response.data.a[0].course_id)
+                    let data = response.data.a[0]
 
-                    } else {
-                        document.getElementById("photoimg").src = "../../assets/images/upload.png";
-
+                    if(data.course_id === 'NA') {
+                        console.log('NA')
                     }
+                    // if(response.data.a[0].course_id !== 'NA') {
+                    //     console.log('NA')
+                    // }
+                    // if (sessionStorage.getItem("photo")) {
+                    //     document.getElementById("photoimg").src = sessionStorage.getItem("photo");
 
-                    $("#testimonial").append(` <p class="animation-scale-up animation-delay-200" style="font-family:monospace;" > Hey <span style="color:red;">${response.data.a[0].name}</span> , <br/>Welcome to our mentor onboarding platform !! <i class="far fa-smile"></i> <br/>We are super excited to have you onboard.</p>`)
+                    // } else {
+                    //     document.getElementById("photoimg").src = "../../assets/images/upload.png";
+
+                    // }
+
 
                 }).catch(function(error) {
                     // console.log(error);
@@ -672,8 +682,10 @@
 
             axios.get(url + `/getRegistration/${user_id}`)
                 .then(function(response) {
-                    // console.log(response);
-                    document.getElementById("name").innerHTML = response.data.user_name.toUpperCase();
+                    console.log('User reg : ', response.data);
+                    document.getElementById("name").innerHTML = response.data.first_name.toUpperCase() + ' ' + response.data.last_name.toUpperCase();
+                    $("#testimonial").append(` <p class="animation-scale-up animation-delay-200" style="font-family:monospace;" > Hey <span style="color:red;">${response.data.first_name.toUpperCase() + ' ' + response.data.last_name.toUpperCase()}</span>, <br/>Welcome to our moderator onboarding platform!! <i class="far fa-smile"></i> <br/>We are super excited to have you here.</p>`)
+                    
                     axios.get(url + `/getCourse/` + `${sessionStorage.getItem("course_id")}`)
                         .then(function(response) {
                             // console.log(response);
@@ -775,7 +787,7 @@ if (sessionStorage.getItem("course_id")) {
 // <span class="border border-primary">${x}</span>
 axios.get(url + `/getClasses`)
     .then((response) => {
-        console.log(response)
+        // console.log(response)
 
         if (response.data.a.length != 0) {
             let newArr = response.data.a.sort(function(a, b) {
@@ -803,9 +815,9 @@ axios.get(url + `/getClasses`)
             // //    console.log(upcoming);
             //    let newArr= live.concat(upcoming);
             //    newArr = newArr.concat(completed);
-            console.log("Response" + newArr[0]);
+            // console.log("Response" + newArr[0]);
                 courseid = sessionStorage.getItem("course_id").split(";");
-                console.log(courseid);
+                // console.log(courseid);
             for (let i = 0; i < newArr.length; i++) {
                 if (newArr[i].course_id == courseid[courseid.length - 1]) {
                     let zoomurl = newArr[i].schedule_details.split("~")[2];
