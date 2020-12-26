@@ -409,7 +409,8 @@
         <script src="../../assets/examples/js/dashboard/v1.js"></script>
 
         <script>
-        var url= 'https://api.codeasylums.com';
+        // var url= 'https://api.codeasylums.com';
+        var url = 'http://earlysteps-env-2.eba-7ipamjqn.us-west-2.elasticbeanstalk.com'
         function hideme(){
       document.getElementById('alert-message-div').style.display="none";
     }
@@ -596,9 +597,9 @@
                 objectiveObj[id] = score
             }
             
-            axios.get('https://early-steps.herokuapp.com/getAssignment/' + assignmentId)
+            axios.get(url + '/getAssignment/' + assignmentId)
             .then(res => {
-                axios.get('https://early-steps.herokuapp.com/getSubmission/' + submissionId)
+                axios.get(url + '/getSubmission/' + submissionId)
                 .then(response => {
                     submissionObj = response.data
                     submissionContent = JSON.parse(submissionObj.submission_content)
@@ -685,7 +686,7 @@
                 
             })
 
-            axios.get('https://early-steps.herokuapp.com/getAssignment/' + assignmentId)
+            axios.get(url + '/getAssignment/' + assignmentId)
             .then(res => {
                 console.log('Assignment : ', res.data)
             })

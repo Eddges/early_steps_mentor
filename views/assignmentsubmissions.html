@@ -403,7 +403,9 @@
         <script src="../../assets/examples/js/dashboard/v1.js"></script>
 
         <script>
-        var url= 'https://api.codeasylums.com';
+        // var url= 'https://api.codeasylums.com';
+        var url = 'http://earlysteps-env-2.eba-7ipamjqn.us-west-2.elasticbeanstalk.com'
+
         function hideme(){
       document.getElementById('alert-message-div').style.display="none";
     }
@@ -568,7 +570,7 @@
 
             console.log('https://early-steps.herokuapp.com/getAssignment/' + assignmentId)
             
-            axios.get('https://early-steps.herokuapp.com/getAssignment/' + assignmentId)
+            axios.get(url + '/getAssignment/' + assignmentId)
             .then(res => {
                 console.log('Assignment data', res.data)
                 assignmentName.innerHTML = res.data.assignment_name
@@ -600,7 +602,7 @@
             })
 
 
-            axios.get('https://early-steps.herokuapp.com/getAssignmentAllSubmission/' + '3')
+            axios.get(url + '/getAssignmentAllSubmission/' + '3')
             .then(res => {
                 console.log('All submissions on 7 : ', res.data)
             })

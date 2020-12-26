@@ -406,7 +406,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
     <script>
         // var url = 'https://api.codeasylums.com';
-        var url= 'https://early-steps.herokuapp.com/';
+        // var url= 'https://early-steps.herokuapp.com/';
+        var url = 'http://earlysteps-env-2.eba-7ipamjqn.us-west-2.elasticbeanstalk.com/'
 
         if (sessionStorage.getItem("loggedCA") === md5("true") && sessionStorage.getItem("redirect") == "dashboard") {
             globalCall();
@@ -517,7 +518,7 @@
                     console.log('User reg : ', response.data);
                     document.getElementById("name").innerHTML = response.data.first_name.toUpperCase() + ' ' + response.data.last_name.toUpperCase();
                     $("#testimonial").append(` <p class="animation-scale-up animation-delay-200" style="font-family:monospace;" > Hey <span style="color:red;">${response.data.first_name.toUpperCase() + ' ' + response.data.last_name.toUpperCase()}</span>, <br/>Welcome to our moderator onboarding platform!! <i class="far fa-smile"></i> <br/>We are super excited to have you here.</p>`)
-                    
+                    // console.log('Line 521')
                     axios.get(url + `/getCourse/` + `${sessionStorage.getItem("course_id")}`)
                         .then(function(response) {
                             let courseId = sessionStorage.getItem("course_id").split(";");
@@ -644,10 +645,11 @@ axios.get(url + `/getClasses`)
 
                     } else if (x == "Completed") {
 
-                        document.getElementById(`zoombtn` + `${i}`).href = "javascript:void(0)";
-                        document.getElementById(`zoomlink` + `${i}`).style.cursor = "not-allowed";
-                        document.getElementById(`zoomlink` + `${i}`).style.backgroundColor = "lightgrey";
-                        document.getElementById(`feedbackbadge` + `${i}`).style.display = "block";
+                        // document.getElementById(`zoombtn` + `${i}`).href = "javascript:void(0)";
+                        // document.getElementById(`zoomlink` + `${i}`).style.cursor = "not-allowed";
+                        // document.getElementById(`zoomlink` + `${i}`).style.backgroundColor = "lightgrey";
+                        // document.getElementById(`feedbackbadge` + `${i}`).style.display = "block";
+                        
                         //document.getElementById(`badge`+`${i}`).style.color = "seagreen";
                         //document.getElementById(`badge`+`${i}`).style.border = "1px solid seagreen";
                     } else {
